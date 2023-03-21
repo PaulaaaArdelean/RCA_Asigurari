@@ -96,10 +96,10 @@ namespace RCA_Asigurari.Models
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele strazii trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
         [StringLength(30, MinimumLength = 2)]
-        public string Strada { get; set; }
+        public string? Strada { get; set; }
 
 
-        public string Numar { get; set; }
+        public string? Numar { get; set; }
 
 
         [Display(Name = "Codul postal")]
