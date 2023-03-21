@@ -144,11 +144,12 @@ namespace RCA_Asigurari.Models
         {
             get
             {
-                return " jud. " + Judet.Judetul + ", loc. " + Localitate.Localitatea + ", nr. " + Numar + ", strada " + Strada + ", " + CodPostal;
-         }
+                return " jud. " + (Judet?.Judetul ?? "") + ", loc. " + (Localitate?.Localitatea ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
+            }
         }
 
-       public ICollection<PersoanaFizica>? PersoaneFizice { get; set; }
+
+        public ICollection<PersoanaFizica>? PersoaneFizice { get; set; }
        public ICollection<PersoanaJuridica>? PersoaneJuridice { get; set; }
     }
 }
