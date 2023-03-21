@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using RCA_Asigurari.Data;
@@ -8,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<RCA_AsigurariContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("RCA_AsigurariContext") ?? throw new InvalidOperationException("Connection string 'RCA_AsigurariContext' not found.")));
+builder.Services.AddDbContext<LibraryIdentityContext>(options =>
+
+options.UseSqlServer(builder.Configuration.GetConnectionString("RCA_AsigurariContext") ?? throw new InvalidOperationException("Connection string 'RCA_AsigurariContext' not found.")));
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+options.SignIn.RequireConfirmedAccount = true)
+ .AddEntityFrameworkStores<LibraryIdentityContext>();
 
 var app = builder.Build();
 
