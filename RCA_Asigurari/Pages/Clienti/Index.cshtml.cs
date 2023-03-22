@@ -20,10 +20,21 @@ namespace RCA_Asigurari.Pages.Clienti
         }
 
         public IList<Client> Client { get;set; } = default!;
+        //public string CurrentFilter { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString1)
         {
-            if (_context.Client != null)
+            //CurrentFilter = searchString1;
+
+            //if (!String.IsNullOrEmpty(searchString1))
+            //{
+            //    Client = Client.Where(s => s.NumeClientFirma.Contains(searchString1));
+            //}
+
+               //|| s.Author.LastName.Contains(searchString)
+               //|| s.Title.Contains(searchString));
+
+                if (_context.Client != null)
             {
                 Client = await _context.Client
                 .Include(c => c.Judet)

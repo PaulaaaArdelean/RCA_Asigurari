@@ -27,6 +27,30 @@
         .nav-item:hover .nav-link {
                 color: black !important;
             }
+
+        .footer-item:hover{
+            background-color: white;
+        }
+
+        .footer-item:hover .nav-link {
+            color: white !important;
+        }
+
+        .footer-item {
+            text-decoration:none;
+            text-color:white;
+        }
+        .home-button{
+            text-decoration:none;
+            font-weight: bold; 
+            font-family: Arial;
+            color: white;
+
+        }
+       .home-button: hover{
+                color: black;
+/*               background-color: white;
+*/            }
     </style>
 </head>
 <body>
@@ -34,6 +58,8 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-color: #C47777 !important;">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index"><img align="center" src="~/imagini/logo.png" alt="Sigla" class="sigla" asp-append-version="true" /></a>
+                <a class ="home-button" asp-area="" asp-page="/Index" > HOME</a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -96,9 +122,12 @@
     </div>
 
     <footer class="border-top footer text-muted position-fixed">
-        <div class="container">
-            &copy; 2023 - RCA_Asigurari - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
+        <div class="container" style="color:white; ">
+            &copy; 2023 - RCA_Asigurari - 
+            <a asp-area="" asp-page="/Privacy" class="footer-item"><i class="bi bi-shield-fill-exclamation"></i>   Privacy</a>   |
+            <a asp-area="" asp-page="/ContactUs" class="footer-item"><i class="bi bi-chat-text-fill"></i>   Contact us</a>   |
+            <a asp-area="" asp-page="/About" class="footer-item"><i class="bi bi-info-circle-fill"></i>   About</a>
+        
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

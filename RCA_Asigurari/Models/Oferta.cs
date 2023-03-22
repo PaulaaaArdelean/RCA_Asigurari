@@ -5,7 +5,7 @@ namespace RCA_Asigurari.Models
     public class Oferta
     {
         public int ID { get; set; }
-
+        [Display(Name ="Proprietarul")]
         public int? ClientID { get; set; }
         public Client? Client { get; set; }
 
