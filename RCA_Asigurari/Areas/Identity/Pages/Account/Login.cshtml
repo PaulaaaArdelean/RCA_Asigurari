@@ -4,13 +4,57 @@
 @{
     ViewData["Title"] = "Log in";
 }
+<style>
+    .login-form-divs {
+        border: 3px solid #C47777;
+        padding: 8px;
+        margin: 3px;
+        border-style: inset;
+        border-width: 25px 10px 4px 35px;
+        margin: 0 auto;
+        width: 450px;
+    }
 
-<h1>@ViewData["Title"]</h1>
+
+    .login-button {
+        background-color: #C47777;
+        border-radius: 12px;
+        width: 150px;
+        font-family:Calibri;
+        font-style: italic;
+        font-size:25px;
+    }
+
+    .login-button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;}
+
+    .login-button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    .login-button:hover span {
+        padding-right: 25px;
+    }
+
+        .login-button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+</style>
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="login-form-divs" @*style=" border: 3px solid #C47777;"*@>
         <section>
             <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
+                <h2 style=" font-style: italic;">Log in</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
@@ -32,7 +76,7 @@
                     </div>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <button id="login-submit" type="submit" class="login-button"> <span>Log in</span></button>
                 </div>
                 <div>
                     <p>
@@ -48,7 +92,7 @@
             </form>
         </section>
     </div>
-    <div class="col-md-6 col-md-offset-2">
+   @* <div class="col-md-6 col-md-offset-2">*@
         @*<section>
             <h3>Use another service to log in.</h3>
             <hr />
