@@ -57,6 +57,7 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
         /// </summary>
         [BindProperty]
         public Client Client { get; set; }
+
         [BindProperty]
         public InputModel Input { get; set; }
 

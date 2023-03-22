@@ -24,13 +24,13 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("RCA_AsigurariCon
 //    .AddRoles<IdentityRole>()
 // .AddEntityFrameworkStores<LibraryIdentityContext>();
 
-builder.Services.AddDbContext<LibraryIdentityContext>(options =>
+//builder.Services.AddDbContext<LibraryIdentityContext>(options =>
 
-options.UseSqlServer(builder.Configuration.GetConnectionString("RCA_AsigurariContext") ?? throw new InvalidOperationException("Connection string 'RCA_AsigurareContext' not found.")));
+//options.UseSqlServer(builder.Configuration.GetConnectionString("RCA_AsigurariContext") ?? throw new InvalidOperationException("Connection string 'RCA_AsigurareContext' not found.")));
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
- .AddEntityFrameworkStores<LibraryIdentityContext>();
+    .AddEntityFrameworkStores<LibraryIdentityContext>();
 
 
 var app = builder.Build();
