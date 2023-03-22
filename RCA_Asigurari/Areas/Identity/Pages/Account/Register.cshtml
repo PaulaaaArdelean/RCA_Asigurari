@@ -6,6 +6,9 @@
 
 <h1>Inregistrare!</h1>
 <style>
+    /*input[type=text]:focus {
+        border: 3px solid #555;
+    }*/
     .register-form-divs{
         border: 3px solid #C47777;
         padding: 8px;
@@ -13,6 +16,41 @@
         border-style: inset;
         border-width: 25px 10px 4px 35px;
     }
+
+    .register-button {
+        background-color: #C47777;
+        border-radius: 12px;
+        width: 150px;
+        font-family: Calibri;
+        font-style: italic;
+        font-size: 25px;
+        float:right;
+    }
+
+        .register-button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .register-button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .register-button:hover span {
+            padding-right: 25px;
+        }
+
+            .register-button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
 </style>
 <div >
     <div class="overflow-auto">
@@ -143,7 +181,7 @@
                     </div>
                 </div>
             </div>
-            <button id="registerSubmit" type="submit" class="w-64 btn btn-lg btn-primary" style="background-color:#C47777; float: right;border-radius: 12px;">Register</button>
+            <button id="registerSubmit" type="submit" class="register-button" @*class="w-64 btn btn-lg btn-primary"*@ @*style="background-color:#C47777; float: right;border-radius: 12px;"*@><span>Register</span></button>
 
         </form>
     </div>
