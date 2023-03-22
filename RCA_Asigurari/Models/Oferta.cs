@@ -47,7 +47,7 @@ namespace RCA_Asigurari.Models
         public TipCombustibil? TipCombustibil { get; set; }
 
 
-        public int Pret { get; set; }
+        public int? Pret { get; set; }
         [Display(Name = "Optional")]
 
         public ICollection<AtributOptionalOferta>? AtributeOptionaleOferta { get; set; }

@@ -24,64 +24,69 @@
             background-color: white;
         }
 
-            .nav-item:hover .nav-link {
+        .nav-item:hover .nav-link {
                 color: black !important;
             }
     </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-color: #C47777 !important;">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index"><img align="center" src="~/imagini/logo.png" alt="Sigla" class="sigla" asp-append-version="true" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-eye-fill"></i>    <i class="bi bi-list-stars"></i>
-                                Liste
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu">
-                                <li>   <a class="nav-link text-dark" asp-area="" asp-page="/Clienti/Index"><i class="bi bi-people-fill"></i> Clienti</a>   </li>
-                                <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Vehicule/Index"><i class="bi bi-car-front-fill"></i> Vehicule</a>  </li>
-                                <li>  <a class="nav-link text-dark" asp-area="" asp-page="/PersoaneFizice/Index"><i class="bi bi-people-fill"></i>Persoane fizice</a></li>
-                                <li>  <a class="nav-link text-dark" asp-area="" asp-page="/PersoaneJuridice/Index"><i class="bi bi-people-fill"></i> Persoane juridice </a></li>
-                                <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Oferte/Index"><i class="bi bi-coin"></i> Oferte </a></li>
-                        </li>
+                <div class="d-sm-inline-flex" style="width:1900px; justify-items:right">
+                    <div class="d-sm-inline-flex" style="float: left">
+                    <div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-eye-fill"> Liste  </i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu">
+                                    <li>   <a class="nav-link text-dark" asp-area="" asp-page="/Clienti/Index"><i class="bi bi-people-fill"></i> Clienti</a>   </li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Vehicule/Index"><i class="bi bi-car-front-fill"></i> Vehicule</a>  </li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/PersoaneFizice/Index"><i class="bi bi-people-fill"></i>Persoane fizice</a></li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/PersoaneJuridice/Index"><i class="bi bi-people-fill"></i> Persoane juridice </a></li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Oferte/Index"><i class="bi bi-coin"></i> Oferte </a></li>
+                            </li>
 
-                    </ul>
-                    <ul>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-pencil"></i>
-                                Adauga
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Inregistreaza client nou</a>
-                                </li>
-                                <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Clienti/Create"> Clienti</a>  </li>
-
-                                <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Vehicule/Index"><i class="bi bi-car-front-fill"></i> Vehicule</a>  </li>
-                                <li>  <a class="nav-link text-dark" asp-area="" asp-page="/PersoaneFizice/Create"><i class="bi bi-people-fill"></i>Persoane fizice</a></li>
-                                <li>  <a class="nav-link text-dark" asp-area="" asp-page="/PersoaneJuridice/Create"><i class="bi bi-people-fill"></i> Persoane juridice </a></li>
-                        </li>
-                    
-                    </ul>
-                    <ul>
-                        <li>
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Oferte/Create"><i class="bi bi-pencil-square"></i> Calculeaza oferta RCA </a>
-                        </li>
-                    </ul>
+                        </ul>
+                    </div>
                   
+                    <div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-pencil">Adauga</i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Inregistreaza client nou</a>
+                                    </li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Clienti/Create"> Clienti</a>  </li>
 
-                    <partial name="_LoginPartial" />
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Vehicule/Index"><i class="bi bi-car-front-fill"></i> Vehicule</a>  </li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/PersoaneFizice/Create"><i class="bi bi-people-fill"></i>Persoane fizice</a></li>
+                                    <li>  <a class="nav-link text-dark" asp-area="" asp-page="/PersoaneJuridice/Create"><i class="bi bi-people-fill"></i> Persoane juridice </a></li>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Oferte/Create"><i class="bi bi-pencil-square">Calculeaza oferta RCA</i>  </a>
+                            </li>
+                        </ul>
+                    </div>
+                   </div>
+                    <div style="float: right">  <partial name="_LoginPartial" /></div>
+                  </div>
                 </div>
-            </div>
         </nav>
     </header>
     <div class="container">
@@ -90,7 +95,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted position-fixed">
         <div class="container">
             &copy; 2023 - RCA_Asigurari - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
