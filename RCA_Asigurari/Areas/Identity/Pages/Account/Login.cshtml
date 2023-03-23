@@ -8,6 +8,7 @@
     input[type=text]:focus {
         border: 3px solid #555;
     }
+
     .login-form-divs {
         border: 3px solid #C47777;
         padding: 8px;
@@ -18,40 +19,39 @@
         width: 450px;
     }
 
-
     .login-button {
         background-color: #C47777;
         border-radius: 12px;
         width: 150px;
-        font-family:Calibri;
+        font-family: Calibri;
         font-style: italic;
-        font-size:25px;
-       
+        font-size: 25px;
     }
 
-    .login-button span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;}
-
-    .login-button span:after {
-        content: '\00bb';
-        position: absolute;
-        opacity: 0;
-        top: 0;
-        right: -20px;
-        transition: 0.5s;
-    }
-
-    .login-button:hover span {
-        padding-right: 25px;
-    }
-
-        .login-button:hover span:after {
-            opacity: 1;
-            right: 0;
+        .login-button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
         }
+
+            .login-button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .login-button:hover span {
+            padding-right: 25px;
+        }
+
+            .login-button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
 </style>
 
 <div class="row">
@@ -105,8 +105,10 @@
                 {
                     <div>
                         <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
+                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
+                                article
+                                about setting up this ASP.NET application to support logging in via external services
+                            </a>.
                         </p>
                     </div>
                 }
@@ -127,7 +129,3 @@
         </section>
     </div>
 </div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}

@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -32,7 +33,6 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly RCA_Asigurari.Data.RCA_AsigurariContext _context;
-
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
@@ -48,7 +48,6 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _context = context;
-
         }
 
         /// <summary>
@@ -233,7 +232,7 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             if (result.Succeeded)
             {
                 _logger.LogInformation("User created a new account with  password.");
-
+               
                 var role = await _userManager.AddToRoleAsync(user, "User");
                 var userId = await _userManager.GetUserIdAsync(user);
                 var code = await
@@ -251,14 +250,14 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
                    returnUrl = returnUrl
                },
                 protocol: Request.Scheme);
-                await _emailSender.SendEmailAsync(Input.Email, "Confirm  the email",
+                await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+               
+                $"Please confirm your account by <a  href = '{HtmlEncoder.Default.Encode(callbackUrl)}' > clicking here </ a >.");
+           
 
-                $"Please confirm the account by <a href = '{HtmlEncoder.Default.Encode(callbackUrl)}' > clicking here </ a >.");
 
-
-
-                if
-               (_userManager.Options.SignIn.RequireConfirmedAccount)
+ if
+(_userManager.Options.SignIn.RequireConfirmedAccount)
                 {
                     return RedirectToPage("RegisterConfirmation", new
                     {
@@ -278,8 +277,8 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
                    error.Description);
                 }
             }
-
             return Page();
+
         }
 
         private IdentityUser CreateUser()
