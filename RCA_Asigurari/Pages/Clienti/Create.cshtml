@@ -14,10 +14,24 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+             
                 <div class="form-group">
+                    <label asp-for="Client.RadioButtonClienti" class="control-label">Alege tipul de client: </label>
+                    @foreach (var figurina in Model.RadioButtonClienti)
+                    {
+                        <input type="radio" asp-for="Client.RadioButtonClient" value="@figurina" />
+
+                        @figurina
+
+                        <br />
+                    }
+
+                    <span asp-validation-for="Client.RadioButtonClienti" class="text-danger"></span>
+                </div>
+                @* <div class="form-group">
                     <label asp-for="Client.TipAsiguratID" class="control-label"></label>
                     <select asp-for="Client.TipAsiguratID" class="form-control" asp-items="ViewBag.TipAsiguratID"></select>
-                </div>
+                </div>*@
                 <label asp-for="Client.CNP" class="control-label"></label>
                 <input asp-for="Client.CNP" class="form-control" />
                 <span asp-validation-for="Client.CNP" class="text-danger"></span>
@@ -111,19 +125,7 @@
                 <input asp-for="Client.Telefon" class="form-control" />
                 <span asp-validation-for="Client.Telefon" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Client.RadioButtonClienti" class="control-label">Alege tipul de client: </label>
-                @foreach (var figurina in Model.RadioButtonClienti)
-                {
-                    <input type="radio" asp-for="Client.RadioButtonClient" value="@figurina" />
-
-                    @figurina
-
-                    <br />
-                }
-              
-                <span asp-validation-for="Client.RadioButtonClienti" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

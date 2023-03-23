@@ -2,6 +2,220 @@
 @model RCA_Asigurari.Pages.AboutModel
 @{
 }
-<h1>Despre noi!
-    ......
-</h1>
+<html
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--<title> An About Us Page | CoderGirl </title>-->
+    <!---Custom Css File!--->
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+/** {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.about-us {
+    height: 100vh;
+    width: 100%;
+    padding: 90px 0;
+}
+
+.pic {
+    height: auto;
+    width: 302px;
+}
+
+.about {
+    width: 1130px;
+    max-width: 85%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.text {
+    width: 540px;
+}
+
+    .text h2 {
+        font-size: 90px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .text h5 {
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+span {
+    color: #66A1A8;
+}
+
+.text p {
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 1px;
+}
+
+.data {
+    margin-top: 30px;
+}
+
+.contact {
+    font-size: 18px;
+    background: #000;
+    color: #66A1A8;
+    text-decoration: none;
+    border: none;
+    padding: 8px 25px;
+    border-radius: 6px;
+    transition: 0.5s;
+}
+
+    .contact:hover {
+        background: #fff;
+        border: 1px solid #66A1A8;
+    }
+
+    .send-button {
+        background-color: #C47777;
+        border-radius: 12px;
+        width: 150px;
+        font-family: Calibri;
+        font-style: italic;
+        font-size: 20px;
+        float: right;
+    }
+
+        .send-button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .send-button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .send-button:hover span {
+            padding-right: 25px;
+        }
+
+            .send-button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+*/
+
+
+.display-4 {
+    color: Black;
+    text-align: left;
+    font-family: Cambria;
+    font-style: italic;
+    position: relative;
+}
+
+p {
+    color: black;
+    text-align: center;
+    font-family: Cambria;
+    font-size: 18px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    font-style: normal;
+    font-variant: normal;
+    font-style: italic;
+}
+
+
+
+.left {
+    margin-left: auto;
+    width: 200px;
+/*    height: 40%;
+*/}
+
+.send-button {
+    background-color: #C47777;
+    border-radius: 12px;
+    width: 200px;
+
+    font-family: Calibri;
+    font-style: italic;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .send-button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+        .send-button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+    .send-button:hover span {
+        padding-right: 25px;
+    }
+
+        .send-button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+</style>
+
+</head>
+<body>
+
+    <div class="text-left">
+    <h5 class="display-4"> Despre...
+        <br />
+    </h5>
+        <img align="left" src="~/imagini/sigla1.png" alt="Logo" class="left" style="border-radius: 50%;" />
+
+        <p align="center">Bun venit pe site-ul nostru de asigurări auto! <br />
+            Aici puteți genera rapid și ușor o ofertă personalizată de asigurare RCA, bazată pe datele personale și informațiile despre vehicul pe care le introduceți chiar dumneavoastră.<br /><br />
+
+Site-ul nostru este conceput pentru a vă oferi cea mai bună experiență de utilizare, astfel încât să puteți obține rapid o ofertă de asigurare RCA care să se potrivească nevoilor dumneavoastră.<br />
+
+Accesând butonul <a  asp-area="" asp-page="/Oferte/Create">"Calculează-ți oferta!"</a>, veți fi redirecționat către un formular simplu de completat, care include informații de bază despre proprietar și despre vehicul, cum ar fi marca, modelul, anul de fabricație, numărul de înmatriculare, numele propietarului etc. <br />
+
+Odată ce ați introdus toate informațiile necesare, site-ul nostru va genera automat o ofertă personalizată de asigurare RCA, care vă va oferi informații clare și concise despre acoperirea și costurile asigurării.
+
+Puteți compara ofertele noastre cu alte companii de asigurări și puteți alege opțiunea care vi se potrivește cel mai bine. Dacă sunteți mulțumit de oferta noastră, ne puteți contacta  <a  asp-area="" asp-page="/ContactUs">aici.</a> <br /> <br />
+
+Site-ul nostru de asigurări auto este simplu, rapid și ușor de utilizat. Vă invităm să încercați acum și să obțineți o ofertă personalizată de asigurare RCA pentru vehiculul dumneavoastră!</p>
+
+        <br />
+     
+
+     <div class="send-button" > 
+          <button type="button" class="send-button" asp-area="" asp-page="/ContactUs"><span> Contactează-ne!</span></button>
+        </div>
+</div>
+</body>
+</html>

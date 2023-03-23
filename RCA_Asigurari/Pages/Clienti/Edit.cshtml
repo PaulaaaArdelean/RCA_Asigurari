@@ -14,10 +14,23 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Client.ID" />
-            <div class="form-group">
+         @*   <div class="form-group">
                 <label asp-for="Client.TipAsiguratID" class="control-label"></label>
                 <select asp-for="Client.TipAsiguratID" class="form-control" asp-items="ViewBag.TipAsiguratID"></select>
                 <span asp-validation-for="Client.TipAsiguratID" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Client.RadioButtonClienti" class="control-label">Alege tipul de client: </label>
+                @foreach (var figurina in Model.RadioButtonClienti)
+                {
+                    <input type="radio" asp-for="Client.RadioButtonClient" value="@figurina" />
+
+                    @figurina
+
+                    <br />
+                }
+
+                <span asp-validation-for="Client.RadioButtonClienti" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Client.CNP" class="control-label"></label>

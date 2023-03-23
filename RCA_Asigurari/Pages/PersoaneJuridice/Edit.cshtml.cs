@@ -36,10 +36,10 @@ namespace RCA_Asigurari.Pages.PersoaneJuridice
                 return NotFound();
             }
             PersoanaJuridica = persoanajuridica;
-           ViewData["ClientID"] = new SelectList(_context.Client, "ID", "ID");
-           ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "ID");
-           ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "ID");
-           ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "ID");
+            ViewData["ClientID"] = new SelectList(_context.Client, "ID", "NumeIntreg");
+            ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "Judetul");
+            ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
+            ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "TipulSocietate");
             return Page();
         }
 

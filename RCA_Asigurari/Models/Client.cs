@@ -116,7 +116,7 @@ namespace RCA_Asigurari.Models
 
 
         [RegularExpression(@"^\(?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Telefonul trebuie sa fie de forma '0722-123-123' sau '0722.123.123' sau '0722 123 123'")]
-        public string Telefon { get; set; }
+        public string? Telefon { get; set; }
 
 
 
@@ -149,12 +149,13 @@ namespace RCA_Asigurari.Models
             }
         }
 
-        [Display(Name = "Alege tipul de client: ")]
-        // public string? Figurine { get; set; }
+        [Display(Name = "Tipul de client: ")]
         [BindProperty]
-
         public string? RadioButtonClient { get; set; }
         public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
+        
+        
+        
         public ICollection<PersoanaFizica>? PersoaneFizice { get; set; }
        public ICollection<PersoanaJuridica>? PersoaneJuridice { get; set; }
     }

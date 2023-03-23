@@ -61,13 +61,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Oferta[0].TipCombustibil.TipulCombustibil)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Oferta[0].Pret)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.Oferta[0].AtributeOptionaleOferta)
             </th>
-
+            <th>
+                @Html.DisplayNameFor(model => model.Oferta[0].Pret)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -119,9 +119,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.TipCombustibil.TipulCombustibil)
                 </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Pret)
-                    </td>
+                   
                     <td>
                     @{
                         foreach (var category in item.AtributeOptionaleOferta)
@@ -131,9 +129,12 @@
                     }
                     </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID"><i class="bi bi-pencil-square", style="color:green"> </i>Edit</a> | 
-                    <a asp-page="./Details" asp-route-id="@item.ID"><i class="bi bi-info-circle" , style="color:green"></i>Details</a> | 
-                    <a asp-page="./Delete" asp-route-id="@item.ID"><i class="bi bi-trash-fill", style="color:red"></i>Delete</a>
+                    @Html.DisplayFor(modelItem => item.Pret)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"> </i></a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
                 </td>
             </tr>
         }

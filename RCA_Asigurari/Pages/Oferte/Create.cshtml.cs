@@ -14,13 +14,13 @@ namespace RCA_Asigurari.Pages.Oferte
     public class CreateModel : OferteOptionalPageModel
     {
         private readonly RCA_Asigurari.Data.RCA_AsigurariContext _context;
-//private readonly UserManager<IdentityUser> _userManager;
+private readonly UserManager<IdentityUser> _userManager;
 
 
-        public CreateModel(RCA_Asigurari.Data.RCA_AsigurariContext context /*UserManager<IdentityUser> userManager*/)
+        public CreateModel(RCA_Asigurari.Data.RCA_AsigurariContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
-          //  _userManager = userManager;
+           _userManager = userManager;
 
         }
 
@@ -86,20 +86,20 @@ namespace RCA_Asigurari.Pages.Oferte
 
             ViewData["PretID"] = new SelectList(_context.Oferta, "ID", "Pret");
 
-          //  var userName = _userManager.GetUserName(User);
+            var userName = _userManager.GetUserName(User);
 
-            //var detaliiClient = _context.Client
-            //    .Where(c => c.Email == userName)
-            //    .Select(x => new
-            //    {
-            //        x.ID,
-            //        DetaliiClient = x.NumeIntreg + " " + x.NumeFirma
-            //    });
+            var detaliiClient = _context.Client
+                .Where(c => c.Email == userName)
+                .Select(x => new
+                {
+                    x.ID,
+                    DetaliiClient = x.NumeIntreg + " " + x.NumeFirma
+                });
 
             ViewData["CategorieVehiculID"] = new SelectList(_context.CategorieVehicul, "ID", "CategoriaVehicul");
-            ViewData["ClientID"] = new SelectList(_context.Client, "ID", "NumeIntreg");
+            //ViewData["ClientID"] = new SelectList(_context.Client, "ID", "NumeIntreg");
 
-            //ViewData["ClientID"] = new SelectList(detaliiClient, "ID", "DetaliiClient");
+            ViewData["ClientID"] = new SelectList(detaliiClient, "ID", "DetaliiClient");
             ViewData["TipCombustibilID"] = new SelectList(_context.TipCombustibil, "ID", "TipulCombustibil");
 
             var oferta = new Oferta();

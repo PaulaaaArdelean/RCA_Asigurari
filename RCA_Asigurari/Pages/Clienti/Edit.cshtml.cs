@@ -22,6 +22,9 @@ namespace RCA_Asigurari.Pages.Clienti
 
         [BindProperty]
         public Client Client { get; set; } = default!;
+        [BindProperty]
+        public string? RadioButtonClient { get; set; }
+        public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

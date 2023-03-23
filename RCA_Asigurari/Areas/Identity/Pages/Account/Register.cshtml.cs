@@ -150,8 +150,8 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             [StringLength(30, MinimumLength = 2)]
             [Required]
 
-            public string Strada { get; set; }
-            public string Numar { get; set; }
+            public string? Strada { get; set; }
+            public string? Numar { get; set; }
 
 
             [Display(Name = "Codul postal")]
@@ -160,7 +160,7 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
 
             [Required]
             [RegularExpression(@"^\(?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Telefonul trebuie sa fie de forma '0722-123-123' sau '0722.123.123' sau '0722 123 123'")]
-            public string Telefon { get; set; }
+            public string? Telefon { get; set; }
 
             [Required]
             [EmailAddress]
