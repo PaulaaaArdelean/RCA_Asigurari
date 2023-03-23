@@ -29,6 +29,10 @@ namespace RCA_Asigurari.Pages.Clienti
 
             return Page();
         }
+        [BindProperty]
+
+        public string RadioButtonClient { get; set; }
+        public string[] RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
 
         [BindProperty]
         public Client Client { get; set; }

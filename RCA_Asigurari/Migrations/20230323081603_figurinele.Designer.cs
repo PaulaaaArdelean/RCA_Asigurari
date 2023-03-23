@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RCA_Asigurari.Data;
 
@@ -11,9 +12,11 @@ using RCA_Asigurari.Data;
 namespace RCA_Asigurari.Migrations
 {
     [DbContext(typeof(RCA_AsigurariContext))]
-    partial class RCA_AsigurariContextModelSnapshot : ModelSnapshot
+    [Migration("20230323081603_figurinele")]
+    partial class figurinele
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,6 +106,10 @@ namespace RCA_Asigurari.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Figurina")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("JudetID")
                         .HasColumnType("int");
 
@@ -134,9 +141,6 @@ namespace RCA_Asigurari.Migrations
                     b.Property<string>("PrenumeReprezentantFirma")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("RadioButtonClient")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SerieCI")
                         .HasColumnType("nvarchar(max)");

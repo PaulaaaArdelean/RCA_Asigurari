@@ -16,8 +16,7 @@ builder.Services.AddDbContext<RCA_AsigurariContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("RCA_AsigurariContext") ?? throw new InvalidOperationException("Connection string 'RCA_AsigurariContext' not found.")));
 
 builder.Services.AddDbContext<LibraryIdentityContext>(options =>
-
-options.UseSqlServer(builder.Configuration.GetConnectionString("RCA_AsigurariContext") ?? throw new InvalidOperationException("Connection string 'RCA_AsigurariContext' not found.")));
+ options.UseSqlServer(builder.Configuration.GetConnectionString("RCA_AsigurariContext") ?? throw new InvalidOperationException("Connection string 'RCA_AsigurariContext' not found.")));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 options.SignIn.RequireConfirmedAccount = true)

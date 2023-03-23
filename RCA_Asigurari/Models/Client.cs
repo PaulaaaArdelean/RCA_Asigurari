@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace RCA_Asigurari.Models
 {
@@ -148,7 +149,12 @@ namespace RCA_Asigurari.Models
             }
         }
 
+        [Display(Name = "Alege tipul de client: ")]
+        // public string? Figurine { get; set; }
+        [BindProperty]
 
+        public string? RadioButtonClient { get; set; }
+        public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
         public ICollection<PersoanaFizica>? PersoaneFizice { get; set; }
        public ICollection<PersoanaJuridica>? PersoaneJuridice { get; set; }
     }

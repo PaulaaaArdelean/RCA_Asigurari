@@ -112,6 +112,19 @@
                 <span asp-validation-for="Client.Telefon" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Client.RadioButtonClienti" class="control-label">Alege tipul de client: </label>
+                @foreach (var figurina in Model.RadioButtonClienti)
+                {
+                    <input type="radio" asp-for="Client.RadioButtonClient" value="@figurina" />
+
+                    @figurina
+
+                    <br />
+                }
+              
+                <span asp-validation-for="Client.RadioButtonClienti" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
