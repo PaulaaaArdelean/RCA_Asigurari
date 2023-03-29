@@ -33,9 +33,6 @@ private readonly UserManager<IdentityUser> _userManager;
            // capacitateCilindrica.Pret = 377;
            // _context.SaveChanges();
 
-
-
-
            // var capacitateCilindrica1 = _context.Oferta
            //    .Where(o => o.CapacitateCilindrica > 1200 && o.CapacitateCilindrica <= 1400).OrderBy(o => o.ID).First();
            // capacitateCilindrica.Pret = 374;
@@ -83,7 +80,6 @@ private readonly UserManager<IdentityUser> _userManager;
 
 
 
-
             ViewData["PretID"] = new SelectList(_context.Oferta, "ID", "Pret");
 
             var userName = _userManager.GetUserName(User);
@@ -97,8 +93,7 @@ private readonly UserManager<IdentityUser> _userManager;
                 });
 
             ViewData["CategorieVehiculID"] = new SelectList(_context.CategorieVehicul, "ID", "CategoriaVehicul");
-            //ViewData["ClientID"] = new SelectList(_context.Client, "ID", "NumeIntreg");
-
+            
             ViewData["ClientID"] = new SelectList(detaliiClient, "ID", "DetaliiClient");
             ViewData["TipCombustibilID"] = new SelectList(_context.TipCombustibil, "ID", "TipulCombustibil");
 
