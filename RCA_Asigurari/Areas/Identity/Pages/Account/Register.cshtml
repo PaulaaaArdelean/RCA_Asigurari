@@ -61,6 +61,18 @@
 
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Client.RadioButtonClienti" class="control-label">Alege tipul de client: </label>
+                @foreach (var figurina in Model.RadioButtonClienti)
+                {
+                    <input type="radio" asp-for="Client.RadioButtonClient" value="@figurina" />
+
+                    @figurina
+
+                }
+
+                <span asp-validation-for="Client.RadioButtonClienti" class="text-danger"></span>
+            </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr">
                 <div class="register-form-divs" @*style=" border: 3px solid #C47777; padding: 8px; margin:3px;border-style: inset;"*@>
 
@@ -91,6 +103,11 @@
                         <label asp-for="Input.NumarCI"></label>
                         <span asp-validation-for="Input.NumarCI" class="text-danger"></span>
                     </div>
+                    <div class="form-floating">
+                        <input asp-for="Input.Varsta" class="form-control" autocomplete="name" aria-required="true" />
+                        <label asp-for="Input.Varsta"></label>
+                        <span asp-validation-for="Input.Varsta" class="text-danger"></span>
+                    </div>
                 </div>
 
 
@@ -102,10 +119,11 @@
                         <label asp-for="Input.CUI"></label>
                         <span asp-validation-for="Input.CUI" class="text-danger"></span>
                     </div>
-                    <div class="form-floating">
-                        <input asp-for="Input.TipSocietate" class="form-control" autocomplete="name" aria-required="true" />
-                        <label asp-for="Input.TipSocietate"></label>
-                        <span asp-validation-for="Input.TipSocietate" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="Client.TipSocietateID" class="control-label"></label>
+                        <select asp-for="Client.TipSocietateID" class="form-control" asp-items="ViewBag.TipSocietateID">
+                            <option value="" disabled selected>-Selectati tipul de societate:-</option>
+                        </select>
                     </div>
                     <div class="form-floating">
                         <input asp-for="Input.ActivitateSocietate" class="form-control" autocomplete="name" aria-required="true" />
@@ -137,13 +155,16 @@
 
                     <div class="form-group">
                         <label asp-for="Client.JudetID" class="control-label"></label>
-                        <select asp-for="Client.JudetID" class="form-control" asp-items="ViewBag.JudetID"></select>
-
-
+                        <select asp-for="Client.JudetID" class="form-control" asp-items="ViewBag.JudetID">
+                            <option value="" disabled selected>-Selectati judetul:-</option>
+                        </select>
                     </div>
+
                     <div class="form-group">
                         <label asp-for="Client.LocalitateID" class="control-label"></label>
-                        <select asp-for="Client.LocalitateID" class="form-control" asp-items="ViewBag.LocalitateID"></select>
+                        <select asp-for="Client.LocalitateID" class="form-control" asp-items="ViewBag.LocalitateID">
+                            <option value="" disabled selected>-Selectati localitatea:-</option>
+                        </select>
                     </div>
                     <div class="form-floating">
                         <input asp-for="Input.Strada" class="form-control" autocomplete="name" aria-required="true" />

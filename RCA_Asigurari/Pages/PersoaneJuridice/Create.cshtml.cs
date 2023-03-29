@@ -21,7 +21,7 @@ namespace RCA_Asigurari.Pages.PersoaneJuridice
 
         public IActionResult OnGet()
         {
-        ViewData["ClientID"] = new SelectList(_context.Client, "ID", "NumeIntreg");
+        ViewData["ClientID"] = new SelectList(_context.Client, "ID", "NumeClientFirma");
         ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "Judetul");
         ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
         ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "TipulSocietate");

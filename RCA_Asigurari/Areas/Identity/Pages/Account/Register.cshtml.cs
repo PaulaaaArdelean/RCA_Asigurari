@@ -55,6 +55,10 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
         [BindProperty]
+        public string? RadioButtonClient { get; set; }
+        public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
+
+        [BindProperty]
         public Client Client { get; set; }
 
         [BindProperty]
@@ -82,6 +86,13 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            [Display(Name = "Tipul de client: ")]
+            [BindProperty]
+            public string? RadioButtonClient { get; set; }
+            public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
+
+
+
             [RegularExpression(@"^[1-8][0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])(0[1-9]|[1-4][0-9]|5[0-2])[0-9]{4}$", ErrorMessage = "Un CNP (Cod Numeric Personal) este un cod numeric din 13 cifre atribuit de Guvernul României fiecărui cetățean. Codul este formatat după cum urmează: prima cifră reprezintă sexul, a doua și a treia cifră reprezintă anul nașterii, a patra și a cincea cifră reprezintă luna nașterii, a șasea și a șaptea cifră reprezintă ziua nașterii, a opta cifră reprezintă regiunea nașterii, a noua cifră reprezintă județul de naștere, iar ultimele patru cifre reprezintă ordinea înregistrării.")]
             public string? CNP { get; set; }
 
@@ -105,6 +116,7 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             [Display(Name = "Numar CI")]
             [RegularExpression("^[0-9]{6}$", ErrorMessage = "Numarul cartii de identitate trebuie sa contina 6 cifre")]
             public string? NumarCI { get; set; }
+            public string? Varsta { get; set; }
 
 
             [RegularExpression("^[1-9][0-9]{7}$", ErrorMessage = "CUI-ul trebuie sa fie alcatuit din 8 cifre si nu poate incepe cu 0")]
@@ -190,6 +202,7 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "TipulSocietate");
             ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "Judetul");
             ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
             ReturnUrl = returnUrl;
@@ -215,6 +228,7 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             Client.PrenumeProprietar = Input.PrenumeProprietar;
             Client.SerieCI = Input.SerieCI;
             Client.NumarCI = Input.NumarCI;
+            Client.Varsta = Input.Varsta;
             Client.CUI = Input.CUI;
             Client.TipSocietate = Input.TipSocietate;
             Client.ActivitateSocietate = Input.ActivitateSocietate;

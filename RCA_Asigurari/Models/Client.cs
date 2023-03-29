@@ -136,9 +136,9 @@ namespace RCA_Asigurari.Models
                 return CNP + " " + CUI;
             }
         }
-        [Display(Name = "Tipul asiguratului")]
-        public int? TipAsiguratID { get; set; }
-        public TipAsigurat? TipAsigurat { get; set; }
+        //[Display(Name = "Tipul asiguratului")]
+        //public int? TipAsiguratID { get; set; }
+        //public TipAsigurat? TipAsigurat { get; set; }
 
 
         public string? Adresa

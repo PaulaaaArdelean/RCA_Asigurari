@@ -9,8 +9,8 @@
 
 <h4>Client</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="formulare">
+    <div >
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Client.ID" />
@@ -20,14 +20,13 @@
                 <span asp-validation-for="Client.TipAsiguratID" class="text-danger"></span>
             </div>*@
             <div class="form-group">
-                <label asp-for="Client.RadioButtonClienti" class="control-label">Alege tipul de client: </label>
+                <label asp-for="Client.RadioButtonClienti" class="control-label">Alege tipul de client: </label> <br />
                 @foreach (var figurina in Model.RadioButtonClienti)
                 {
                     <input type="radio" asp-for="Client.RadioButtonClient" value="@figurina" />
 
                     @figurina
 
-                    <br />
                 }
 
                 <span asp-validation-for="Client.RadioButtonClienti" class="text-danger"></span>
@@ -69,7 +68,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="Client.TipSocietateID" class="control-label"></label>
-                <select asp-for="Client.TipSocietateID" class="form-control" asp-items="ViewBag.TipSocietateID"></select>
+                <select asp-for="Client.TipSocietateID" class="form-control" asp-items="ViewBag.TipSocietateID">
+                    <option value="" disabled selected>-Selectati tipul de societate:-</option>
+                </select>
                 <span asp-validation-for="Client.TipSocietateID" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -94,11 +95,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="Client.JudetID" class="control-label"></label>
-                <select asp-for="Client.JudetID" class="form-control" asp-items="ViewBag.JudetID"></select>
+                <select asp-for="Client.JudetID" class="form-control" asp-items="ViewBag.JudetID">
+                    <option value="" disabled selected>-Selectati judetul:-</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Client.LocalitateID" class="control-label"></label>
-                <select asp-for="Client.LocalitateID" class="form-control" asp-items="ViewBag.LocalitateID"></select>
+                <select asp-for="Client.LocalitateID" class="form-control" asp-items="ViewBag.LocalitateID">
+                    <option value="" disabled selected>-Selectati localitatea:-</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Client.Strada" class="control-label"></label>

@@ -29,7 +29,11 @@ namespace RCA_Asigurari.Pages.PersoaneFizice
                 return NotFound();
             }
 
-            var persoanafizica = await _context.PersoanaFizica.FirstOrDefaultAsync(m => m.ID == id);
+            var persoanafizica = await _context.PersoanaFizica
+                .Include(p=>p.Client)
+                .Include(p => p.Judet)
+                .Include(p => p.Localitate)
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (persoanafizica == null)
             {
