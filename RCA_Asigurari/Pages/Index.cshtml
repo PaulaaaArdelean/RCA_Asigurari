@@ -4,6 +4,7 @@
     ViewData["Title"] = "Home page";
 }
 
+
 <style>
     .imagineHome {
         border-radius: 50%;
@@ -11,11 +12,57 @@
         padding: 5px;
         width: 250px;
     }
+
+    .send-button {
+        background-color: #C47777;
+        border-radius: 12px;
+        width: 300px;
+        font-family: Calibri;
+        font-style: italic;
+        font-size: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .send-button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .send-button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .send-button:hover span {
+            padding-right: 25px;
+        }
+
+            .send-button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
 </style>
 <div class="text-center">
-    <h1 class="display-4">Asigurari RCA</h1>
-    <p>  Calculeaza-ti propria oferta de asigurare</p>
+    <h1 class="display-4">Asigurări RCA</h1>
+    <h2>Bun venit pe site-ul nostru de asigurări auto!</h2>
+    <p>  
+      
+        Aici puteți genera rapid și ușor o ofertă personalizată de asigurare RCA, bazată pe datele personale și informațiile despre vehicul, pe care le introduceți chiar dumneavoastră.
+    </p>
     <img align="center" src="~/imagini/sigla.png" alt="Sigla" class="imagineHome" />
-
+    
+    
 
 </div>
+<div class="send-button">
+    <button type="button" class="send-button" asp-area="" asp-page="/Oferte/Create"><span> <i class="bi bi-pencil-square"> Calculează-ți oferta! </i></span></button>
+</div>
+
+
