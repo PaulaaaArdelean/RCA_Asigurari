@@ -29,7 +29,10 @@ namespace RCA_Asigurari.Pages.Oferte
                 return NotFound();
             }
 
-            var oferta = await _context.Oferta.FirstOrDefaultAsync(m => m.ID == id);
+            var oferta = await _context.Oferta
+                .Include(o => o.TipCombustibil)
+                 .Include(o => o.CategorieVehicul)
+                 .FirstOrDefaultAsync(m => m.ID == id);
 
             if (oferta == null)
             {

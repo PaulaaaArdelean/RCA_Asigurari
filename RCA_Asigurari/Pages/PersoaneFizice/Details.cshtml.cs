@@ -31,7 +31,9 @@ namespace RCA_Asigurari.Pages.PersoaneFizice
             var persoanafizica = await _context.PersoanaFizica
                 .Include(p => p.Client)
                 .Include(p => p.Judet)
-                .Include(p => p.Localitate).FirstOrDefaultAsync(m => m.ID == id);
+                .Include(p => p.Localitate)
+                .FirstOrDefaultAsync(m => m.ID == id);
+         
             if (persoanafizica == null)
             {
                 return NotFound();
