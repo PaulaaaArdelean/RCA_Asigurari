@@ -28,48 +28,135 @@ private readonly UserManager<IdentityUser> _userManager;
         {
             // var anFabricatie = _context.Oferta.Select(x => new { x.ID, anulFabricatiei = x.AnFabricatie });
 
-           // var capacitateCilindrica = _context.Oferta
-           //     .Where(o => o.CapacitateCilindrica <= 1200).First();
-           // capacitateCilindrica.Pret = 377;
-           // _context.SaveChanges();
+            //var capacitateCilindrica = _context.Oferta
+            //    .Where(o => o.CapacitateCilindrica <= 1200).First();
+            //capacitateCilindrica.Pret = 377;
+            //_context.SaveChanges();
 
-           // var capacitateCilindrica1 = _context.Oferta
-           //    .Where(o => o.CapacitateCilindrica > 1200 && o.CapacitateCilindrica <= 1400).OrderBy(o => o.ID).First();
-           // capacitateCilindrica.Pret = 374;
-           // _context.SaveChanges();
+            var capacitateCilindrica = _context.Oferta
+                .FirstOrDefault(o => o.CapacitateCilindrica <= 1200);
+            if (capacitateCilindrica != null)
+            {
+                capacitateCilindrica.Pret = 377;
+                _context.SaveChanges();
+            }
+            else
+            {
+                // Handle the case where no element satisfies the condition
+            }
 
-           // var capacitateCilindrica2 = _context.Oferta
-           // .Where(o => o.CapacitateCilindrica > 1400 && o.CapacitateCilindrica <= 1600).OrderBy(o => o.ID).First();
-           // capacitateCilindrica.Pret = 438;
-           // _context.SaveChanges();
+
+            //var capacitateCilindrica1 = _context.Oferta
+            //   .Where(o => o.CapacitateCilindrica > 1200 && o.CapacitateCilindrica <= 1400).OrderBy(o => o.ID).First();
+            //capacitateCilindrica.Pret = 374;
+            //_context.SaveChanges();
 
 
-           // var capacitateCilindrica3 = _context.Oferta
-           //.Where(o => o.CapacitateCilindrica > 1600 && o.CapacitateCilindrica <= 1800).OrderBy(o => o.ID).First();
-           // capacitateCilindrica.Pret = 483;
-           // _context.SaveChanges();
+            var capacitateCilindrica1 = _context.Oferta
+                .FirstOrDefault(o => o.CapacitateCilindrica > 1200 && o.CapacitateCilindrica <= 1400);
+            if (capacitateCilindrica != null)
+            {
+                capacitateCilindrica.Pret = 384;
+                _context.SaveChanges();
+            }
+            else
+            {
+                // Handle the case where no element satisfies the condition
+            }
 
-           // var capacitateCilindrica4 = _context.Oferta
-           //.Where(o => o.CapacitateCilindrica > 1800 && o.CapacitateCilindrica <= 2000).OrderBy(o => o.ID).First();
-           // capacitateCilindrica.Pret = 541;
-           // _context.SaveChanges();
 
-           // var capacitateCilindrica5 = _context.Oferta
-           //.Where(o => o.CapacitateCilindrica > 2000 && o.CapacitateCilindrica <= 2500).OrderBy(o => o.ID).First();
-           // capacitateCilindrica.Pret = 762;
-           // _context.SaveChanges();
+            //var capacitateCilindrica2 = _context.Oferta
+            //.Where(o => o.CapacitateCilindrica > 1400 && o.CapacitateCilindrica <= 1600).OrderBy(o => o.ID).First();
+            //capacitateCilindrica.Pret = 438;
+            //_context.SaveChanges();
 
-           // var capacitateCilindrica6 = _context.Oferta
-           //.Where(o => o.CapacitateCilindrica > 2000).OrderBy(o => o.ID).First();
-           // capacitateCilindrica.Pret = 1021;
-           // _context.SaveChanges();
+            var capacitateCilindrica2 = _context.Oferta
+                          .FirstOrDefault(o => o.CapacitateCilindrica > 1400 && o.CapacitateCilindrica <= 1600);
+            if (capacitateCilindrica != null)
+            {
+                capacitateCilindrica.Pret = 438;
+                _context.SaveChanges();
+            }
+            else
+            {
+                // Handle the case where no element satisfies the condition
+            }
+            // var capacitateCilindrica3 = _context.Oferta
+            //.Where(o => o.CapacitateCilindrica > 1600 && o.CapacitateCilindrica <= 1800).OrderBy(o => o.ID).First();
+            // capacitateCilindrica.Pret = 483;
+            // _context.SaveChanges();
+
+            var capacitateCilindrica3 = _context.Oferta
+              .FirstOrDefault(o => o.CapacitateCilindrica > 1600 && o.CapacitateCilindrica <= 1800);
+            if (capacitateCilindrica != null)
+            {
+                capacitateCilindrica.Pret = 483;
+                _context.SaveChanges();
+            }
+            else
+            {
+                // Handle the case where no element satisfies the condition
+            }
+
+            // var capacitateCilindrica4 = _context.Oferta
+            //.Where(o => o.CapacitateCilindrica > 1800 && o.CapacitateCilindrica <= 2000).OrderBy(o => o.ID).First();
+            // capacitateCilindrica.Pret = 541;
+            // _context.SaveChanges();
+
+            var capacitateCilindrica4 = _context.Oferta
+              .FirstOrDefault(o => o.CapacitateCilindrica > 1800 && o.CapacitateCilindrica <= 2000);
+            if (capacitateCilindrica != null)
+            {
+                capacitateCilindrica.Pret = 541;
+                _context.SaveChanges();
+            }
+            else
+            {
+                // Handle the case where no element satisfies the condition
+            }
+
+            // var capacitateCilindrica5 = _context.Oferta
+            //.Where(o => o.CapacitateCilindrica > 2000 && o.CapacitateCilindrica <= 2500).OrderBy(o => o.ID).First();
+            // capacitateCilindrica.Pret = 762;
+            // _context.SaveChanges();
+
+            var capacitateCilindrica5 = _context.Oferta
+              .FirstOrDefault(o => o.CapacitateCilindrica > 2000 && o.CapacitateCilindrica <= 2500);
+            if (capacitateCilindrica != null)
+            {
+                capacitateCilindrica.Pret = 762;
+                _context.SaveChanges();
+            }
+            else
+            {
+                // Handle the case where no element satisfies the condition
+            }
+
+            // var capacitateCilindrica6 = _context.Oferta
+            //.Where(o => o.CapacitateCilindrica > 2500).OrderBy(o => o.ID).First();
+            // capacitateCilindrica.Pret = 1021;
+            // _context.SaveChanges();
+
+            var capacitateCilindrica6 = _context.Oferta
+              .FirstOrDefault(o => o.CapacitateCilindrica > 2500 );
+            if (capacitateCilindrica != null)
+            {
+                capacitateCilindrica.Pret = 1021;
+                _context.SaveChanges();
+            }
+            else
+            {
+                // Handle the case where no element satisfies the condition
+            }
+            
+
+
+
+
 
 
 
             //.Select(x => new { x.ID, x.Pret = 300})
-
-
-            //var pret = anFabricatie * 0.2 + capacitateCilindrica * 0.8 ;
 
 
             //  var capacitateCilindrica=_context.Oferta
