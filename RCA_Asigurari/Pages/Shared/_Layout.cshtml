@@ -54,6 +54,8 @@
                 color: black !important;
 /*               background-color: white;
 */            }
+
+
     </style>
 </head>
 <body>
@@ -67,7 +69,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="d-sm-inline-flex" style="width:1900px; justify-items:right">
+                <div class="d-sm-inline-flex" style="width:1900px; justify-items:left">
                     <div class="d-sm-inline-flex" style="float: left">
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -135,15 +137,54 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted position-fixed">
+  @*  <footer class="border-top footer text-muted position-fixed">
         <div class="container" style="color:white; ">
             &copy; 2023 - RCA_Asigurari - 
             <a asp-area="" asp-page="/Privacy" class="footer-item"><i class="bi bi-shield-fill-exclamation"></i>   Politica site-ului</a>   |
             <a asp-area="" asp-page="/ContactUs" class="footer-item"><i class="bi bi-chat-text-fill"></i>   Contact</a>   |
             <a asp-area="" asp-page="/About" class="footer-item"><i class="bi bi-info-circle-fill"></i>   Despre</a>
         
-    </footer>
+    </footer>*@
 
+
+
+    <footer class="border-top footer text-muted position-fixed">
+        <div style="display: grid; grid-template-columns:  1fr 1fr 1fr 1fr">
+            <div style="color:white">
+                &copy; 2023 - RCA_Asigurari |
+            </div>
+            <div>
+                <a asp-area="" asp-page="/Privacy" class="footer-item"><i class="bi bi-shield-fill-exclamation"></i>   Politica site-ului</a>   
+
+            </div>
+            <div>
+                <a asp-area="" asp-page="/ContactUs" class="footer-item"><i class="bi bi-chat-text-fill"></i>   Contact</a>   
+
+            </div>
+            <div>
+                <a asp-area="" asp-page="/About" class="footer-item"><i class="bi bi-info-circle-fill"></i>   Despre</a>
+
+            </div>
+    </footer>
+   
+
+
+
+
+        @*
+    <footer class="border-top footer text-muted position-fixed">
+        <div class="row">
+            <div class="column">
+                <a asp-area="" asp-page="/Privacy" class="footer-item"><i class="bi bi-shield-fill-exclamation"></i>   Politica site-ului</a></div>
+            <div class="column">
+                <a asp-area="" asp-page="/ContactUs" class="footer-item"><i class="bi bi-chat-text-fill"></i>   Contact</a>
+            </div>
+            <div class="column">
+                <a asp-area="" asp-page="/About" class="footer-item"><i class="bi bi-info-circle-fill"></i> </a>
+            </div>
+        </div>
+    </footer>*@
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
