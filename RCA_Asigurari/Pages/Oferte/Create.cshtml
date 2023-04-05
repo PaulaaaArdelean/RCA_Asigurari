@@ -4,82 +4,87 @@
 @{
     ViewData["Title"] = "Create";
 }
-<h1>Calculeaza o oferta RCA</h1>
+<h4>Calculează-ți oferta RCA</h4>
 
-<h4>Va rugam sa completati urmatoarele campuri: </h4>
 <hr />
 <div class="formular">
     <div >
-        <form method="post">
+        <form method="post"  class="row g-3">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Oferta.ClientID" class="control-label">Proprietar</label>
-                <select asp-for="Oferta.ClientID" class ="form-control" asp-items="ViewBag.ClientID"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Oferta.NumarIdentificare" class="control-label"></label>
-                <input asp-for="Oferta.NumarIdentificare" class="form-control" />
-                <span asp-validation-for="Oferta.NumarIdentificare" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Oferta.NrInmatriculare" class="control-label"></label>
-                <input asp-for="Oferta.NrInmatriculare" class="form-control" />
-                <span asp-validation-for="Oferta.NrInmatriculare" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Oferta.Marca" class="control-label"></label>
-                <input asp-for="Oferta.Marca" class="form-control" />
-                <span asp-validation-for="Oferta.Marca" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Oferta.Model" class="control-label"></label>
-                <input asp-for="Oferta.Model" class="form-control" />
-                <span asp-validation-for="Oferta.Model" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Oferta.AnFabricatie" class="control-label"></label>
-                <input asp-for="Oferta.AnFabricatie" class="form-control" />
-                <span asp-validation-for="Oferta.AnFabricatie" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Oferta.CapacitateCilindrica" class="control-label"></label>
-                <input asp-for="Oferta.CapacitateCilindrica" class="form-control" />
-                <span asp-validation-for="Oferta.CapacitateCilindrica" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Oferta.SerieCIV" class="control-label"></label>
-                <input asp-for="Oferta.SerieCIV" class="form-control" />
-                <span asp-validation-for="Oferta.SerieCIV" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Oferta.NrLocuri" class="control-label"></label>
-                <input asp-for="Oferta.NrLocuri" class="form-control" />
-                <span asp-validation-for="Oferta.NrLocuri" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Oferta.MasaMaxima" class="control-label"></label>
-                <input asp-for="Oferta.MasaMaxima" class="form-control" />
-                <span asp-validation-for="Oferta.MasaMaxima" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Oferta.Putere" class="control-label"></label>
-                <input asp-for="Oferta.Putere" class="form-control" />
-                <span asp-validation-for="Oferta.Putere" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Oferta.CategorieVehiculID" class="control-label">Categoria</label>
-                <select asp-for="Oferta.CategorieVehiculID" class ="form-control" asp-items="ViewBag.CategorieVehiculID"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Oferta.TipCombustibilID" class="control-label">Tipul de combustibil</label>
-                <select asp-for="Oferta.TipCombustibilID" class ="form-control" asp-items="ViewBag.TipCombustibilID"></select>
-            </div>
-            <div class="form-group">
-                                <div class="form-check" style="color:black">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                                    <label class="form-check-label" for="invalidCheck2" style="color:black"> Acceptați condițiile </label>
-                                </div>
-                            </div>
+   <div>
+       <div class="col-md-2">
+        <label asp-for="Oferta.ClientID" class="control-label"> Proprietar </label>
+        <select asp-for="Oferta.ClientID" class="form-control" asp-items="ViewBag.ClientID"></select>
+    </div> 
+   </div>
+            
+
+    <div class="col-md-4">
+        <label asp-for="Oferta.NrInmatriculare" class="control-label"></label>
+        <input asp-for="Oferta.NrInmatriculare" class="form-control" />
+        <span asp-validation-for="Oferta.NrInmatriculare" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Oferta.NumarIdentificare" class="control-label"></label>
+        <input asp-for="Oferta.NumarIdentificare" class="form-control" />
+        <span asp-validation-for="Oferta.NumarIdentificare" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Oferta.Marca" class="control-label"></label>
+        <input asp-for="Oferta.Marca" class="form-control" />
+        <span asp-validation-for="Oferta.Marca" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Oferta.Model" class="control-label"></label>
+        <input asp-for="Oferta.Model" class="form-control" />
+        <span asp-validation-for="Oferta.Model" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Oferta.AnFabricatie" class="control-label"></label>
+        <input asp-for="Oferta.AnFabricatie" class="form-control" />
+        <span asp-validation-for="Oferta.AnFabricatie" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Oferta.CapacitateCilindrica" class="control-label"></label>
+        <input asp-for="Oferta.CapacitateCilindrica" class="form-control" />
+        <span asp-validation-for="Oferta.CapacitateCilindrica" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Oferta.SerieCIV" class="control-label"></label>
+        <input asp-for="Oferta.SerieCIV" class="form-control" />
+        <span asp-validation-for="Oferta.SerieCIV" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Oferta.NrLocuri" class="control-label"></label>
+        <input asp-for="Oferta.NrLocuri" class="form-control" />
+        <span asp-validation-for="Oferta.NrLocuri" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Oferta.MasaMaxima" class="control-label"></label>
+        <input asp-for="Oferta.MasaMaxima" class="form-control" />
+        <span asp-validation-for="Oferta.MasaMaxima" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Oferta.Putere" class="control-label"></label>
+        <input asp-for="Oferta.Putere" class="form-control" />
+        <span asp-validation-for="Oferta.Putere" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Oferta.CategorieVehiculID" class="control-label">Categoria</label>
+        <select asp-for="Oferta.CategorieVehiculID" class="form-control" asp-items="ViewBag.CategorieVehiculID"></select>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Oferta.TipCombustibilID" class="control-label">Tipul de combustibil</label>
+        <select asp-for="Oferta.TipCombustibilID" class="form-control" asp-items="ViewBag.TipCombustibilID"></select>
+    </div>
+    <div class="form-group">
+        <div class="form-check" style="color:black">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+            <label class="form-check-label" for="invalidCheck2" style="color:black"> Acceptați condițiile </label>
+        </div>
+    </div>
             <div class="form-group">
  <div class="table">
  <table>
@@ -107,16 +112,13 @@
  </div>
  </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" style="background-color:#C47777" />
+                <input type="submit" value="Create" class="btn btn-primary" style="background-color:#C47777" /> |  <a asp-page="Index">Back to List</a>
             </div>
         </form>
 
     </div>
 </div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
