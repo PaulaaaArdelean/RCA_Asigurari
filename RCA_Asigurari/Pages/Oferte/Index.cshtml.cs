@@ -13,6 +13,8 @@ namespace RCA_Asigurari.Pages.Oferte
     public class IndexModel : PageModel
     {
         private readonly RCA_Asigurari.Data.RCA_AsigurariContext _context;
+        private readonly string ADMIN_EMAIL = "admin@gmail.com";
+
 
         public IndexModel(RCA_Asigurari.Data.RCA_AsigurariContext context)
         {
@@ -39,19 +41,22 @@ namespace RCA_Asigurari.Pages.Oferte
 
             OfertaD.Oferte = await _context.Oferta
             .Include(b => b.Client)
-            .ThenInclude(c => c.Judet)
+                    .ThenInclude(c => c.Judet)
              .Include(b => b.Client)
-            .ThenInclude(c => c.Localitate)
+                    .ThenInclude(c => c.Localitate)
             .Include(b => b.TipCombustibil)
             .Include(b => b.CategorieVehicul)
-
             .Include(b => b.AtributeOptionaleOferta)
             .ThenInclude(b => b.AtributOptional)
             .AsNoTracking()
             // .OrderBy(b => b.N)
             .ToListAsync();
 
-
+            var userEmail = User.Identity.Name;
+            if (userEmail != ADMIN_EMAIL)
+            {
+                OfertaD.Oferte = OfertaD.Oferte.Where(oferta=>oferta.Client?.Email== userEmail); 
+            }
 
 
             if (!String.IsNullOrEmpty(searchString))
