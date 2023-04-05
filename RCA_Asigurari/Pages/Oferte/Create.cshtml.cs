@@ -72,22 +72,65 @@ namespace RCA_Asigurari.Pages.Oferte
             Oferta.AtributeOptionaleOferta = newOferta.AtributeOptionaleOferta;
 
             // Update the price based on the value of CapacitateCilindrica
-            if (Oferta.CapacitateCilindrica <= 1200)
+
+
+            if (/*Oferta.CategorieVehicul.ToString() == "autoturism" && */Oferta.NrLocuri <= 9 && Oferta.MasaMaxima <= 3500)
             {
-                Oferta.Pret = 377;
+                if (Oferta.CapacitateCilindrica <= 1200)
+                {
+                    Oferta.Pret = 377;
+                }
+                else if (Oferta.CapacitateCilindrica > 1200 && Oferta.CapacitateCilindrica <= 1400)
+                {
+                    Oferta.Pret = 374;
+                }
+                else if (Oferta.CapacitateCilindrica > 1400 && Oferta.CapacitateCilindrica <= 1600)
+                {
+                    Oferta.Pret = 438;
+                }
+                else if (Oferta.CapacitateCilindrica > 1600 && Oferta.CapacitateCilindrica <= 1800)
+                {
+                    Oferta.Pret = 483;
+                }
+                else if (Oferta.CapacitateCilindrica > 1800 && Oferta.CapacitateCilindrica <= 2000)
+                {
+                    Oferta.Pret = 541;
+                }
+                else if (Oferta.CapacitateCilindrica > 2000 && Oferta.CapacitateCilindrica <= 2500)
+                {
+                    Oferta.Pret = 762;
+                }
+                else if (Oferta.CapacitateCilindrica >2500 )
+                {
+                    Oferta.Pret = 1021;
+                }
             }
-            else if (Oferta.CapacitateCilindrica > 1200 && Oferta.CapacitateCilindrica <= 2000)
+            else if (Oferta.NrLocuri > 9 && Oferta.NrLocuri<=40)
+ 
             {
-                Oferta.Pret = 600;
+                Oferta.Pret = 502;
             }
-            else if (Oferta.CapacitateCilindrica > 2000 && Oferta.CapacitateCilindrica <= 2500)
+            else if (Oferta.NrLocuri > 40 )
+
             {
-                Oferta.Pret = 800;
+                Oferta.Pret = 1269;
             }
-            else
+            else if (Oferta.MasaMaxima <=3500)
+
             {
-                Oferta.Pret = 999;
+                Oferta.Pret = 343;
             }
+            else if (Oferta.MasaMaxima > 3500 && Oferta.MasaMaxima <= 15999)
+
+            {
+                Oferta.Pret = 502;
+            }
+            else if (Oferta.MasaMaxima > 16000 )
+
+            {
+                Oferta.Pret = 1250;
+            }
+
 
             _context.Oferta.Add(Oferta);
 

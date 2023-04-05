@@ -15,12 +15,12 @@ namespace RCA_Asigurari.Pages.Oferte
     public class EditModel : OferteOptionalPageModel
     {
         private readonly RCA_Asigurari.Data.RCA_AsigurariContext _context;
-        //private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public EditModel(RCA_Asigurari.Data.RCA_AsigurariContext context /*UserManager<IdentityUser> userManager*/)
+        public EditModel(RCA_Asigurari.Data.RCA_AsigurariContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
-            //_userManager = userManager;
+            _userManager = userManager;
 
         }
 
@@ -47,19 +47,19 @@ namespace RCA_Asigurari.Pages.Oferte
 
             PopulateAssignedOptionalData(_context, Oferta);
 
-            //var userName = _userManager.GetUserName(User);
+         
+            var userName = _userManager.GetUserName(User);
 
-            //var detaliiClient = _context.Client
-            //    .Where(c => c.Email == userName)
-            //    .Select(x => new
-            //    {
-            //        x.ID,
-            //        DetaliiClient = x.NumeIntreg + " " + x.NumeFirma
-            //    });
+            var detaliiClient = _context.Client
+                .Where(c => c.Email == userName)
+                .Select(x => new
+                {
+                    x.ID,
+                    DetaliiClient = x.NumeIntreg + " " + x.NumeFirma
+                });
+
             ViewData["CategorieVehiculID"] = new SelectList(_context.CategorieVehicul, "ID", "CategoriaVehicul");
-            ViewData["ClientID"] = new SelectList(_context.Client, "ID", "NumeIntreg");
-
-            //ViewData["ClientID"] = new SelectList(detaliiClient, "ID", "DetaliiClient");
+            ViewData["ClientID"] = new SelectList(detaliiClient, "ID", "DetaliiClient");
             ViewData["TipCombustibilID"] = new SelectList(_context.TipCombustibil, "ID", "TipulCombustibil");
             return Page();
         }
@@ -76,7 +76,7 @@ namespace RCA_Asigurari.Pages.Oferte
             var ofertaToUpdate = await _context.Oferta
             .Include(i => i.Client)
             .Include(i => i.AtributeOptionaleOferta)
-            .ThenInclude(i => i.AtributOptional)
+                  .ThenInclude(i => i.AtributOptional)
             .FirstOrDefaultAsync(s => s.ID == id);
             if (ofertaToUpdate == null)
             {

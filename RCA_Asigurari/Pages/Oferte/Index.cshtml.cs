@@ -69,7 +69,7 @@ namespace RCA_Asigurari.Pages.Oferte
                || s.CategorieVehicul.CategoriaVehicul.Contains(searchString)
                || s.TipCombustibil.TipulCombustibil.Contains(searchString)
                || s.SerieCIV.Contains(searchString)
-               || s.AnFabricatie.Contains(searchString)
+               //|| s.AnFabricatie.Contains(searchString)
                || s.Model.Contains(searchString)
                || s.NumarIdentificare.Contains(searchString));
 
