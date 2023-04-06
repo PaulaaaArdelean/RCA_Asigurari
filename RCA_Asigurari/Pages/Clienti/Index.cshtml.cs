@@ -47,7 +47,10 @@ namespace RCA_Asigurari.Pages.Clienti
                 .Include(c => c.Judet)
                 .Include(c => c.Localitate)
                 //.Include(c => c.TipAsigurat)
-                .Include(c => c.TipSocietate).ToListAsync();
+                .Include(c => c.TipSocietate)
+                
+               // .Where (CNP != null; 
+                .ToListAsync();
             }
         }
     }

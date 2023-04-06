@@ -74,7 +74,7 @@ namespace RCA_Asigurari.Pages.Oferte
             // Update the price based on the value of CapacitateCilindrica
 
 
-            if (/*Oferta.CategorieVehicul.ToString() == "autoturism" && */Oferta.NrLocuri <= 9 && Oferta.MasaMaxima <= 3500)
+            if (Oferta.CategorieVehicul.ToString() == "autoturism" && Oferta.NrLocuri <= 9 && Oferta.MasaMaxima <= 3500)
             {
                 if (Oferta.CapacitateCilindrica <= 1200)
                 {

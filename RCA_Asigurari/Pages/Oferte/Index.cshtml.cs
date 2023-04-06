@@ -32,6 +32,7 @@ namespace RCA_Asigurari.Pages.Oferte
 
         public async Task OnGetAsync(int? id, int? optionalID, string numeSortCresc, string numeSortDesc, string searchString)
         {
+            // sa incerc sa pun aici pop-up
 
             NumeSortDesc = String.IsNullOrEmpty(numeSortDesc) ? "nume_desc" : "";
             NumeSortCresc = String.IsNullOrEmpty(numeSortCresc) ? "nume_cresc" : "";

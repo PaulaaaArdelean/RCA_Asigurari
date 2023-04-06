@@ -205,6 +205,9 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "TipulSocietate");
             ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "Judetul");
             ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
+            
+
+
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
