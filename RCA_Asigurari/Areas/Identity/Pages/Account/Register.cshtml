@@ -74,7 +74,7 @@
                 <span asp-validation-for="Client.RadioButtonClienti" class="text-danger"></span>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr">
-                <div class="register-form-divs" @*style=" border: 3px solid #C47777; padding: 8px; margin:3px;border-style: inset;"*@>
+              @*  <div class="register-form-divs" >
 
                     <h4>Completati doar pentru <b> persoana fizica</b>! </h4>
 
@@ -111,7 +111,7 @@
                 </div>
 
 
-                <div class="register-form-divs" @*style=" border: 3px solid #C47777; padding: 8px; margin:3px;border-style: inset;"*@>
+                <div class="register-form-divs">
 
                     <h4>Completati doar pentru <b>persoana juridica</b> !</h4>
                     <div class="form-floating">
@@ -147,12 +147,17 @@
                         <span asp-validation-for="Input.PrenumeReprezentantFirma" class="text-danger"></span>
                     </div>
 
-                </div>
+                </div>*@
 
 
-                <div class="register-form-divs" @*style=" border: 3px solid #C47777; padding: 8px; margin:3px;border-style: inset;"*@>
+                <div class="register-form-divs" >
                     <h4>Adresa! </h4>
-
+                    <div class="form-group">
+                        <label asp-for="Client.TipClientID" class="control-label"></label>
+                        <select asp-for="Client.TipClientID" class="form-control" asp-items="ViewBag.TipClientID">
+                            <option value="" disabled selected>-Selectati tipul de client:-</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label asp-for="Client.JudetID" class="control-label"></label>
                         <select asp-for="Client.JudetID" class="form-control" asp-items="ViewBag.JudetID">

@@ -1,0 +1,140 @@
+﻿@page
+@model RCA_Asigurari.Pages.OfertePF.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>OfertaPF</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.Client)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.Client.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.CNP)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.CNP)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.NumeProprietar)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.NumeProprietar)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.PrenumeProprietar)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.PrenumeProprietar)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.SerieCI)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.SerieCI)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.NumarCI)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.NumarCI)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.Varsta)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.Varsta)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.NumarIdentificare)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.NumarIdentificare)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.NrInmatriculare)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.NrInmatriculare)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.Marca)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.Marca)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.AnFabricatie)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.AnFabricatie)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.CapacitateCilindrica)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.CapacitateCilindrica)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.SerieCIV)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.SerieCIV)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.NrLocuri)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.NrLocuri)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.MasaMaxima)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.MasaMaxima)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.Putere)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.Putere)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.CategorieVehicul)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.CategorieVehicul.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.TipCombustibil)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.TipCombustibil.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfertaPF.Pret)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfertaPF.Pret)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.OfertaPF?.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

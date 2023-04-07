@@ -11,5 +11,7 @@ namespace RCA_Asigurari.Models
         public string TipulSocietate { get; set; }
         public ICollection<Client>? Clienti { get; set; }
         public ICollection<PersoanaJuridica>? PersoaneJuridice { get; set; }
+        public ICollection<PJ>? PJs { get; set; }
+
     }
 }

@@ -153,10 +153,17 @@ namespace RCA_Asigurari.Models
         [BindProperty]
         public string? RadioButtonClient { get; set; }
         public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
-        
-        
-        
+
+        [Display(Name = "Tipul clientului")]
+        public int? TipClientID { get; set; }
+        public TipClient? TipClient { get; set; }
+
         public ICollection<PersoanaFizica>? PersoaneFizice { get; set; }
        public ICollection<PersoanaJuridica>? PersoaneJuridice { get; set; }
+
+
+
+        public ICollection<OfertaPF>? OfertePF { get; set; }
+        public ICollection<OfertaPJ>? OfertePJ { get; set; }
     }
 }

@@ -60,6 +60,16 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
 
         [BindProperty]
         public Client Client { get; set; }
+       
+        
+        [BindProperty]
+        public PF PF { get; set; }
+       
+        
+        [BindProperty]
+        public PJ PJ { get; set; }
+        [BindProperty]
+        public AdresaClient AdresaClient { get; set; }
 
         [BindProperty]
         public InputModel Input { get; set; }
@@ -93,63 +103,63 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
 
 
 
-            [RegularExpression(@"^[1-8][0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])(0[1-9]|[1-4][0-9]|5[0-2])[0-9]{4}$", ErrorMessage = "Un CNP (Cod Numeric Personal) este un cod numeric din 13 cifre atribuit de Guvernul României fiecărui cetățean. Codul este formatat după cum urmează: prima cifră reprezintă sexul, a doua și a treia cifră reprezintă anul nașterii, a patra și a cincea cifră reprezintă luna nașterii, a șasea și a șaptea cifră reprezintă ziua nașterii, a opta cifră reprezintă regiunea nașterii, a noua cifră reprezintă județul de naștere, iar ultimele patru cifre reprezintă ordinea înregistrării.")]
-            public string? CNP { get; set; }
+            //[RegularExpression(@"^[1-8][0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])(0[1-9]|[1-4][0-9]|5[0-2])[0-9]{4}$", ErrorMessage = "Un CNP (Cod Numeric Personal) este un cod numeric din 13 cifre atribuit de Guvernul României fiecărui cetățean. Codul este formatat după cum urmează: prima cifră reprezintă sexul, a doua și a treia cifră reprezintă anul nașterii, a patra și a cincea cifră reprezintă luna nașterii, a șasea și a șaptea cifră reprezintă ziua nașterii, a opta cifră reprezintă regiunea nașterii, a noua cifră reprezintă județul de naștere, iar ultimele patru cifre reprezintă ordinea înregistrării.")]
+            //public string? CNP { get; set; }
 
 
-            [Display(Name = "Numele")]
-            [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
-            [StringLength(30, MinimumLength = 3)]
-            public string? NumeProprietar { get; set; }
+            //[Display(Name = "Numele")]
+            //[RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
+            //[StringLength(30, MinimumLength = 3)]
+            //public string? NumeProprietar { get; set; }
 
-            [Display(Name = "Prenumele")]
-            [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Prenumele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
-            [StringLength(30, MinimumLength = 3)]
-            public string? PrenumeProprietar { get; set; }
-
-
-            [Display(Name = "Serie CI")]
-            [RegularExpression("^[A-Z]{2}$", ErrorMessage = "Seria CI este formata din doua litere mari, care vin de regulă vin de mnemonicul județului (ex. IS-Iași ), dar nu este obligatoriu (ex. AS-Argeș)")]
-            public string? SerieCI { get; set; }
+            //[Display(Name = "Prenumele")]
+            //[RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Prenumele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
+            //[StringLength(30, MinimumLength = 3)]
+            //public string? PrenumeProprietar { get; set; }
 
 
-            [Display(Name = "Numar CI")]
-            [RegularExpression("^[0-9]{6}$", ErrorMessage = "Numarul cartii de identitate trebuie sa contina 6 cifre")]
-            public string? NumarCI { get; set; }
-            public string? Varsta { get; set; }
+            //[Display(Name = "Serie CI")]
+            //[RegularExpression("^[A-Z]{2}$", ErrorMessage = "Seria CI este formata din doua litere mari, care vin de regulă vin de mnemonicul județului (ex. IS-Iași ), dar nu este obligatoriu (ex. AS-Argeș)")]
+            //public string? SerieCI { get; set; }
 
 
-            [RegularExpression("^[1-9][0-9]{7}$", ErrorMessage = "CUI-ul trebuie sa fie alcatuit din 8 cifre si nu poate incepe cu 0")]
-            public string? CUI { get; set; }
-
-            [Display(Name = "Tipul societatii")]
-            public int? TipSocietateID { get; set; }
-            public TipSocietate? TipSocietate { get; set; }
-
-            [Display(Name = "Activitatea societatii")]
-            public string? ActivitateSocietate { get; set; }
-
-            [Display(Name = "Numele societatii")]
-            [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Denumirea societatii trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
-            [StringLength(30, MinimumLength = 3)]
-            public string? NumeFirma { get; set; }
+            //[Display(Name = "Numar CI")]
+            //[RegularExpression("^[0-9]{6}$", ErrorMessage = "Numarul cartii de identitate trebuie sa contina 6 cifre")]
+            //public string? NumarCI { get; set; }
+            //public string? Varsta { get; set; }
 
 
-            [Display(Name = "Numele reprezentantului")]
-            [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
-            [StringLength(30, MinimumLength = 3)]
-            public string? NumeReprezentantFirma { get; set; }
+            //[RegularExpression("^[1-9][0-9]{7}$", ErrorMessage = "CUI-ul trebuie sa fie alcatuit din 8 cifre si nu poate incepe cu 0")]
+            //public string? CUI { get; set; }
+
+            //[Display(Name = "Tipul societatii")]
+            //public int? TipSocietateID { get; set; }
+            //public TipSocietate? TipSocietate { get; set; }
+
+            //[Display(Name = "Activitatea societatii")]
+            //public string? ActivitateSocietate { get; set; }
+
+            //[Display(Name = "Numele societatii")]
+            //[RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Denumirea societatii trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
+            //[StringLength(30, MinimumLength = 3)]
+            //public string? NumeFirma { get; set; }
 
 
-            [Display(Name = "Prenumele reprezentantului")]
-            [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Prenumele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
-            [StringLength(30, MinimumLength = 3)]
-            public string? PrenumeReprezentantFirma { get; set; }
+            //[Display(Name = "Numele reprezentantului")]
+            //[RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
+            //[StringLength(30, MinimumLength = 3)]
+            //public string? NumeReprezentantFirma { get; set; }
 
 
-            // [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele judetului trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
-            //[StringLength(30, MinimumLength = 2)]
-            //  [Required]
+            //[Display(Name = "Prenumele reprezentantului")]
+            //[RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Prenumele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
+            //[StringLength(30, MinimumLength = 3)]
+            //public string? PrenumeReprezentantFirma { get; set; }
+
+            [Display(Name = "Tipul clientului")]
+            public int? TipClientID { get; set; }
+            public TipClient? TipClient { get; set; }
+
             [Display(Name = "Judetul")]
             public int JudetID { get; set; }
             public Judet? Judet { get; set; }
@@ -162,17 +172,17 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             [StringLength(30, MinimumLength = 2)]
             [Required]
 
-            public string? Strada { get; set; }
-            public string? Numar { get; set; }
+            public string Strada { get; set; }
+            public string Numar { get; set; }
 
 
             [Display(Name = "Codul postal")]
             [RegularExpression("^[0-9]{6}$", ErrorMessage = "Codul postal trebuie sa contina 6 cifre")]
-            public string? CodPostal { get; set; }
+            public string CodPostal { get; set; }
 
             [Required]
             [RegularExpression(@"^\(?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Telefonul trebuie sa fie de forma '0722-123-123' sau '0722.123.123' sau '0722 123 123'")]
-            public string? Telefon { get; set; }
+            public string Telefon { get; set; }
 
             [Required]
             [EmailAddress]
@@ -205,7 +215,8 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "TipulSocietate");
             ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "Judetul");
             ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
-            
+            ViewData["TipClientID"] = new SelectList(_context.TipClient, "ID", "TipulClientului");
+
 
 
             ReturnUrl = returnUrl;
@@ -213,7 +224,10 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
-        {
+        {//if pf sau pj si insereaza in tabela aferenta
+
+
+
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await
            _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -223,34 +237,57 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
            CancellationToken.None);
             await _emailStore.SetEmailAsync(user, Input.Email,
            CancellationToken.None);
-            var result = await _userManager.CreateAsync(user,
-           Input.Password);
+            var result = await _userManager.CreateAsync(user, Input.Password);
+
+            //Client.CNP = Input.CNP;
+            //Client.NumeProprietar = Input.NumeProprietar;
+            //Client.PrenumeProprietar = Input.PrenumeProprietar;
+            //Client.SerieCI = Input.SerieCI;
+            //Client.NumarCI = Input.NumarCI;
+            //Client.Varsta = Input.Varsta;
+            //Client.CUI = Input.CUI;
+            //Client.TipSocietate = Input.TipSocietate;
+            //Client.ActivitateSocietate = Input.ActivitateSocietate;
+            //Client.NumeFirma = Input.NumeFirma;
+            //Client.NumeReprezentantFirma = Input.NumeReprezentantFirma;
+            //Client.PrenumeReprezentantFirma = Input.PrenumeReprezentantFirma;
             Client.Email = Input.Email;
-            Client.CNP = Input.CNP;
-            Client.NumeProprietar = Input.NumeProprietar;
-            Client.PrenumeProprietar = Input.PrenumeProprietar;
-            Client.SerieCI = Input.SerieCI;
-            Client.NumarCI = Input.NumarCI;
-            Client.Varsta = Input.Varsta;
-            Client.CUI = Input.CUI;
-            Client.TipSocietate = Input.TipSocietate;
-            Client.ActivitateSocietate = Input.ActivitateSocietate;
-            Client.NumeFirma = Input.NumeFirma;
-            Client.NumeReprezentantFirma = Input.NumeReprezentantFirma;
-            Client.PrenumeReprezentantFirma = Input.PrenumeReprezentantFirma;
+            Client.TipClient = Input.TipClient;
             Client.Judet = Input.Judet;
             Client.Localitate = Input.Localitate;
             Client.Strada = Input.Strada;
             Client.Numar = Input.Numar;
             Client.CodPostal = Input.CodPostal;
             Client.Telefon = Input.Telefon;
+
+            //AdresaClient.Email = Input.Email;
+            //AdresaClient.Judet = Input.Judet;
+            //AdresaClient.Localitate = Input.Localitate;
+            //AdresaClient.Strada = Input.Strada;
+            //AdresaClient.Numar = Input.Numar;
+            //AdresaClient.CodPostal = Input.CodPostal;
+            //AdresaClient.Telefon = Input.Telefon;
+
             _context.Client.Add(Client);
+            //_context.AdresaClient.Add(AdresaClient);
+
             await _context.SaveChangesAsync();
             if (result.Succeeded)
             {
                 _logger.LogInformation("User created a new account with  password.");
-               
-                var role = await _userManager.AddToRoleAsync(user, "User");
+
+
+                if (Client.TipClientID == 2)
+                {
+                    var role = await _userManager.AddToRoleAsync(user, "PJ");
+                }
+                else
+                {
+                    var role = await _userManager.AddToRoleAsync(user, "PF");
+                }
+
+
+                //var role = await _userManager.AddToRoleAsync(user, "User");
                 var userId = await _userManager.GetUserIdAsync(user);
                 var code = await
                _userManager.GenerateEmailConfirmationTokenAsync(user);

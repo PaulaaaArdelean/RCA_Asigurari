@@ -9,5 +9,6 @@
         public ICollection<Client>? Clienti { get; set; }
         public ICollection<PersoanaFizica>? PersoaneFizice { get; set; }
        public ICollection<PersoanaJuridica>? PersoaneJuridice { get; set; }
+        public ICollection<AdresaClient>? AdreseClienti { get; set; }
     }
 }
