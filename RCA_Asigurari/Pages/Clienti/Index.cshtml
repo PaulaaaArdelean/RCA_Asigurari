@@ -16,15 +16,18 @@
           @*  <th>
                 @Html.DisplayNameFor(model => model.Client[0].TipAsigurat.TipulAsigurat)
             </th>*@
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Client[0].RadioButtonClient)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].TipClient)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Client[0].NumeClientFirma)
+                @Html.DisplayNameFor(model => model.Client[0].NumeProprietar)
             </th>
-            <th>
+          @*  <th>
                 @Html.DisplayNameFor(model => model.Client[0].CNPCUI)
-            </th>
+            </th>*@
          
             <th>
                 @Html.DisplayNameFor(model => model.Client[0].Adresa)
@@ -46,15 +49,18 @@
                 @*<td>
                     @Html.DisplayFor(modelItem => item.TipAsigurat.TipulAsigurat)
                 </td>*@
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.RadioButtonClient)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipClient.TipulClientului)
                 </td>
                 <td>
-                @Html.DisplayFor(modelItem => item.NumeClientFirma)
+                @Html.DisplayFor(modelItem => item.NumeProprietar)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.CNPCUI)
-            </td>
+            </td>*@
         
             <td>
                 @Html.DisplayFor(modelItem => item.Adresa)

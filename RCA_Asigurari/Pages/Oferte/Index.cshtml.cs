@@ -62,7 +62,7 @@ namespace RCA_Asigurari.Pages.Oferte
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                OfertaD.Oferte = OfertaD.Oferte.Where(s => s.Client.NumeClientFirma.Contains(searchString)
+                OfertaD.Oferte = OfertaD.Oferte.Where(s => s.Client.NumeProprietar.Contains(searchString)
 
                || s.NrInmatriculare.Contains(searchString)
                || s.NumarIdentificare.Contains(searchString)

@@ -5,6 +5,7 @@ namespace RCA_Asigurari.Models
     public class OfertaPF
     {
         public int ID { get; set; }
+       
         [Display(Name = "Proprietarul")]
         public int? ClientID { get; set; }
         public Client? Client { get; set; }
@@ -14,38 +15,33 @@ namespace RCA_Asigurari.Models
         public string CNP { get; set; }
 
 
-        [Display(Name = "Numele")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
-        [StringLength(30, MinimumLength = 3)]
-        public string NumeProprietar { get; set; }
+        //[Display(Name = "Numele")]
+        //[RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
+        //[StringLength(30, MinimumLength = 3)]
+        //public string NumeProprietar { get; set; }
 
-        [Display(Name = "Prenumele")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Prenumele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
-        [StringLength(30, MinimumLength = 3)]
-        public string PrenumeProprietar { get; set; }
-
-
-
-        [Display(Name = "Numele si prenumele proprietarului")]
-        public string NumeIntreg
-        {
-            get
-            {
-                return NumeProprietar + " " + PrenumeProprietar;
-            }
-        }
+        //[Display(Name = "Prenumele")]
+        //[RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Prenumele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
+        //[StringLength(30, MinimumLength = 3)]
+        //public string PrenumeProprietar { get; set; }
 
 
+        //[Display(Name = "Numele si prenumele proprietarului")]
+        //public string NumeIntreg
+        //{
+        //    get
+        //    {
+        //        return NumeProprietar + " " + PrenumeProprietar;
+        //    }
+        //}
 
         [Display(Name = "Serie CI")]
         [RegularExpression("^[A-Z]{2}$", ErrorMessage = "Seria CI este formata din doua litere mari, care vin de regulă vin de mnemonicul județului (ex. IS-Iași ), dar nu este obligatoriu (ex. AS-Argeș)")]
         public string SerieCI { get; set; }
 
-
         [Display(Name = "Numar CI")]
         [RegularExpression("^[0-9]{6}$", ErrorMessage = "Numarul cartii de identitate trebuie sa contina 6 cifre")]
         public string NumarCI { get; set; }
-
 
         public string Varsta { get; set; }
 

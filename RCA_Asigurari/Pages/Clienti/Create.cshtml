@@ -14,7 +14,7 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-             
+                @*
                 <div class="form-group">
                     <label asp-for="Client.RadioButtonClienti" class="control-label">Alege tipul de client: </label>
                     @foreach (var figurina in Model.RadioButtonClienti)
@@ -27,20 +27,20 @@
 
                     <span asp-validation-for="Client.RadioButtonClienti" class="text-danger"></span>
                 </div>
-                @* <div class="form-group">
+                 <div class="form-group">
                     <label asp-for="Client.TipAsiguratID" class="control-label"></label>
                     <select asp-for="Client.TipAsiguratID" class="form-control" asp-items="ViewBag.TipAsiguratID"></select>
-                </div>*@
+                </div>
                 <label asp-for="Client.CNP" class="control-label"></label>
                 <input asp-for="Client.CNP" class="form-control" />
                 <span asp-validation-for="Client.CNP" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Client.NumeProprietar" class="control-label"></label>
                 <input asp-for="Client.NumeProprietar" class="form-control" />
                 <span asp-validation-for="Client.NumeProprietar" class="text-danger"></span>
             </div>
-            <div class="form-group">
+        @*    <div class="form-group">
                 <label asp-for="Client.PrenumeProprietar" class="control-label"></label>
                 <input asp-for="Client.PrenumeProprietar" class="form-control" />
                 <span asp-validation-for="Client.PrenumeProprietar" class="text-danger"></span>
@@ -90,7 +90,7 @@
                 <label asp-for="Client.PrenumeReprezentantFirma" class="control-label"></label>
                 <input asp-for="Client.PrenumeReprezentantFirma" class="form-control" />
                 <span asp-validation-for="Client.PrenumeReprezentantFirma" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Client.JudetID" class="control-label"></label>
                 <select asp-for="Client.JudetID" class="form-control" asp-items="ViewBag.JudetID">

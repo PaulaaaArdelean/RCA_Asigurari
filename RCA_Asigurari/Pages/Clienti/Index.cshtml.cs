@@ -46,8 +46,8 @@ namespace RCA_Asigurari.Pages.Clienti
                 Client = await _context.Client
                 .Include(c => c.Judet)
                 .Include(c => c.Localitate)
-                //.Include(c => c.TipAsigurat)
-                .Include(c => c.TipSocietate)
+                .Include(c => c.TipClient)
+               // .Include(c => c.TipSocietate)
                 
                // .Where (CNP != null; 
                 .ToListAsync();

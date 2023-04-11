@@ -36,13 +36,14 @@ namespace RCA_Asigurari.Pages.OfertePF
                 .Select(x => new
                 {
                     x.ID,
-                    DetaliiClient = x.NumeIntreg + " " + x.NumeFirma
+                    DetaliiClient = x.NumeProprietar /*+ " " + x.NumeFirma*/
                 });
 
             ViewData["PretID"] = new SelectList(_context.Oferta, "ID", "Pret");
-            ViewData["ClientID"] = new SelectList(detaliiClient, "ID", "DetaliiClient", CurrentClientID);
             ViewData["CategorieVehiculID"] = new SelectList(_context.CategorieVehicul, "ID", "CategoriaVehicul");
+            ViewData["ClientID"] = new SelectList(detaliiClient, "ID", "DetaliiClient", CurrentClientID);
             ViewData["TipCombustibilID"] = new SelectList(_context.TipCombustibil, "ID", "TipulCombustibil");
+
             return Page();
         }
 
@@ -114,6 +115,9 @@ namespace RCA_Asigurari.Pages.OfertePF
             {
                 OfertaPF.Pret = 1250;
             }
+
+
+
             _context.OfertaPF.Add(OfertaPF);
             await _context.SaveChangesAsync();
 

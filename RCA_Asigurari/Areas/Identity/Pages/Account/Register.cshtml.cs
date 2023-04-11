@@ -156,6 +156,11 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             //[StringLength(30, MinimumLength = 3)]
             //public string? PrenumeReprezentantFirma { get; set; }
 
+            [Display(Name = "Numele")]
+            [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
+            [StringLength(30, MinimumLength = 3)]
+            public string? NumeProprietar { get; set; }
+
             [Display(Name = "Tipul clientului")]
             public int? TipClientID { get; set; }
             public TipClient? TipClient { get; set; }
@@ -251,6 +256,8 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             //Client.NumeFirma = Input.NumeFirma;
             //Client.NumeReprezentantFirma = Input.NumeReprezentantFirma;
             //Client.PrenumeReprezentantFirma = Input.PrenumeReprezentantFirma;
+
+            Client.NumeProprietar = Input.NumeProprietar;
             Client.Email = Input.Email;
             Client.TipClient = Input.TipClient;
             Client.Judet = Input.Judet;
@@ -269,7 +276,7 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             //AdresaClient.Telefon = Input.Telefon;
 
             _context.Client.Add(Client);
-            //_context.AdresaClient.Add(AdresaClient);
+           // _context.AdresaClient.Add(AdresaClient);
 
             await _context.SaveChangesAsync();
             if (result.Succeeded)

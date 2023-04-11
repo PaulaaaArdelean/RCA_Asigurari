@@ -10,13 +10,7 @@
         border: 3px solid #555;
     }
 
-    .register-form-divs {
-        border: 3px solid #C47777;
-        padding: 8px;
-        margin: 3px;
-        border-style: inset;
-        border-width: 25px 10px 4px 35px;
-    }
+   
 
     .register-button {
         background-color: #C47777;
@@ -61,7 +55,10 @@
 
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+
+
+
+           @* <div class="form-group">
                 <label asp-for="Client.RadioButtonClienti" class="control-label">Alege tipul de client: </label>
                 @foreach (var figurina in Model.RadioButtonClienti)
                 {
@@ -72,7 +69,10 @@
                 }
 
                 <span asp-validation-for="Client.RadioButtonClienti" class="text-danger"></span>
-            </div>
+            </div>*@
+
+
+
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr">
               @*  <div class="register-form-divs" >
 
@@ -150,13 +150,18 @@
                 </div>*@
 
 
-                <div class="register-form-divs" >
+                <div class="form-divs" >
                     <h4>Adresa! </h4>
                     <div class="form-group">
                         <label asp-for="Client.TipClientID" class="control-label"></label>
                         <select asp-for="Client.TipClientID" class="form-control" asp-items="ViewBag.TipClientID">
                             <option value="" disabled selected>-Selectati tipul de client:-</option>
                         </select>
+                    </div>
+                        <div class="form-floating">
+                        <input asp-for="Input.NumeProprietar" class="form-control" autocomplete="name" aria-required="true" />
+                        <label asp-for="Input.NumeProprietar"></label>
+                        <span asp-validation-for="Input.NumeProprietar" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Client.JudetID" class="control-label"></label>

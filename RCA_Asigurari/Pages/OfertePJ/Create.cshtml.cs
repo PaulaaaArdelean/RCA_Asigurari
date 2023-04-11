@@ -31,12 +31,12 @@ namespace RCA_Asigurari.Pages.OfertePJ
             var userName = _userManager.GetUserName(User);
 
             var detaliiClient = _context.Client
-                .Where(c => c.Email == userName)
-                .Select(x => new
-                {
-                    x.ID,
-                    DetaliiClient = x.NumeIntreg + " " + x.NumeFirma
-                });
+                 .Where(c => c.Email == userName)
+                 .Select(x => new
+                 {
+                     x.ID,
+                     DetaliiClient = x.NumeProprietar
+                 });
             ViewData["CategorieVehiculID"] = new SelectList(_context.CategorieVehicul, "ID", "CategoriaVehicul");
         ViewData["ClientID"] = new SelectList(detaliiClient, "ID", "DetaliiClient");
         ViewData["TipCombustibilID"] = new SelectList(_context.TipCombustibil, "ID", "TipulCombustibil");

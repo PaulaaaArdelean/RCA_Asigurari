@@ -55,7 +55,7 @@ namespace RCA_Asigurari.Pages.Oferte
                 .Select(x => new
                 {
                     x.ID,
-                    DetaliiClient = x.NumeIntreg + " " + x.NumeFirma
+                    DetaliiClient = x.NumeProprietar
                 });
 
             ViewData["CategorieVehiculID"] = new SelectList(_context.CategorieVehicul, "ID", "CategoriaVehicul");

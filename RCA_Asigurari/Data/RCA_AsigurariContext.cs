@@ -18,7 +18,7 @@ namespace RCA_Asigurari.Data
 
         public DbSet<RCA_Asigurari.Models.TipSocietate>? TipSocietate { get; set; }
 
-        public DbSet<RCA_Asigurari.Models.TipAsigurat>? TipAsigurat { get; set; }
+
 
         public DbSet<RCA_Asigurari.Models.Judet>? Judet { get; set; }
 
@@ -28,9 +28,7 @@ namespace RCA_Asigurari.Data
 
         public DbSet<RCA_Asigurari.Models.Client>? Client { get; set; }
 
-        public DbSet<RCA_Asigurari.Models.PersoanaFizica>? PersoanaFizica { get; set; }
-
-        public DbSet<RCA_Asigurari.Models.PersoanaJuridica>? PersoanaJuridica { get; set; }
+        
 
         public DbSet<RCA_Asigurari.Models.Oferta>? Oferta { get; set; }
 

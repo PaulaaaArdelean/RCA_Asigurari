@@ -29,11 +29,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.OfertaPJ[0].NumeFirma)
             </th>
+           
             <th>
-                @Html.DisplayNameFor(model => model.OfertaPJ[0].NumeReprezentantFirma)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPJ[0].PrenumeReprezentantFirma)
+                @Html.DisplayNameFor(model => model.OfertaPJ[0].NumeIntregReprezentant)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OfertaPJ[0].NumarIdentificare)
@@ -81,13 +79,13 @@
 @foreach (var item in Model.OfertaPJ) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Client.ID)
+                @Html.DisplayFor(modelItem => item.Client.NumeProprietar)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CUI)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TipSocietate.ID)
+                @Html.DisplayFor(modelItem => item.TipSocietate.TipulSocietate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ActivitateSocietate)
@@ -95,11 +93,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NumeFirma)
             </td>
+        
             <td>
-                @Html.DisplayFor(modelItem => item.NumeReprezentantFirma)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrenumeReprezentantFirma)
+                    @Html.DisplayFor(modelItem => item.NumeIntregReprezentant)
+
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumarIdentificare)
@@ -132,18 +129,21 @@
                 @Html.DisplayFor(modelItem => item.Putere)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CategorieVehicul.ID)
+                @Html.DisplayFor(modelItem => item.CategorieVehicul.CategoriaVehicul)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TipCombustibil.ID)
+                @Html.DisplayFor(modelItem => item.TipCombustibil.TipulCombustibil)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Pret)
+                    <strong>
+                        @Html.DisplayFor(modelItem => item.Pret) Lei
+                        </strong>
+               
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"> </i></a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
             </td>
         </tr>
 }

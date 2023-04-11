@@ -15,10 +15,10 @@ a {
     font-weight: bold;
 }
 
-    a:hover {
-        color: #C47777;
-        text-decoration: none;
-    }
+a:hover {
+    color: #C47777;
+    text-decoration: none;
+}
 
 body {
     background-image: url('../imagini/background1.png');
@@ -125,3 +125,10 @@ body {
     font-weight: bold;
 }
 
+.form-divs {
+    border: 3px solid #C47777;
+    padding: 8px;
+    margin: 3px;
+    border-style: inset;
+    border-width: 20px 5px 10px 10px;
+}
