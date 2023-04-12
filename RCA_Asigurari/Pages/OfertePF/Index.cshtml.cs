@@ -26,42 +26,46 @@ namespace RCA_Asigurari.Pages.OfertePF
         public async Task OnGetAsync(string searchString)
         {
             CurrentFilter = searchString;
-
-            if (_context.OfertaPF != null)
-            {
-                var userEmail = User.Identity.Name;
-                var ofertePF = _context.OfertaPF
+            var userEmail = User.Identity.Name;
+            var ofertePF = _context.OfertaPF
                     .Include(o => o.CategorieVehicul)
                     .Include(o => o.Client)
                     .Include(o => o.TipCombustibil).AsNoTracking();
 
+            if (_context.OfertaPF != null)
+            {
+                
                 if (userEmail != ADMIN_EMAIL)
-                { ofertePF = ofertePF.Where(ofertapersfizica => ofertapersfizica.Client.Email == userEmail); }
+                {
+                    ofertePF = ofertePF.Where(ofertapersfizica => ofertapersfizica.Client.Email == userEmail);
+                }
+              
 
+                if (!String.IsNullOrEmpty(searchString))
+                {
+
+                    ofertePF = ofertePF.Where(s => s.Client.NumeProprietar.Contains(searchString)
+                   || s.CNP.Contains(searchString)         
+                   || s.SerieCI.Contains(searchString)
+                   || s.NumarCI.Contains(searchString)
+                   || s.NrInmatriculare.Contains(searchString)
+                   || s.NumarIdentificare.Contains(searchString)
+                   || s.Marca.Contains(searchString)
+                   || s.Model.Contains(searchString)
+                   || s.CategorieVehicul.CategoriaVehicul.Contains(searchString)
+                   || s.TipCombustibil.TipulCombustibil.Contains(searchString)
+                   || s.SerieCIV.Contains(searchString)
+                   || s.AnFabricatie.ToString().Contains(searchString)
+                   || s.NumarIdentificare.Contains(searchString));
+
+
+                }
                 OfertaPF = await ofertePF.ToListAsync();
-
-
             }
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-               
-            //    ofertePF = ofertePF.Where(s => s.Client.NumeProprietar.Contains(searchString)
-
-            //   || s.NrInmatriculare.Contains(searchString)
-            //   || s.NumarIdentificare.Contains(searchString)
-            //   || s.Marca.Contains(searchString)
-            //   || s.CategorieVehicul.CategoriaVehicul.Contains(searchString)
-            //   || s.TipCombustibil.TipulCombustibil.Contains(searchString)
-            //   || s.SerieCIV.Contains(searchString)
-            ////   || s.AnFabricatie.Contains(searchString)
-            //   || s.Model.Contains(searchString)
-            //   || s.NumarIdentificare.Contains(searchString));
-
-
-            //}
+           
 
         }
-     
+      
     }
 }
 

@@ -38,7 +38,14 @@ namespace RCA_Asigurari.Pages.OfertePF
                     x.ID,
                     DetaliiClient = x.NumeProprietar /*+ " " + x.NumeFirma*/
                 });
+          
+            var cnp1 = _context.OfertaPF
 
+                   .Select(x => new
+                   {
+                       x.ID,
+                       cnp = x.CNP
+                   });
             ViewData["PretID"] = new SelectList(_context.Oferta, "ID", "Pret");
             ViewData["CategorieVehiculID"] = new SelectList(_context.CategorieVehicul, "ID", "CategoriaVehicul");
             ViewData["ClientID"] = new SelectList(detaliiClient, "ID", "DetaliiClient", CurrentClientID);
@@ -49,7 +56,44 @@ namespace RCA_Asigurari.Pages.OfertePF
 
         [BindProperty]
         public OfertaPF OfertaPF { get; set; } = default!;
-        
+
+       
+        //Calculam varsta din CNP
+                    //public int CalculateAgeFromCNP(string cnp)
+                    //{
+                    //    int year = int.Parse(cnp.Substring(1, 2));
+                    //    int month = int.Parse(cnp.Substring(3, 2));
+                    //    int day = int.Parse(cnp.Substring(5, 2));
+                    //    int gender = int.Parse(cnp.Substring(0, 1));
+
+                    //    if (gender == 1 || gender == 2)
+                    //    {
+                    //        year += 1900;
+                    //    }
+                    //    else if (gender == 3 || gender == 4)
+                    //    {
+                    //        year += 1800;
+                    //    }
+                    //    else if (gender == 5 || gender == 6)
+                    //    {
+                    //        year += 2000;
+                    //    }
+
+                    //    DateTime birthDate = new DateTime(year, month, day);
+                    //    DateTime currentDate = DateTime.Now;
+
+                    //    int age = currentDate.Year - birthDate.Year;
+
+                    //    if (birthDate > currentDate.AddYears(-age))
+                    //    {
+                    //        age--;
+                    //    }
+
+                    //    return age;
+                    //}
+
+
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
