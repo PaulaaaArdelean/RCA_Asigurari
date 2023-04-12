@@ -115,13 +115,20 @@
  </div>
  </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" id="deleteBtn" onclick="return confirmDelete();" style="background-color:#C47777" /> |  <a asp-page="Index">Back to List</a>
+                <input type="submit" value="Create" class="btn btn-primary" id="deleteBtn" onclick="return confirmDelete();" style="background-color:#C47777" /> 
+                |  <a asp-page="Index">Back to List</a>
+
+                @* <button>                                          
+                     <a class="nav-link text-dark" asp-area="" asp-page="/Index"> 
+                         <input type="submit" value="Create" class="btn btn-primary" id="deleteBtn" onclick="return confirmDelete();" style="background-color:#C47777" />  
+                     </a>
+                </button>*@
             </div>
         </form>
 
     </div>
       @*Modal pentru popup*@
-@*
+
         <div class="modal" tabindex="-1" role="dialog" id="deleteModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -158,6 +165,46 @@
 
         return false; // nu se submite formularul inca
     }
+</script>
+
+
+
+@*
+<script>
+    $(document).ready(function() {
+        // Check if the flag is set to show the popup
+        var showPopup = @ViewData["ShowPopup"] ?? "false";
+        if (showPopup === true) {
+            // Your popup logic here
+            alert('Popup message'); // Replace with your own popup logic
+
+            // Reset the flag to prevent showing the popup multiple times
+            @ViewData["ShowPopup"] = false;
+        }
+    });
+</script>*@
+
+@*<script>
+    $(document).ready(function () {
+        // Attach click event handler for the "Create" button
+        $('#deleteBtn').click(function (event) {
+            event.preventDefault(); // prevent default form submission
+
+            // Show the modal
+            $('#deleteModal').modal('show');
+
+            // Attach click event handler for the "Renunta" button
+            $('#deleteCancelBtn').click(function () {
+                $('#deleteModal').modal('hide');
+            });
+
+            // Attach click event handler for the "Continua" button
+            $('#deleteConfirmBtn').click(function () {
+                $('#deleteModal').modal('hide');
+                $('#deleteBtn').closest('form').submit(); // submit the form containing the delete button
+            });
+        });
+    });
 </script>*@
 
 @section Scripts {

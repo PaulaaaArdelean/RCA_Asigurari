@@ -6,15 +6,70 @@ namespace RCA_Asigurari.Models
     public class Client
     {
         public int ID { get; set; }
+        [Display(Name = "Numele")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
+        [StringLength(30, MinimumLength = 3)]
+        public string? NumeProprietar { get; set; }
+        [Display(Name = "Judetul")]
+        public int JudetID { get; set; }
+        public Judet? Judet { get; set; }
+
+
+        [Display(Name = "Localitatea")]
+        public int LocalitateID { get; set; }
+        public Localitate? Localitate { get; set; }
+
+
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele strazii trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
+        [StringLength(30, MinimumLength = 2)]
+        public string? Strada { get; set; }
+
+
+        public string? Numar { get; set; }
+
+
+        [Display(Name = "Codul postal")]
+        [RegularExpression("^[0-9]{6}$", ErrorMessage = "Codul postal trebuie sa contina 6 cifre")]
+        public string? CodPostal { get; set; }
+
+
+
+        [RegularExpression("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,3}$", ErrorMessage = "Datele introduse de dumneavoastra nu am forma unui email.")]
+
+        public string Email { get; set; }
+
+
+
+        [RegularExpression(@"^\(?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Telefonul trebuie sa fie de forma '0722-123-123' sau '0722.123.123' sau '0722 123 123'")]
+        public string? Telefon { get; set; }
+
+        public string? Adresa
+        {
+            get
+            {
+                return " jud. " + (Judet?.Judetul ?? "") + ", loc. " + (Localitate?.Localitatea ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
+            }
+        }
+
+        [Display(Name = "Tipul de client: ")]
+        [BindProperty]
+        public string? RadioButtonClient { get; set; }
+        public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
+
+        [Display(Name = "Tipul clientului")]
+        public int? TipClientID { get; set; }
+        public TipClient? TipClient { get; set; }
+
+
+
+
+        public ICollection<OfertaPF>? OfertePF { get; set; }
+        public ICollection<OfertaPJ>? OfertePJ { get; set; }
 
         //[RegularExpression(@"^[1-8][0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])(0[1-9]|[1-4][0-9]|5[0-2])[0-9]{4}$", ErrorMessage = "Un CNP (Cod Numeric Personal) este un cod numeric din 13 cifre atribuit de Guvernul României fiecărui cetățean. Codul este formatat după cum urmează: prima cifră reprezintă sexul, a doua și a treia cifră reprezintă anul nașterii, a patra și a cincea cifră reprezintă luna nașterii, a șasea și a șaptea cifră reprezintă ziua nașterii, a opta cifră reprezintă regiunea nașterii, a noua cifră reprezintă județul de naștere, iar ultimele patru cifre reprezintă ordinea înregistrării.")]
         //public string? CNP { get; set; }
 
 
-        [Display(Name = "Numele")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
-        [StringLength(30, MinimumLength = 3)]
-        public string? NumeProprietar { get; set; }
 
         //[Display(Name = "Prenumele")]
         //[RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Prenumele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
@@ -95,39 +150,6 @@ namespace RCA_Asigurari.Models
         //}
         // [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele judetului trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
         // [StringLength(30, MinimumLength = 2)]
-        [Display(Name = "Judetul")]
-        public int JudetID { get; set; }
-        public Judet? Judet { get; set; }
-
-
-        [Display(Name = "Localitatea")]
-        public int LocalitateID { get; set; }
-        public Localitate? Localitate { get; set; }
-
-
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele strazii trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
-        [StringLength(30, MinimumLength = 2)]
-        public string? Strada { get; set; }
-
-
-        public string? Numar { get; set; }
-
-
-        [Display(Name = "Codul postal")]
-        [RegularExpression("^[0-9]{6}$", ErrorMessage = "Codul postal trebuie sa contina 6 cifre")]
-        public string? CodPostal { get; set; }
-
-
-
-        [RegularExpression("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,3}$", ErrorMessage = "Datele introduse de dumneavoastra nu am forma unui email.")]
-
-        public string Email { get; set; }
-
-
-
-        [RegularExpression(@"^\(?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Telefonul trebuie sa fie de forma '0722-123-123' sau '0722.123.123' sau '0722 123 123'")]
-        public string? Telefon { get; set; }
-
 
 
         //[Display(Name = "Numele clientului")]
@@ -146,30 +168,9 @@ namespace RCA_Asigurari.Models
         //        return CNP + " " + CUI;
         //    }
         //}
-    
 
 
-        public string? Adresa
-        {
-            get
-            {
-                return " jud. " + (Judet?.Judetul ?? "") + ", loc. " + (Localitate?.Localitatea ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
-            }
-        }
-
-        [Display(Name = "Tipul de client: ")]
-        [BindProperty]
-        public string? RadioButtonClient { get; set; }
-        public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
-
-        [Display(Name = "Tipul clientului")]
-        public int? TipClientID { get; set; }
-        public TipClient? TipClient { get; set; }
-
-      
 
 
-        public ICollection<OfertaPF>? OfertePF { get; set; }
-        public ICollection<OfertaPJ>? OfertePJ { get; set; }
     }
 }

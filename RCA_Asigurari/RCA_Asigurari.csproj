@@ -7,10 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\AtributeOptionale\**" />
+    <Compile Remove="Pages\CategoriiVehicule\**" />
     <Compile Remove="Pages\Ofertele\**" />
+    <Compile Remove="Pages\Vehicule\**" />
+    <Content Remove="Pages\AtributeOptionale\**" />
+    <Content Remove="Pages\CategoriiVehicule\**" />
     <Content Remove="Pages\Ofertele\**" />
+    <Content Remove="Pages\Vehicule\**" />
+    <EmbeddedResource Remove="Pages\AtributeOptionale\**" />
+    <EmbeddedResource Remove="Pages\CategoriiVehicule\**" />
     <EmbeddedResource Remove="Pages\Ofertele\**" />
+    <EmbeddedResource Remove="Pages\Vehicule\**" />
+    <None Remove="Pages\AtributeOptionale\**" />
+    <None Remove="Pages\CategoriiVehicule\**" />
     <None Remove="Pages\Ofertele\**" />
+    <None Remove="Pages\Vehicule\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\AdresaClient.cs" />
+    <Compile Remove="Models\Vehicul.cs" />
   </ItemGroup>
 
   <ItemGroup>

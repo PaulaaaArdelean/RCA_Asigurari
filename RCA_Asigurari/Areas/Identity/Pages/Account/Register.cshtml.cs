@@ -68,8 +68,8 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
         
         [BindProperty]
         public PJ PJ { get; set; }
-        [BindProperty]
-        public AdresaClient AdresaClient { get; set; }
+        //[BindProperty]
+        //public AdresaClient AdresaClient { get; set; }
 
         [BindProperty]
         public InputModel Input { get; set; }

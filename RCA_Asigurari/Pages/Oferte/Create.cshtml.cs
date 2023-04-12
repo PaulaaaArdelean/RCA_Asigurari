@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -55,6 +56,8 @@ namespace RCA_Asigurari.Pages.Oferte
 
         public async Task<IActionResult> OnPostAsync(string[] selectedAttributes)
         {
+            
+
             var newOferta = new Oferta();
             if (selectedAttributes != null)
             {
@@ -135,7 +138,10 @@ namespace RCA_Asigurari.Pages.Oferte
             _context.Oferta.Add(Oferta);
 
             await _context.SaveChangesAsync();
-
+            
+            //var javascriptCode = "$(document).ready(function() { confirmDelete(); });";
+            //return Content(HttpUtility.HtmlEncode(javascriptCode), "text/javascript"); 
+           
             return RedirectToPage("./Index");
         }
     }

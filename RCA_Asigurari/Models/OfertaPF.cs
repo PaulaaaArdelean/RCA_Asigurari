@@ -43,7 +43,7 @@ namespace RCA_Asigurari.Models
         [RegularExpression("^[0-9]{6}$", ErrorMessage = "Numarul cartii de identitate trebuie sa contina 6 cifre")]
         public string NumarCI { get; set; }
 
-        public string Varsta { get; set; }
+        public int Varsta { get; set; }
 
 
 

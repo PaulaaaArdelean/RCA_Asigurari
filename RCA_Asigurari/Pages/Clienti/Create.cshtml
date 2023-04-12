@@ -40,6 +40,58 @@
                 <input asp-for="Client.NumeProprietar" class="form-control" />
                 <span asp-validation-for="Client.NumeProprietar" class="text-danger"></span>
             </div>
+                <div class="form-group">
+                    <label asp-for="Client.JudetID" class="control-label"></label>
+                    <select asp-for="Client.JudetID" class="form-control" asp-items="ViewBag.JudetID">
+                        <option value="" disabled selected>-Selectati judetul:-</option>
+                    </select>
+
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Client.LocalitateID" class="control-label"></label>
+                    <select asp-for="Client.LocalitateID" class="form-control" asp-items="ViewBag.LocalitateID">
+                        <option value="" disabled selected>-Selectati localitatea:-</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Client.Strada" class="control-label"></label>
+                    <input asp-for="Client.Strada" class="form-control" />
+                    <span asp-validation-for="Client.Strada" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Client.Numar" class="control-label"></label>
+                    <input asp-for="Client.Numar" class="form-control" />
+                    <span asp-validation-for="Client.Numar" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Client.CodPostal" class="control-label"></label>
+                    <input asp-for="Client.CodPostal" class="form-control" />
+                    <span asp-validation-for="Client.CodPostal" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Client.Email" class="control-label"></label>
+                    <input asp-for="Client.Email" class="form-control" />
+                    <span asp-validation-for="Client.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Client.Telefon" class="control-label"></label>
+                    <input asp-for="Client.Telefon" class="form-control" />
+                    <span asp-validation-for="Client.Telefon" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+
         @*    <div class="form-group">
                 <label asp-for="Client.PrenumeProprietar" class="control-label"></label>
                 <input asp-for="Client.PrenumeProprietar" class="form-control" />
@@ -91,57 +143,7 @@
                 <input asp-for="Client.PrenumeReprezentantFirma" class="form-control" />
                 <span asp-validation-for="Client.PrenumeReprezentantFirma" class="text-danger"></span>
             </div>*@
-            <div class="form-group">
-                <label asp-for="Client.JudetID" class="control-label"></label>
-                <select asp-for="Client.JudetID" class="form-control" asp-items="ViewBag.JudetID">
-                    <option value="" disabled selected>-Selectati judetul:-</option>
-                </select>
-
-
-            </div>
-            <div class="form-group">
-                <label asp-for="Client.LocalitateID" class="control-label"></label>
-                <select asp-for="Client.LocalitateID" class="form-control" asp-items="ViewBag.LocalitateID">
-                    <option value="" disabled selected>-Selectati localitatea:-</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Client.Strada" class="control-label"></label>
-                <input asp-for="Client.Strada" class="form-control" />
-                <span asp-validation-for="Client.Strada" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Client.Numar" class="control-label"></label>
-                <input asp-for="Client.Numar" class="form-control" />
-                <span asp-validation-for="Client.Numar" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Client.CodPostal" class="control-label"></label>
-                <input asp-for="Client.CodPostal" class="form-control" />
-                <span asp-validation-for="Client.CodPostal" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Client.Email" class="control-label"></label>
-                <input asp-for="Client.Email" class="form-control" />
-                <span asp-validation-for="Client.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Client.Telefon" class="control-label"></label>
-                <input asp-for="Client.Telefon" class="form-control" />
-                <span asp-validation-for="Client.Telefon" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
-
+           
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -7,6 +7,6 @@
         public int? JudetID { get; set; }
         public Judet? Judet { get; set; }
         public ICollection<Client>? Clienti { get; set; }
-        public ICollection<AdresaClient>? AdreseClienti { get; set; }
+        //public ICollection<AdresaClient>? AdreseClienti { get; set; }
     }
 }
