@@ -44,8 +44,7 @@ namespace RCA_Asigurari.Pages.Clienti
                 if (_context.Client != null)
             {
                 Client = await _context.Client
-                .Include(c => c.Judet)
-                .Include(c => c.Localitate)
+               
                 .Include(c => c.TipClient)
                // .Include(c => c.TipSocietate)
                 

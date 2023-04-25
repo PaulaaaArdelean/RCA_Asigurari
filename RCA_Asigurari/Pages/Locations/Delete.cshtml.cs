@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using RCA_Asigurari.Data;
 using RCA_Asigurari.Models;
 
-namespace RCA_Asigurari.Pages.Localitati
+namespace RCA_Asigurari.Pages.Locations
 {
     public class DeleteModel : PageModel
     {
@@ -20,40 +20,40 @@ namespace RCA_Asigurari.Pages.Localitati
         }
 
         [BindProperty]
-      public Localitate Localitate { get; set; } = default!;
+      public Location Location { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Localitate == null)
+            if (id == null || _context.Location_1 == null)
             {
                 return NotFound();
             }
 
-            var localitate = await _context.Localitate.FirstOrDefaultAsync(m => m.ID == id);
+            var location = await _context.Location_1.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (localitate == null)
+            if (location == null)
             {
                 return NotFound();
             }
             else 
             {
-                Localitate = localitate;
+                Location = location;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Localitate == null)
+            if (id == null || _context.Location_1 == null)
             {
                 return NotFound();
             }
-            var localitate = await _context.Localitate.FindAsync(id);
+            var location = await _context.Location_1.FindAsync(id);
 
-            if (localitate != null)
+            if (location != null)
             {
-                Localitate = localitate;
-                _context.Localitate.Remove(Localitate);
+                Location = location;
+                _context.Location_1.Remove(Location);
                 await _context.SaveChangesAsync();
             }
 

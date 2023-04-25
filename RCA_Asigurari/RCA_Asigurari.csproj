@@ -27,6 +27,8 @@
 
   <ItemGroup>
     <Compile Remove="Models\AdresaClient.cs" />
+    <Compile Remove="Models\Judet.cs" />
+    <Compile Remove="Models\Localitate.cs" />
     <Compile Remove="Models\Vehicul.cs" />
   </ItemGroup>
 

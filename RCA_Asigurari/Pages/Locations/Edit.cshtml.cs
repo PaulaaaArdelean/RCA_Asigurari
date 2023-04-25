@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using RCA_Asigurari.Data;
 using RCA_Asigurari.Models;
 
-namespace RCA_Asigurari.Pages.Localitati
+namespace RCA_Asigurari.Pages.Locations
 {
     public class EditModel : PageModel
     {
@@ -21,22 +21,21 @@ namespace RCA_Asigurari.Pages.Localitati
         }
 
         [BindProperty]
-        public Localitate Localitate { get; set; } = default!;
+        public Location Location { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Localitate == null)
+            if (id == null || _context.Location_1 == null)
             {
                 return NotFound();
             }
 
-            var localitate =  await _context.Localitate.FirstOrDefaultAsync(m => m.ID == id);
-            if (localitate == null)
+            var location =  await _context.Location_1.FirstOrDefaultAsync(m => m.Id == id);
+            if (location == null)
             {
                 return NotFound();
             }
-            Localitate = localitate;
-           ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "ID");
+            Location = location;
             return Page();
         }
 
@@ -49,7 +48,7 @@ namespace RCA_Asigurari.Pages.Localitati
                 return Page();
             }
 
-            _context.Attach(Localitate).State = EntityState.Modified;
+            _context.Attach(Location).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +56,7 @@ namespace RCA_Asigurari.Pages.Localitati
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!LocalitateExists(Localitate.ID))
+                if (!LocationExists(Location.Id))
                 {
                     return NotFound();
                 }
@@ -70,9 +69,9 @@ namespace RCA_Asigurari.Pages.Localitati
             return RedirectToPage("./Index");
         }
 
-        private bool LocalitateExists(int id)
+        private bool LocationExists(int id)
         {
-          return (_context.Localitate?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Location_1?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

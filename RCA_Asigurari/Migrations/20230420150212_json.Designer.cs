@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RCA_Asigurari.Data;
 
@@ -11,9 +12,11 @@ using RCA_Asigurari.Data;
 namespace RCA_Asigurari.Migrations
 {
     [DbContext(typeof(RCA_AsigurariContext))]
-    partial class RCA_AsigurariContextModelSnapshot : ModelSnapshot
+    [Migration("20230420150212_json")]
+    partial class json
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,7 +91,6 @@ namespace RCA_Asigurari.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("CodPostal")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -104,11 +106,9 @@ namespace RCA_Asigurari.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Numar")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumeProprietar")
-                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
@@ -116,12 +116,10 @@ namespace RCA_Asigurari.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Strada")
-                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Telefon")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("TipClientID")
@@ -356,6 +354,11 @@ namespace RCA_Asigurari.Migrations
                     b.Property<string>("NumarIdentificare")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeFirma")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("NumeReprezentantFirma")
                         .IsRequired()

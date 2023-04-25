@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using RCA_Asigurari.Data;
 using RCA_Asigurari.Models;
 
-namespace RCA_Asigurari.Pages.Judete
+namespace RCA_Asigurari.Pages.Locations
 {
     public class IndexModel : PageModel
     {
@@ -19,13 +19,13 @@ namespace RCA_Asigurari.Pages.Judete
             _context = context;
         }
 
-        public IList<Judet> Judet { get;set; } = default!;
+        public IList<Location> Location { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Judet != null)
+            if (_context.Location_1 != null)
             {
-                Judet = await _context.Judet.ToListAsync();
+                Location = await _context.Location_1.ToListAsync();
             }
         }
     }

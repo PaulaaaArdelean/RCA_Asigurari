@@ -20,9 +20,9 @@ namespace RCA_Asigurari.Data
 
 
 
-        public DbSet<RCA_Asigurari.Models.Judet>? Judet { get; set; }
+        //public DbSet<RCA_Asigurari.Models.Judet>? Judet { get; set; }
 
-        public DbSet<RCA_Asigurari.Models.Localitate>? Localitate { get; set; }
+        //public DbSet<RCA_Asigurari.Models.Localitate>? Localitate { get; set; }
 
         public DbSet<RCA_Asigurari.Models.CategorieVehicul>? CategorieVehicul { get; set; }
 
@@ -42,5 +42,7 @@ namespace RCA_Asigurari.Data
         public DbSet<RCA_Asigurari.Models.TipClient>? TipClient { get; set; }
         public DbSet<RCA_Asigurari.Models.OfertaPF>? OfertaPF { get; set; }
         public DbSet<RCA_Asigurari.Models.OfertaPJ>? OfertaPJ { get; set; }
+        public IEnumerable<object> Location { get; internal set; }
+        public DbSet<RCA_Asigurari.Models.Location>? Location_1 { get; set; }
     }
 }

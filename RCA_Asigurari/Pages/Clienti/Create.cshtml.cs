@@ -19,24 +19,47 @@ namespace RCA_Asigurari.Pages.Clienti
             _context = context;
         }
 
-        public IActionResult OnGet()
-        {
-            ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "TipulSocietate");
-        
-            ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "Judetul");
-            ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
+        [BindProperty]
+        public Client Client { get; set; } = default!;
 
 
-            return Page();
-        }
-       
+        public IList<SelectListItem> Judete { get; set; }
+        public IList<SelectListItem> Localitati { get; set; }
+
+
         [BindProperty]
         public string? RadioButtonClient { get; set; }
         public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
 
-        [BindProperty]
-        public Client Client { get; set; }
+        public IActionResult OnGet()
+        {
+            Judete = _context.Location_1
+            .Select(l => new SelectListItem
+            {
+                Value = l.Judet,
+                Text = l.Judet
+            })
+            .Distinct()
+            .OrderBy(j => j.Text)
+            .ToList();
 
+            Localitati = _context.Location_1
+                .Select(l => new SelectListItem
+                {
+                    Group = new SelectListGroup { Name = l.Judet },
+                    Value = l.Localitate,
+                    Text = l.Localitate
+                })
+                .OrderBy(l => l.Group.Name)
+                .ThenBy(l => l.Text)
+                .ToList();
+           
+            ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "TipulSocietate");
+
+            return Page();
+        }
+
+     
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()

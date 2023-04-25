@@ -19,10 +19,10 @@ namespace RCA_Asigurari.Models
         [Display(Name = "Activitatea societatii")]
         public string ActivitateSocietate { get; set; }
 
-        [Display(Name = "Numele societatii")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Denumirea societatii trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
-        [StringLength(30, MinimumLength = 3)]
-        public string NumeFirma { get; set; }
+        //[Display(Name = "Numele societatii")]
+        //[RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Denumirea societatii trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
+        //[StringLength(30, MinimumLength = 3)]
+        //public string NumeFirma { get; set; }
 
 
         [Display(Name = "Numele reprezentantului")]

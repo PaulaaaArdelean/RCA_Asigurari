@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using RCA_Asigurari.Data;
 using RCA_Asigurari.Models;
 
-namespace RCA_Asigurari.Pages.Judete
+namespace RCA_Asigurari.Pages.Locations
 {
     public class DetailsModel : PageModel
     {
@@ -19,23 +19,23 @@ namespace RCA_Asigurari.Pages.Judete
             _context = context;
         }
 
-      public Judet Judet { get; set; } = default!; 
+      public Location Location { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Judet == null)
+            if (id == null || _context.Location_1 == null)
             {
                 return NotFound();
             }
 
-            var judet = await _context.Judet.FirstOrDefaultAsync(m => m.ID == id);
-            if (judet == null)
+            var location = await _context.Location_1.FirstOrDefaultAsync(m => m.Id == id);
+            if (location == null)
             {
                 return NotFound();
             }
             else 
             {
-                Judet = judet;
+                Location = location;
             }
             return Page();
         }
