@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RCA_Asigurari.Models
 {
@@ -85,7 +86,8 @@ namespace RCA_Asigurari.Models
         [Display(Name = "Tipul de combustibil")]
         public TipCombustibil? TipCombustibil { get; set; }
 
-
         public int? Pret { get; set; }
+        [NotMapped]
+        public bool AdaugatOfertaDorita { get; set; }
     }
 }

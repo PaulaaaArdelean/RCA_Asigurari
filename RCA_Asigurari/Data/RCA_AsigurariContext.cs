@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RCA_Asigurari.Models;
+using RCA_Asigurari.Models.OferteDorite;
 
 namespace RCA_Asigurari.Data
 {
@@ -18,8 +19,6 @@ namespace RCA_Asigurari.Data
 
         public DbSet<RCA_Asigurari.Models.TipSocietate>? TipSocietate { get; set; }
 
-
-
         //public DbSet<RCA_Asigurari.Models.Judet>? Judet { get; set; }
 
         //public DbSet<RCA_Asigurari.Models.Localitate>? Localitate { get; set; }
@@ -27,8 +26,6 @@ namespace RCA_Asigurari.Data
         public DbSet<RCA_Asigurari.Models.CategorieVehicul>? CategorieVehicul { get; set; }
 
         public DbSet<RCA_Asigurari.Models.Client>? Client { get; set; }
-
-        
 
         public DbSet<RCA_Asigurari.Models.Oferta>? Oferta { get; set; }
 
@@ -44,5 +41,16 @@ namespace RCA_Asigurari.Data
         public DbSet<RCA_Asigurari.Models.OfertaPJ>? OfertaPJ { get; set; }
         public IEnumerable<object> Location { get; internal set; }
         public DbSet<RCA_Asigurari.Models.Location>? Location_1 { get; set; }
-    }
+        public DbSet<RCA_Asigurari.Models.OferteDorite.OfertaPFDorita>? OfertaPFDorita { get; set; }
+        public DbSet<RCA_Asigurari.Models.OferteDorite.OfertaPJDorita>? OfertaPJDorita { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<OfertaPFDorita>()
+                .HasKey(c => new { c.ClientID, c.OfertaPFID });
+            
+            modelBuilder.Entity<OfertaPJDorita>()
+                .HasKey(c => new { c.ClientID, c.OfertaPJID });
+        }
+
+        }
 }

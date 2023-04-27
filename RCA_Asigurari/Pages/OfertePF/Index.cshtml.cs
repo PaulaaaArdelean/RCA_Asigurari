@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using RCA_Asigurari.Data;
 using RCA_Asigurari.Migrations;
 using RCA_Asigurari.Models;
+using RCA_Asigurari.Models.OferteDorite;
 
 namespace RCA_Asigurari.Pages.OfertePF
 {
@@ -23,7 +24,7 @@ namespace RCA_Asigurari.Pages.OfertePF
 
         public IList<OfertaPF> OfertaPF { get; set; } = default!;
         public String CurrentFilter { get; set; }
-        public async Task OnGetAsync(string searchString)
+        public async Task OnGetAsync(string searchString, bool? vizualizareDorite)
         {
             CurrentFilter = searchString;
             var userEmail = User.Identity.Name;
@@ -31,10 +32,24 @@ namespace RCA_Asigurari.Pages.OfertePF
                     .Include(o => o.CategorieVehicul)
                     .Include(o => o.Client)
                     .Include(o => o.TipCombustibil).AsNoTracking();
+            var logedinClientId = _context.Client.Where(c => c.Email == userEmail).Select(c => c.ID).FirstOrDefault();
 
             if (_context.OfertaPF != null)
             {
-                
+
+                if (vizualizareDorite != null && vizualizareDorite == true)
+                {
+                    ofertePF = ofertePF.Join(
+                        _context.OfertaPFDorita.Where(x => x.ClientID == logedinClientId),
+                        e => e.ID,
+                       f => f.OfertaPFID, (firstentity, secondentity) => new
+                       {
+                           OfertaPF = firstentity,
+                           OfertaPFDorita = secondentity
+                       }).Select(entity => entity.OfertaPF);
+
+                }
+
                 if (userEmail != ADMIN_EMAIL)
                 {
                     ofertePF = ofertePF.Where(ofertapersfizica => ofertapersfizica.Client.Email == userEmail);
@@ -61,11 +76,54 @@ namespace RCA_Asigurari.Pages.OfertePF
 
                 }
                 OfertaPF = await ofertePF.ToListAsync();
+
+
+                var oferteDorite = _context.OfertaPFDorita.Where(x => x.ClientID == logedinClientId).ToList();
+
+                for (int i = 0; i < OfertaPF.Count(); i++)
+                {
+                    var currentOferta = OfertaPF.ElementAt(i);
+
+                    //Aici verifica...Pt event urile din Db se seteaza valoarea pt Addedtofav ca sa seteze Add/Remove to fav
+                    currentOferta.AdaugatOfertaDorita = oferteDorite.Where(x => x.ClientID == logedinClientId &&
+                      x.OfertaPFID == currentOferta.ID
+                    ).FirstOrDefault() != null;
+                }
+
             }
            
 
         }
       
+        public IActionResult OnPost()
+        {
+            var userEmail = User.Identity.Name;
+            var logedinClientId = _context.Client.Where(c => c.Email == userEmail).Select(c => c.ID).FirstOrDefault();
+
+            var OfertaPFID = Request.Form["OfertaPFID"];
+            var EsteAdaugatLaDorite = Request.Form["EsteAdaugatLaDorite"];
+            var OfertaDorita = new OfertaPFDorita();
+
+            OfertaDorita.OfertaPFID = Int32.Parse(OfertaPFID);
+            OfertaDorita.ClientID = logedinClientId;
+
+            if (!bool.Parse(EsteAdaugatLaDorite))
+            {
+                _context.OfertaPFDorita.Add(OfertaDorita);
+            }
+            else
+            {
+                _context.OfertaPFDorita.Remove(OfertaDorita);
+
+            }
+
+            _context.SaveChanges();
+
+
+            return RedirectToPage("./Index");
+        }
+
+
     }
 }
 

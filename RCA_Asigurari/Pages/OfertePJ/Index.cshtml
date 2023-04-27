@@ -10,15 +10,18 @@
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Căutați o ofertă:
+            Căutați oferta:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
             <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to full List</a>
+            <a asp-page="./Index" style="text-decoration:none">Back to full List</a>
         </p>
     </div>
 </form>
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Calculează o ofertă!</a>
+    <button type="button" class="btn btn-outline-dark">
+        <a class= asp-area ="" asp-page="Index" asp-route-vizualizareDorite="@true">Arata ofertele dorite</a>
+    </button>
 </p>
 <table class="table">
     <thead>
@@ -153,7 +156,20 @@
                     <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"> </i></a> |
                     <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a> |
                     <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
-            </td>
+                    <form method="post">
+                        <input type="hidden" name="OfertaPJID" value="@item.ID" />
+                        <input type="hidden" name="EsteAdaugatLaDorite" value="@item.AdaugatOfertaDorita.ToString()" />
+                        @if (item.AdaugatOfertaDorita == true)
+                        {
+                            <i class="bi bi-x-circle-fill"></i> <input type="submit" value="Nu ma mai intereseaza" class="btn btn-primary" style="background-color:#57424f; border-color:#d8cfd4; width:170px; margin:10px auto 0; border-radius:50px">
+                        }
+                        else
+                        {
+                            <i class="bi bi-chat-square-heart-fill"></i> <input type="submit" value="Ma intereseaza" class="btn btn-primary" style="background-color:#beafb8; border-color:#d8cfd4; width:120px; margin:10px auto 0; border-radius:50px">
+
+                        }
+                    </form>
+                </td>
         </tr>
 }
     </tbody>

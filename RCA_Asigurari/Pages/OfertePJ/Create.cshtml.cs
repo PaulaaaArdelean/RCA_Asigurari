@@ -24,7 +24,14 @@ namespace RCA_Asigurari.Pages.OfertePJ
         public IActionResult OnGet()
         {
             var userEmail = User.Identity.Name;
-            int CurrentClientID = _context.Client.First(client => client.Email == userEmail).ID;
+            var client = _context.Client.FirstOrDefault(c => c.Email == userEmail);
+
+            if (client == null)
+            {
+                return NotFound(); // or handle the scenario in some other way
+            }
+            int CurrentClientID = client.ID;
+            //int CurrentClientID = _context.Client.First(client => client.Email == userEmail).ID;
 
 
 
@@ -37,6 +44,7 @@ namespace RCA_Asigurari.Pages.OfertePJ
                      x.ID,
                      DetaliiClient = x.NumeProprietar
                  });
+
             ViewData["CategorieVehiculID"] = new SelectList(_context.CategorieVehicul, "ID", "CategoriaVehicul");
         ViewData["ClientID"] = new SelectList(detaliiClient, "ID", "DetaliiClient");
         ViewData["TipCombustibilID"] = new SelectList(_context.TipCombustibil, "ID", "TipulCombustibil");

@@ -27,8 +27,6 @@ namespace RCA_Asigurari.Pages.OfertePF
             var userEmail = User.Identity.Name;
             int CurrentClientID = _context.Client.First(client => client.Email == userEmail).ID;
 
-
-
             var userName = _userManager.GetUserName(User);
 
             var detaliiClient = _context.Client
