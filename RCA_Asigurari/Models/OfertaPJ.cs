@@ -37,7 +37,7 @@ namespace RCA_Asigurari.Models
         [StringLength(30, MinimumLength = 3)]
         public string PrenumeReprezentantFirma { get; set; }
 
-        [Display(Name = "Numele si prenumele reprezentantului firmei")]
+        [Display(Name = "Reprezentantul firmei")]
         public string NumeIntregReprezentant
         {
             get
@@ -76,7 +76,7 @@ namespace RCA_Asigurari.Models
         public int MasaMaxima { get; set; }
         [RegularExpression(@"^[0-9]{2,4}$", ErrorMessage = "Puterea trebuie sa fie scrisa din 2, 3 sau 4 cifre")]
         public int Putere { get; set; }
-
+        [Display(Name = "Categoria")]
         public int? CategorieVehiculID { get; set; }
         public CategorieVehicul? CategorieVehicul { get; set; }
         public int? TipCombustibilID { get; set; }
@@ -87,5 +87,7 @@ namespace RCA_Asigurari.Models
         public int? Pret { get; set; }
         [NotMapped]
         public bool AdaugatOfertaDorita { get; set; }
+        public DateTime PJCreatedAt { get; set; }
+
     }
 }

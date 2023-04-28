@@ -1,4 +1,77 @@
-﻿@page
+﻿@page 
+@model RCA_Asigurari.Pages.OfertePJ.IndexModel
+
+@{
+ViewData["Title"] = "Index";
+Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Căutați oferta:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index" style="text-decoration:none">Back to full List</a>
+        </p>
+    </div>
+</form>
+<p>
+    <a asp-page="Create">Calculează o ofertă!</a>
+    <button type="button" class="btn btn-outline-dark">
+        <a class=asp-area ="" asp-page="Index" asp-route-vizualizareDorite="@true">Arata ofertele dorite</a>
+    </button>
+</p>
+@foreach (var item in Model.OfertaPJ) {
+    <div class="oferte-divs" >
+        <div class="row">
+        <div class="col-md-4">
+                <h3> Ofertă pentru @Html.DisplayFor(modelItem => item.NrInmatriculare)</h3>
+           
+            <p><strong>Calculată în data:</strong> @item.PJCreatedAt.ToString("dd/MM/yyyy HH:mm")</p>
+            <p><strong>Proprietar:</strong> @Html.DisplayFor(modelItem => item.Client.NumeProprietar)</p>
+            <p><strong>CUI:</strong> @Html.DisplayFor(modelItem => item.CUI)</p>
+            <p><strong>TipSocietate:</strong> @Html.DisplayFor(modelItem => item.TipSocietate.TipulSocietate)</p>
+            <p><strong>ActivitateSocietate:</strong> @Html.DisplayFor(modelItem => item.ActivitateSocietate)</p>
+            <p><strong>NumeIntregReprezentant:</strong> @Html.DisplayFor(modelItem => item.NumeIntregReprezentant)</p>
+        </div>
+        <div class="col-md-4">
+            <p><strong>NrInmatriculare:</strong> @Html.DisplayFor(modelItem => item.NumarIdentificare)</p>
+            <p><strong>Marca:</strong> @Html.DisplayFor(modelItem => item.Marca)</p>
+            <p><strong>Model:</strong> @Html.DisplayFor(modelItem => item.Model)</p>
+            <p><strong>AnFabricatie:</strong> @Html.DisplayFor(modelItem => item.AnFabricatie)</p>
+            <p><strong>CapacitateCilindrica:</strong> @Html.DisplayFor(modelItem => item.CapacitateCilindrica)</p>
+            <p><strong>SerieCIV:</strong> @Html.DisplayFor(modelItem => item.SerieCIV)</p>
+            <p><strong>NrLocuri:</strong> @Html.DisplayFor(modelItem => item.NrLocuri)</p>
+            <p><strong>MasaMaxima:</strong> @Html.DisplayFor(modelItem => item.MasaMaxima)</p>
+        </div>
+        <div class="col-md-4">
+            <p><strong>Putere:</strong> @Html.DisplayFor(modelItem => item.Putere)</p>
+            <p><strong>CategorieVehicul:</strong> @Html.DisplayFor(modelItem => item.CategorieVehicul.CategoriaVehicul)</p>
+            <p><strong>TipCombustibil:</strong> @Html.DisplayFor(modelItem => item.TipCombustibil.TipulCombustibil)</p>
+            <p><strong>Pret:</strong> @Html.DisplayFor(modelItem => item.Pret)</p>
+            <p>
+                <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"></i></a> |
+                <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
+                    <form method="post">
+                        <input type="hidden" name="OfertaPJID" value="@item.ID" />
+                        <input type="hidden" name="EsteAdaugatLaDorite" value="@item.AdaugatOfertaDorita.ToString()" />
+                        @if (item.AdaugatOfertaDorita == true)
+                        {
+                            <i class="bi bi-x-circle-fill"></i> <input type="submit" value="Nu ma mai intereseaza" class="btn btn-primary" style="background-color:#57424f; border-color:#d8cfd4; width:170px; margin:10px auto 0; border-radius:50px">
+                        }
+                        else
+                        {
+                            <i class="bi bi-chat-square-heart-fill"></i> <input type="submit" value="Ma intereseaza" class="btn btn-primary" style="background-color:#beafb8; border-color:#d8cfd4; width:120px; margin:10px auto 0; border-radius:50px">
+
+                        }
+                    </form>
+            </div>
+        </div>
+</div>}
+@*@page
 @model RCA_Asigurari.Pages.OfertePJ.IndexModel
 
 @{
@@ -27,6 +100,10 @@
     <thead>
         <tr>
             <th>
+                <strong>CreatedAt:</strong> 
+
+  </th>
+            <th>
                 @Html.DisplayNameFor(model => model.OfertaPJ[0].Client)
             </th>
             <th>
@@ -38,9 +115,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.OfertaPJ[0].ActivitateSocietate)
             </th>
-          @*  <th>
-                @Html.DisplayNameFor(model => model.OfertaPJ[0].NumeFirma)
-            </th>*@
+    
            
             <th>
                 @Html.DisplayNameFor(model => model.OfertaPJ[0].NumeIntregReprezentant)
@@ -88,8 +163,11 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.OfertaPJ) {
-        <tr>
+@foreach (var item in Model.OfertaPJ.OrderByDescending(o =>o.PJCreatedAt)) {
+            <tr>
+                <td>
+                    <strong>Data:</strong> @item.PJCreatedAt.ToString("dd/MM/yyyy HH:mm")
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Client.NumeProprietar)
             </td>
@@ -102,9 +180,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ActivitateSocietate)
             </td>
-          @*  <td>
-                @Html.DisplayFor(modelItem => item.NumeFirma)
-            </td>*@
+  
         
             <td>
                     @Html.DisplayFor(modelItem => item.NumeIntregReprezentant)
@@ -174,3 +250,4 @@
 }
     </tbody>
 </table>
+*@

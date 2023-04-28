@@ -61,12 +61,31 @@
     
 
 </div>
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("PJ"))
+    {
+        <p class="send-button">
+            <button type="button" class="send-button">
+                <a class= asp-area ="" asp-page="/OfertePJ/Create" style="color:inherit; text-decoration:none;"> <span> <i class="bi bi-pencil-square"> Calculează-ți oferta! </i> </span></a>
+            </button>
+        </p>
+        
+    }
+}
 
-<p class="send-button">
-    <button type="button" class="send-button"> <a class= asp-area ="" asp-page="/Oferte/Create" style="color:inherit; text-decoration:none;"> <span> <i class="bi bi-pencil-square"> Calculează-ți oferta! </i> </span></a>
-    </button>
-</p>
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("PF"))
+    {
+        <p class="send-button">
+            <button type="button" class="send-button">
+                <a class= asp-area ="" asp-page="/OfertePF/Create" style="color:inherit; text-decoration:none;"> <span> <i class="bi bi-pencil-square"> Calculează-ți oferta! </i> </span></a>
+            </button>
+        </p>
 
+    }
+}
 
 
 

@@ -132,3 +132,14 @@ body {
     border-style: inset;
     border-width: 20px 5px 10px 10px;
 }
+.oferte-divs {
+/*    border: 1px solid #ccc;*/
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 3px solid #C47777;
+  /*  padding: 8px;
+    margin: 3px;*/
+    border-style: inset;
+    border-width: 20px 5px 10px 10px;
+}

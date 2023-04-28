@@ -115,14 +115,21 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             public int? TipClientID { get; set; }
             public TipClient? TipClient { get; set; }
 
-
             [Display(Name = "Judetul")]
-            public string Judet { get; set; }
-            //public Location? Location { get; set; }
+            public int JudetID { get; set; }
+            public Judet? Judet { get; set; }
+
 
             [Display(Name = "Localitatea")]
-            public string Localitate { get; set; }
-            
+            public int LocalitateID { get; set; }
+            public Localitate? Localitate { get; set; }
+            //[Display(Name = "Judetul")]
+            //public string Judet { get; set; }
+            ////public Location? Location { get; set; }
+
+            //[Display(Name = "Localitatea")]
+            //public string Localitate { get; set; }
+
 
             [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele strazii trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
             [StringLength(30, MinimumLength = 2)]
@@ -169,38 +176,40 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            Judete = _context.Location_1
-            .Select(l => new SelectListItem
-            {
-                Value = l.Judet,
-                Text = l.Judet
-            })
-            .Distinct()
-            .OrderBy(j => j.Text)
-            .ToList();
+            //Judete = _context.Location_1
+            //.Select(l => new SelectListItem
+            //{
+            //    Value = l.Judet,
+            //    Text = l.Judet
+            //})
+            //.Distinct()
+            //.OrderBy(j => j.Text)
+            //.ToList();
 
-            Localitati = _context.Location_1
-                .Select(l => new SelectListItem
-                {
-                    Group = new SelectListGroup { Name = l.Judet },
-                    Value = l.Localitate,
-                    Text = l.Localitate
-                })
-                .OrderBy(l => l.Group.Name)
-                .ThenBy(l => l.Text)
-                .ToList();
+            //Localitati = _context.Location_1
+            //    .Select(l => new SelectListItem
+            //    {
+            //        Group = new SelectListGroup { Name = l.Judet },
+            //        Value = l.Localitate,
+            //        Text = l.Localitate
+            //    })
+            //    .OrderBy(l => l.Group.Name)
+            //    .ThenBy(l => l.Text)
+            //    .ToList();
 
             ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "TipulSocietate");
            
             ViewData["TipClientID"] = new SelectList(_context.TipClient, "ID", "TipulClientului");
 
+            ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "Judetul");
+            ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
 
 
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
-        public IList<SelectListItem> Judete { get; set; }
-        public IList<SelectListItem> Localitati { get; set; }
+        //public IList<SelectListItem> Judete { get; set; }
+        //public IList<SelectListItem> Localitati { get; set; }
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {//if pf sau pj si insereaza in tabela aferenta
 

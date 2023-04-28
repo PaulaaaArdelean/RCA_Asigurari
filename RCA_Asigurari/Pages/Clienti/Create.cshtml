@@ -32,13 +32,13 @@
                 <input asp-for="Client.CNP" class="form-control" />
                 <span asp-validation-for="Client.CNP" class="text-danger"></span>
                 </div>*@
-                <select asp-for="Client.Judet" asp-items="@Model.Judete" class="form-control" id="judetDropdown">
+          @*      <select asp-for="Client.Judet" asp-items="@Model.Judete" class="form-control" id="judetDropdown">
                     <option>Select a Judet</option>
                 </select>
 
                 <select asp-for="Client.Localitate" asp-items="@Model.Localitati" class="form-control" id="localitateDropdown">
                     <option>Select a Localitate</option>
-                </select>
+                </select>*@
 
                 <div class="form-group">
                     <label asp-for="Client.NumeProprietar" class="control-label"></label>
@@ -86,7 +86,7 @@
 
 
 @section Scripts {
-    <script>
+    @*<script>
         $(document).ready(function () {
             let localitati = @Html.Raw(Json.Serialize(Model.Localitati));
 
@@ -102,7 +102,7 @@
                 });
             });
         });
-    </script>
+    </script>*@
 
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

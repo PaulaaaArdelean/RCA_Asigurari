@@ -48,8 +48,10 @@ namespace RCA_Asigurari.Models
 
 
         public int? Pret { get; set; }
-        [Display(Name = "Optional")]
+      
+        // [Display(Name = "Optional")]
 
-        public ICollection<AtributOptionalOferta>? AtributeOptionaleOferta { get; set; }
+       // public ICollection<AtributOptionalOferta>? AtributeOptionaleOferta { get; set;
+       //}
     }
 }

@@ -89,5 +89,8 @@ namespace RCA_Asigurari.Models
         public int? Pret { get; set; }
         [NotMapped]
         public bool AdaugatOfertaDorita { get; set; }
+
+        //public DateTime PFCreatedAt { get; set; }
+
     }
 }

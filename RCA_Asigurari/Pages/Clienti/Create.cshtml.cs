@@ -23,8 +23,8 @@ namespace RCA_Asigurari.Pages.Clienti
         public Client Client { get; set; } = default!;
 
 
-        public IList<SelectListItem> Judete { get; set; }
-        public IList<SelectListItem> Localitati { get; set; }
+        //public IList<SelectListItem> Judete { get; set; }
+        //public IList<SelectListItem> Localitati { get; set; }
 
 
         [BindProperty]
@@ -33,28 +33,30 @@ namespace RCA_Asigurari.Pages.Clienti
 
         public IActionResult OnGet()
         {
-            Judete = _context.Location_1
-            .Select(l => new SelectListItem
-            {
-                Value = l.Judet,
-                Text = l.Judet
-            })
-            .Distinct()
-            .OrderBy(j => j.Text)
-            .ToList();
+            //Judete = _context.Location_1
+            //.Select(l => new SelectListItem
+            //{
+            //    Value = l.Judet,
+            //    Text = l.Judet
+            //})
+            //.Distinct()
+            //.OrderBy(j => j.Text)
+            //.ToList();
 
-            Localitati = _context.Location_1
-                .Select(l => new SelectListItem
-                {
-                    Group = new SelectListGroup { Name = l.Judet },
-                    Value = l.Localitate,
-                    Text = l.Localitate
-                })
-                .OrderBy(l => l.Group.Name)
-                .ThenBy(l => l.Text)
-                .ToList();
+            //Localitati = _context.Location_1
+            //    .Select(l => new SelectListItem
+            //    {
+            //        Group = new SelectListGroup { Name = l.Judet },
+            //        Value = l.Localitate,
+            //        Text = l.Localitate
+            //    })
+            //    .OrderBy(l => l.Group.Name)
+            //    .ThenBy(l => l.Text)
+            //    .ToList();
            
             ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "TipulSocietate");
+            ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "Judetul");
+            ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
 
             return Page();
         }

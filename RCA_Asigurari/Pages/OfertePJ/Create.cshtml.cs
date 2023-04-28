@@ -26,10 +26,10 @@ namespace RCA_Asigurari.Pages.OfertePJ
             var userEmail = User.Identity.Name;
             var client = _context.Client.FirstOrDefault(c => c.Email == userEmail);
 
-            if (client == null)
-            {
-                return NotFound(); // or handle the scenario in some other way
-            }
+            //if (client == null)
+            //{
+            //    return NotFound(); // or handle the scenario in some other way
+            //}
             int CurrentClientID = client.ID;
             //int CurrentClientID = _context.Client.First(client => client.Email == userEmail).ID;
 
@@ -63,7 +63,7 @@ namespace RCA_Asigurari.Pages.OfertePJ
             {
                 return Page();
             }
-            if (/*OfertaPJ.CategorieVehicul.ToString() == "autoturism" &&*/ OfertaPJ.NrLocuri <= 9 && OfertaPJ.MasaMaxima <= 3500)
+            if (/*(OfertaPJ.CategorieVehicul.ID == 1 &&*/ OfertaPJ.NrLocuri <= 9 && OfertaPJ.MasaMaxima <= 3500)
             {
                 if (OfertaPJ.CapacitateCilindrica <= 1200)
                 {

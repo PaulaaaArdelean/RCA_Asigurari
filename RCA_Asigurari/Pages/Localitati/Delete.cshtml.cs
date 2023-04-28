@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using RCA_Asigurari.Data;
 using RCA_Asigurari.Models;
 
-namespace RCA_Asigurari.Pages.Locations
+namespace RCA_Asigurari.Pages.Localitati
 {
     public class DeleteModel : PageModel
     {
@@ -20,40 +20,40 @@ namespace RCA_Asigurari.Pages.Locations
         }
 
         [BindProperty]
-      //public Location Location { get; set; } = default!;
+      public Localitate Localitate { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            //if (id == null || _context.Location_1 == null)
-            //{
-            //    return NotFound();
-            //}
+            if (id == null || _context.Localitate == null)
+            {
+                return NotFound();
+            }
 
-            //var location = await _context.Location_1.FirstOrDefaultAsync(m => m.Id == id);
+            var localitate = await _context.Localitate.FirstOrDefaultAsync(m => m.ID == id);
 
-            //if (location == null)
-            //{
-            //    return NotFound();
-            //}
-            //else 
-            //{
-            //    Location = location;
-            //}
+            if (localitate == null)
+            {
+                return NotFound();
+            }
+            else 
+            {
+                Localitate = localitate;
+            }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Location_1 == null)
+            if (id == null || _context.Localitate == null)
             {
                 return NotFound();
             }
-            var location = await _context.Location_1.FindAsync(id);
+            var localitate = await _context.Localitate.FindAsync(id);
 
-            if (location != null)
+            if (localitate != null)
             {
-                Location = location;
-                _context.Location_1.Remove(Location);
+                Localitate = localitate;
+                _context.Localitate.Remove(Localitate);
                 await _context.SaveChangesAsync();
             }
 

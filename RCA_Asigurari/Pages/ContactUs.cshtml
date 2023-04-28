@@ -135,31 +135,27 @@ text-decoration: none;
                 <div class="contact-wrapper">
                     <form action="mailto:paulaardelean01@yahoo.com" method="post" enctype="text/plain">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control mt-2" placeholder="Nume" required>
-                                    @*<label asp-for="ClientID" class="control-label"></label>
-                                    <select asp-for="ClientID" class="form-control" asp-items="ViewBag.ClientID"></select>*@
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control mt-2" placeholder="Subiect" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
+                          @*  <div class="col-lg-12">
                                 <div class="form-group">
                                     <input type="email" class="form-control mt-2" placeholder="Email" required>
+
                                 </div>
                             </div>
+                         *@
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input type="number" class="form-control mt-2" placeholder="Telefon" required>
+                                    <textarea type:"text" class="form-control" rows="1" placeholder="Nume" name="Nume" style="color:#66A1A8" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <textarea type:"text" class="form-control" rows="1" placeholder="Telefon" name="Telefon" style="color:#66A1A8" required></textarea>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea type:"text" class="form-control" rows="2" placeholder="MESAJ" name="Mesaj" style="color:#66A1A8" required></textarea>
+                                    <textarea type:"text" class="form-control" rows="2" placeholder="Mesaj" name="Mesaj" style="color:#66A1A8" required></textarea>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -181,7 +177,7 @@ text-decoration: none;
                     <h2 class="subtitlu" > Unde ne găsiți:  </h2>
                     <i class="fas fa-phone mt-3" style="color:black"></i> <a href="tel:+" style="color:black"> 0364 457 547</a><br>
                     <i class="fa fa-envelope mt-3" style="color:black"></i> <a href="" style="color:black">RCAsimuluator@office.ro</a><br>
-                    <i class="fas fa-globe mt-3" style="color:black"></i> <a style="color:black">VIVO! | Str. Avram Iancu 492-500, Floreşti, Jud. Cluj, 407280</a><br>
+                    <i class="bi bi-geo-alt mt-3" style="color:black"></i> <a style="color:black">VIVO! | Str. Avram Iancu 492-500, Floreşti, Jud. Cluj, 407280</a><br>
 
                 </div>
             </div>

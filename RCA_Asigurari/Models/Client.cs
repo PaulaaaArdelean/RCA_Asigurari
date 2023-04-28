@@ -6,20 +6,20 @@ namespace RCA_Asigurari.Models
     public class Client
     {
         public int ID { get; set; }
-        [Display(Name = "Numele")]
+        [Display(Name = "Numele si prenumele proprietarului")]
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
         [StringLength(30, MinimumLength = 3)]
         public string NumeProprietar { get; set; }
-        //[Display(Name = "Judetul")]
-        //public int JudetID { get; set; }
-        //public Judet? Judet { get; set; }
+        [Display(Name = "Judetul")]
+        public int JudetID { get; set; }
+        public Judet? Judet { get; set; }
 
 
-        //[Display(Name = "Localitatea")]
-        //public int LocalitateID { get; set; }
-        //public Localitate? Localitate { get; set; }
-        public string Judet { get; set; }
-        public string Localitate { get; set; }
+        [Display(Name = "Localitatea")]
+        public int LocalitateID { get; set; }
+        public Localitate? Localitate { get; set; }
+        //public string Judet { get; set; }
+        //public string Localitate { get; set; }
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele strazii trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
         [StringLength(30, MinimumLength = 2)]
@@ -48,8 +48,8 @@ namespace RCA_Asigurari.Models
         {
             get
             {
-                //return " jud. " + (Judet?.Judetul ?? "") + ", loc. " + (Localitate?.Localitatea ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
-                return " jud. " + (Judet ?? "") + ", loc. " + (Localitate ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
+                return " jud. " + (Judet?.Judetul ?? "") + ", loc. " + (Localitate?.Localitatea ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
+                //return " jud. " + (Judet ?? "") + ", loc. " + (Localitate ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
 
             }
         }
