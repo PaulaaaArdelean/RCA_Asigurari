@@ -16,11 +16,11 @@ Layout = "~/Pages/Shared/_Layout.cshtml";
     </div>
 </form>
 <p>
-    @if (User.IsInRole("PJ"))
+@*    @if (User.IsInRole("PJ"))
     {
         <a asp-page="Create">Calculează o ofertă!</a>
     }
-   
+   *@
     @if (User.IsInRole("Admin"))
     {
         <button type="button" class="btn btn-outline-dark">
@@ -37,6 +37,7 @@ Layout = "~/Pages/Shared/_Layout.cshtml";
                 <h3> Ofertă pentru  <b style="color: #C47777;">@Html.DisplayFor(modelItem => item.NrInmatriculare)</b></h3>
            
             <p><strong>Calculată în data:</strong> @item.PJCreatedAt.ToString("dd/MM/yyyy HH:mm")</p>
+                <br>
          @*   <p><strong>Proprietar:</strong> @Html.DisplayFor(modelItem => item.Client.NumeProprietar)</p>*@
                 <p><strong>Proprietar:</strong> @Html.DisplayFor(modelItem => item.Client.NumeProprietar) @Html.DisplayFor(modelItem => item.TipSocietate.TipulSocietate)</p>
 

@@ -6,7 +6,6 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
@@ -18,10 +17,10 @@
     </div>
 </form>
 <p>
-    @if (User.IsInRole("PF"))
+    @*@if (User.IsInRole("PF"))
     {
         <a asp-page="Create">Calculează o ofertă!</a>
-    }
+    }*@
     @if (User.IsInRole("Admin"))
     {
         <button type="button" class="btn btn-outline-dark">
@@ -38,6 +37,7 @@
                 <h3> Ofertă pentru <b style="color: #C47777;">@Html.DisplayFor(modelItem => item.NrInmatriculare)</b></h3>
 
                 <p><strong>Calculată în data:</strong> @item.PFCreatedAt.ToString("dd/MM/yyyy HH:mm")</p>
+              <br>
                 <p><strong>Proprietar:</strong> @Html.DisplayFor(modelItem => item.Client.NumeProprietar)</p>
                 <p><strong>CNP:</strong> @Html.DisplayFor(modelItem => item.CNP)</p>
                 <p><strong>Serie CI:</strong> @Html.DisplayFor(modelItem => item.SerieCI)</p>
@@ -70,6 +70,8 @@
                         <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"></i></a>
 
                     }
+                    <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"></i></a>
+
                     @if (User.IsInRole("Admin"))
                     {
                         <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a>
@@ -86,11 +88,11 @@
                             <input type="hidden" name="EsteAdaugatLaDorite" value="@item.AdaugatOfertaDorita.ToString()" />
                             @if (item.AdaugatOfertaDorita == true)
                             {
-                                <input type="submit" value="Nu mă mai interesează!" class="btn btn-primary-dark" style="/*background-color:#57424f;*/ border-color:#d8cfd4; width:200px; margin:10px auto 0; border-radius:50px">   <i class="bi bi-x-circle-fill"></i>
+                                <input type="submit" value="Nu mă mai interesează!" class="btn btn-primary" style="width:200px; background-color:#994e56">   <i class="bi bi-x-circle-fill"></i>
                             }
                             else
                             {
-                                <input type="submit" value="Sunt interesat/ă!" class="btn btn-primary" style="/*background-color:#beafb8;*/ border-color:#d8cfd4; width:200px; margin:10px auto 0; border-radius:50px">  <i class="bi bi-chat-square-heart-fill"></i>
+                                <input type="submit" value="Sunt interesat/ă!" class="btn btn-primary" style="width:200px;">  <i class="bi bi-chat-square-heart-fill"></i>
 
                             }
                         </form>
