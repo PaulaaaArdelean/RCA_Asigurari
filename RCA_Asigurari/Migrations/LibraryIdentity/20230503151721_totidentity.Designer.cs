@@ -12,8 +12,8 @@ using RCA_Asigurari.Data;
 namespace RCA_Asigurari.Migrations.LibraryIdentity
 {
     [DbContext(typeof(LibraryIdentityContext))]
-    [Migration("20230323114922_CreateIdentity")]
-    partial class CreateIdentity
+    [Migration("20230503151721_totidentity")]
+    partial class totidentity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

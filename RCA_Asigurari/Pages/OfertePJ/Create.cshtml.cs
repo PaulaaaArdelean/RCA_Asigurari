@@ -63,7 +63,7 @@ namespace RCA_Asigurari.Pages.OfertePJ
             {
                 return Page();
             }
-            if (/*(OfertaPJ.CategorieVehicul.ID == 1 &&*/ OfertaPJ.NrLocuri <= 9 && OfertaPJ.MasaMaxima <= 3500)
+            if (/*OfertaPJ.CategorieVehicul.ToString() == "autoturism" &&*/ OfertaPJ.NrLocuri <= 9 && OfertaPJ.MasaMaxima <= 3500)
             {
                 if (OfertaPJ.CapacitateCilindrica <= 1200)
                 {

@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RCA_Asigurari.Data;
 using RCA_Asigurari.Models;
+using RCA_Asigurari.Migrations;
+
 
 namespace RCA_Asigurari.Pages.OfertePF
 {
@@ -44,10 +46,12 @@ namespace RCA_Asigurari.Pages.OfertePF
                        x.ID,
                        cnp = x.CNP
                    });
-            ViewData["PretID"] = new SelectList(_context.Oferta, "ID", "Pret");
+            ViewData["PretID"] = new SelectList(_context.OfertaPF, "ID", "Pret");
             ViewData["CategorieVehiculID"] = new SelectList(_context.CategorieVehicul, "ID", "CategoriaVehicul");
             ViewData["ClientID"] = new SelectList(detaliiClient, "ID", "DetaliiClient", CurrentClientID);
             ViewData["TipCombustibilID"] = new SelectList(_context.TipCombustibil, "ID", "TipulCombustibil");
+
+
 
             return Page();
         }
@@ -107,7 +111,7 @@ namespace RCA_Asigurari.Pages.OfertePF
                 {
                     OfertaPF.Pret = 377;
                 }
-                else if (OfertaPF.CapacitateCilindrica <= 1200 && OfertaPF.Varsta >=31 && OfertaPF.Varsta <= 40)
+                else if (OfertaPF.CapacitateCilindrica <= 1200 && OfertaPF.Varsta >= 31 && OfertaPF.Varsta <= 40)
                 {
                     OfertaPF.Pret = 243;
                 }
@@ -119,7 +123,7 @@ namespace RCA_Asigurari.Pages.OfertePF
                 {
                     OfertaPF.Pret = 245;
                 }
-                else if (OfertaPF.CapacitateCilindrica <= 1200 && OfertaPF.Varsta > 61 )
+                else if (OfertaPF.CapacitateCilindrica <= 1200 && OfertaPF.Varsta > 61)
                 {
                     OfertaPF.Pret = 246;
                 }
@@ -143,7 +147,7 @@ namespace RCA_Asigurari.Pages.OfertePF
                 {
                     OfertaPF.Pret = 243;
                 }
-                else if (OfertaPF.CapacitateCilindrica > 1200 && OfertaPF.CapacitateCilindrica <= 1400 && OfertaPF.Varsta >= 61 )
+                else if (OfertaPF.CapacitateCilindrica > 1200 && OfertaPF.CapacitateCilindrica <= 1400 && OfertaPF.Varsta >= 61)
                 {
                     OfertaPF.Pret = 245;
                 }
@@ -167,7 +171,7 @@ namespace RCA_Asigurari.Pages.OfertePF
                 {
                     OfertaPF.Pret = 284;
                 }
-                else if (OfertaPF.CapacitateCilindrica > 1400 && OfertaPF.CapacitateCilindrica <= 1600 && OfertaPF.Varsta >= 61 )
+                else if (OfertaPF.CapacitateCilindrica > 1400 && OfertaPF.CapacitateCilindrica <= 1600 && OfertaPF.Varsta >= 61)
                 {
                     OfertaPF.Pret = 286;
                 }
@@ -176,7 +180,7 @@ namespace RCA_Asigurari.Pages.OfertePF
 
 
 
-                else if (OfertaPF.CapacitateCilindrica > 1600 && OfertaPF.CapacitateCilindrica <= 1800 && OfertaPF.Varsta <= 30 )
+                else if (OfertaPF.CapacitateCilindrica > 1600 && OfertaPF.CapacitateCilindrica <= 1800 && OfertaPF.Varsta <= 30)
                 {
                     OfertaPF.Pret = 483;
                 }
@@ -192,7 +196,7 @@ namespace RCA_Asigurari.Pages.OfertePF
                 {
                     OfertaPF.Pret = 314;
                 }
-                else if (OfertaPF.CapacitateCilindrica > 1600 && OfertaPF.CapacitateCilindrica <= 1800 && OfertaPF.Varsta >= 61 )
+                else if (OfertaPF.CapacitateCilindrica > 1600 && OfertaPF.CapacitateCilindrica <= 1800 && OfertaPF.Varsta >= 61)
                 {
                     OfertaPF.Pret = 316;
                 }
@@ -200,7 +204,7 @@ namespace RCA_Asigurari.Pages.OfertePF
 
 
 
-                else if (OfertaPF.CapacitateCilindrica > 1800 && OfertaPF.CapacitateCilindrica <= 2000 && OfertaPF.Varsta <=30 )
+                else if (OfertaPF.CapacitateCilindrica > 1800 && OfertaPF.CapacitateCilindrica <= 2000 && OfertaPF.Varsta <= 30)
                 {
                     OfertaPF.Pret = 541;
                 }
@@ -216,7 +220,7 @@ namespace RCA_Asigurari.Pages.OfertePF
                 {
                     OfertaPF.Pret = 351;
                 }
-                else if (OfertaPF.CapacitateCilindrica > 1800 && OfertaPF.CapacitateCilindrica <= 2000 && OfertaPF.Varsta >= 61 )
+                else if (OfertaPF.CapacitateCilindrica > 1800 && OfertaPF.CapacitateCilindrica <= 2000 && OfertaPF.Varsta >= 61)
                 {
                     OfertaPF.Pret = 354;
                 }
@@ -225,7 +229,7 @@ namespace RCA_Asigurari.Pages.OfertePF
 
 
 
-                else if (OfertaPF.CapacitateCilindrica > 2000 && OfertaPF.CapacitateCilindrica <= 2500 && OfertaPF.Varsta <=30 )
+                else if (OfertaPF.CapacitateCilindrica > 2000 && OfertaPF.CapacitateCilindrica <= 2500 && OfertaPF.Varsta <= 30)
                 {
                     OfertaPF.Pret = 762;
                 }
@@ -241,7 +245,7 @@ namespace RCA_Asigurari.Pages.OfertePF
                 {
                     OfertaPF.Pret = 495;
                 }
-                else if (OfertaPF.CapacitateCilindrica > 2000 && OfertaPF.CapacitateCilindrica <= 2500 && OfertaPF.Varsta >= 61 )
+                else if (OfertaPF.CapacitateCilindrica > 2000 && OfertaPF.CapacitateCilindrica <= 2500 && OfertaPF.Varsta >= 61)
                 {
                     OfertaPF.Pret = 498;
                 }
@@ -250,7 +254,7 @@ namespace RCA_Asigurari.Pages.OfertePF
 
 
 
-                else if (OfertaPF.CapacitateCilindrica > 2500 && OfertaPF.Varsta <=30 )
+                else if (OfertaPF.CapacitateCilindrica > 2500 && OfertaPF.Varsta <= 30)
                 {
                     OfertaPF.Pret = 1021;
                 }
@@ -266,11 +270,11 @@ namespace RCA_Asigurari.Pages.OfertePF
                 {
                     OfertaPF.Pret = 663;
                 }
-                else if (OfertaPF.CapacitateCilindrica > 2500 && OfertaPF.Varsta >= 61 )
+                else if (OfertaPF.CapacitateCilindrica > 2500 && OfertaPF.Varsta >= 61)
                 {
                     OfertaPF.Pret = 668;
                 }
-        }
+            }
 
 
 

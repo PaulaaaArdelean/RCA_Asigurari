@@ -10,16 +10,16 @@ namespace RCA_Asigurari.Models
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
         [StringLength(30, MinimumLength = 3)]
         public string NumeProprietar { get; set; }
-        [Display(Name = "Judetul")]
+        [Display(Name = "Judet")]
         public int JudetID { get; set; }
         public Judet? Judet { get; set; }
 
 
-        [Display(Name = "Localitatea")]
-        public int LocalitateID { get; set; }
-        public Localitate? Localitate { get; set; }
+        [Display(Name = "Localitate")]
+        //public int LocalitateID { get; set; }
+        //public Localitate? Localitate { get; set; }
         //public string Judet { get; set; }
-        //public string Localitate { get; set; }
+        public string Localitate { get; set; }
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele strazii trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
         [StringLength(30, MinimumLength = 2)]
@@ -29,7 +29,7 @@ namespace RCA_Asigurari.Models
         public string Numar { get; set; }
 
 
-        [Display(Name = "Codul postal")]
+        [Display(Name = "Cod postal")]
         [RegularExpression("^[0-9]{6}$", ErrorMessage = "Codul postal trebuie sa contina 6 cifre")]
         public string CodPostal { get; set; }
 
@@ -48,16 +48,16 @@ namespace RCA_Asigurari.Models
         {
             get
             {
-                return " jud. " + (Judet?.Judetul ?? "") + ", loc. " + (Localitate?.Localitatea ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
+                return " jud. " + (Judet?.Judetul ?? "") + ", loc. " + (/*Localitate?.*/Localitate ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
                 //return " jud. " + (Judet ?? "") + ", loc. " + (Localitate ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
 
             }
         }
 
-        [Display(Name = "Tipul de client: ")]
-        [BindProperty]
-        public string? RadioButtonClient { get; set; }
-        public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
+        //[Display(Name = "Tipul de client: ")]
+        //[BindProperty]
+        //public string? RadioButtonClient { get; set; }
+        //public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
 
         [Display(Name = "Tipul clientului")]
         public int? TipClientID { get; set; }

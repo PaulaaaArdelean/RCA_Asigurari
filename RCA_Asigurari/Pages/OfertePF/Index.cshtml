@@ -6,24 +6,101 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
             Căutați o ofertă:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to full List</a>
+            <input type="submit" value="Search" class="btn btn-primary" /> 
+            <a asp-page="./Index" style="text-decoration:none">   <i class="bi bi-skip-backward-fill"> Înapoi la oferte</i>  </a>
         </p>
     </div>
 </form>
 <p>
-    <a asp-page="Create">Create New</a>
-    <button type="button" class="btn btn-outline-dark">
-        <a class= asp-area ="" asp-page="Index" asp-route-vizualizareDorite="@true">Arata ofertele dorite</a>
-    </button>
+    @if (User.IsInRole("PF"))
+    {
+        <a asp-page="Create">Calculează o ofertă!</a>
+    }
+    @if (User.IsInRole("Admin"))
+    {
+        <button type="button" class="btn btn-outline-dark">
+            <a class= asp-area ="" asp-page="Index" asp-route-vizualizareDorite="@true">Arată ofertele dorite</a>
+        </button>
+    }
 </p>
-<table class="table">
+
+@foreach (var item in Model.OfertaPF)
+{
+    <div class="oferte-divs">
+        <div class="row">
+            <div class="col-md-4">
+                <h3> Ofertă pentru <b style="color: #C47777;">@Html.DisplayFor(modelItem => item.NrInmatriculare)</b></h3>
+
+                <p><strong>Calculată în data:</strong> @item.PFCreatedAt.ToString("dd/MM/yyyy HH:mm")</p>
+                <p><strong>Proprietar:</strong> @Html.DisplayFor(modelItem => item.Client.NumeProprietar)</p>
+                <p><strong>CNP:</strong> @Html.DisplayFor(modelItem => item.CNP)</p>
+                <p><strong>Serie CI:</strong> @Html.DisplayFor(modelItem => item.SerieCI)</p>
+                <p><strong>Număr CI:</strong> @Html.DisplayFor(modelItem => item.NumarCI)</p>
+                <p><strong>Vârsta:</strong> @Html.DisplayFor(modelItem => item.Varsta) ani</p>
+          </div>
+            <div class="col-md-4">
+                <p><strong>Număr identificare:</strong> @Html.DisplayFor(modelItem => item.NumarIdentificare)</p>
+                <p><strong>Marcă:</strong> @Html.DisplayFor(modelItem => item.Marca)</p>
+                <p><strong>Model:</strong> @Html.DisplayFor(modelItem => item.Model)</p>
+                <p><strong>An fabricație:</strong> @Html.DisplayFor(modelItem => item.AnFabricatie)</p>
+                <p><strong>Capacitate cilindrică:</strong> @Html.DisplayFor(modelItem => item.CapacitateCilindrica)</p>
+                <p><strong>Serie CIV:</strong> @Html.DisplayFor(modelItem => item.SerieCIV)</p>
+                <p><strong>Număr de locuri:</strong> @Html.DisplayFor(modelItem => item.NrLocuri)</p>
+                <p><strong>Masă maximă:</strong> @Html.DisplayFor(modelItem => item.MasaMaxima)</p>
+            </div>
+            <div class="col-md-4">
+                <p><strong>Putere:</strong> @Html.DisplayFor(modelItem => item.Putere)</p>
+                <p><strong>Categorie:</strong> @Html.DisplayFor(modelItem => item.CategorieVehicul.CategoriaVehicul)</p>
+                <p><strong>Tip Combustibil:</strong> @Html.DisplayFor(modelItem => item.TipCombustibil.TipulCombustibil)</p>
+                <div style="border-style: inset;">
+                    <strong>Prima de asigurare pentru polița dumneavoastră este: </strong>
+                    <h4 style="color:#C47777;">@Html.DisplayFor(modelItem => item.Pret) LEI </h4>
+                </div>
+                
+
+                <p>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"></i></a>
+
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a>
+
+                    } @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
+
+                    }
+                    @if (User.IsInRole("PF"))
+                    {
+                        <form method="post">
+                            <input type="hidden" name="OfertaPFID" value="@item.ID" />
+                            <input type="hidden" name="EsteAdaugatLaDorite" value="@item.AdaugatOfertaDorita.ToString()" />
+                            @if (item.AdaugatOfertaDorita == true)
+                            {
+                                <input type="submit" value="Nu mă mai interesează!" class="btn btn-primary-dark" style="/*background-color:#57424f;*/ border-color:#d8cfd4; width:200px; margin:10px auto 0; border-radius:50px">   <i class="bi bi-x-circle-fill"></i>
+                            }
+                            else
+                            {
+                                <input type="submit" value="Sunt interesat/ă!" class="btn btn-primary" style="/*background-color:#beafb8;*/ border-color:#d8cfd4; width:200px; margin:10px auto 0; border-radius:50px">  <i class="bi bi-chat-square-heart-fill"></i>
+
+                            }
+                        </form>
+                    }
+                    
+            </div>
+        </div>
+    </div>
+}
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -32,12 +109,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.OfertaPF[0].CNP)
             </th>
-         @*   <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].NumeProprietar)
-            </th>*@
-         @*   <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].PrenumeProprietar)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.OfertaPF[0].SerieCI)
             </th>
@@ -98,12 +169,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CNP)
             </td>
-           @* <td>
-                @Html.DisplayFor(modelItem => item.NumeProprietar)
-            </td>*@
-           @* <td>
-                @Html.DisplayFor(modelItem => item.PrenumeProprietar)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.SerieCI)
             </td>
@@ -154,7 +219,7 @@
                         @Html.DisplayFor(modelItem => item.Pret) Lei
                     </strong>
             </td>
-                @*Modal pentru popup*@
+              
 
                 <div class="modal" tabindex="-1" role="dialog" id="deleteModal">
                     <div class="modal-dialog" role="document">
@@ -174,9 +239,20 @@
                 </div>
                 
             <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"> </i></a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"></i></a>
+
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a>
+
+                    } @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
+
+                    }
                     <form method="post">
                         <input type="hidden" name="OfertaPFID" value="@item.ID" />
                         <input type="hidden" name="EsteAdaugatLaDorite" value="@item.AdaugatOfertaDorita.ToString()" />
@@ -195,7 +271,7 @@
 }
     </tbody>
 </table>
-
+*@
 
 <script>
     function confirmDelete() {

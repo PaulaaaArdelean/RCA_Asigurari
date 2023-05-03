@@ -12,8 +12,8 @@ using RCA_Asigurari.Data;
 namespace RCA_Asigurari.Migrations
 {
     [DbContext(typeof(RCA_AsigurariContext))]
-    [Migration("20230428102040_Tot")]
-    partial class Tot
+    [Migration("20230503151509_tot")]
+    partial class tot
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,8 +61,9 @@ namespace RCA_Asigurari.Migrations
                     b.Property<int>("JudetID")
                         .HasColumnType("int");
 
-                    b.Property<int>("LocalitateID")
-                        .HasColumnType("int");
+                    b.Property<string>("Localitate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Numar")
                         .IsRequired()
@@ -95,8 +96,6 @@ namespace RCA_Asigurari.Migrations
 
                     b.HasIndex("JudetID");
 
-                    b.HasIndex("LocalitateID");
-
                     b.HasIndex("TipClientID");
 
                     b.HasIndex("TipSocietateID");
@@ -119,94 +118,6 @@ namespace RCA_Asigurari.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Judet");
-                });
-
-            modelBuilder.Entity("RCA_Asigurari.Models.Localitate", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<int?>("JudetID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Localitatea")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("JudetID");
-
-                    b.ToTable("Localitate");
-                });
-
-            modelBuilder.Entity("RCA_Asigurari.Models.Oferta", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<int>("AnFabricatie")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CapacitateCilindrica")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CategorieVehiculID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ClientID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Marca")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MasaMaxima")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Model")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NrInmatriculare")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NrLocuri")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NumarIdentificare")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Pret")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Putere")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SerieCIV")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("TipCombustibilID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CategorieVehiculID");
-
-                    b.HasIndex("ClientID");
-
-                    b.HasIndex("TipCombustibilID");
-
-                    b.ToTable("Oferta");
                 });
 
             modelBuilder.Entity("RCA_Asigurari.Models.OfertaPF", b =>
@@ -259,6 +170,9 @@ namespace RCA_Asigurari.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("PFCreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("Pret")
                         .HasColumnType("int");
 
@@ -279,6 +193,9 @@ namespace RCA_Asigurari.Migrations
                     b.Property<int>("Varsta")
                         .HasColumnType("int");
 
+                    b.Property<int?>("VarstaID")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.HasIndex("CategorieVehiculID");
@@ -286,6 +203,8 @@ namespace RCA_Asigurari.Migrations
                     b.HasIndex("ClientID");
 
                     b.HasIndex("TipCombustibilID");
+
+                    b.HasIndex("VarstaID");
 
                     b.ToTable("OfertaPF");
                 });
@@ -412,86 +331,6 @@ namespace RCA_Asigurari.Migrations
                     b.ToTable("OfertaPJDorita");
                 });
 
-            modelBuilder.Entity("RCA_Asigurari.Models.PF", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("CNP")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumarCI")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumeProprietar")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("PrenumeProprietar")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("SerieCI")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Varsta")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("PF");
-                });
-
-            modelBuilder.Entity("RCA_Asigurari.Models.PJ", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("ActivitateSocietate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CUI")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumeFirma")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("NumeReprezentantFirma")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("PrenumeReprezentantFirma")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<int?>("TipSocietateID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("TipSocietateID");
-
-                    b.ToTable("PJ");
-                });
-
             modelBuilder.Entity("RCA_Asigurari.Models.TipClient", b =>
                 {
                     b.Property<int>("ID")
@@ -543,17 +382,28 @@ namespace RCA_Asigurari.Migrations
                     b.ToTable("TipSocietate");
                 });
 
+            modelBuilder.Entity("RCA_Asigurari.Models.Varsta", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Varstaa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Varste");
+                });
+
             modelBuilder.Entity("RCA_Asigurari.Models.Client", b =>
                 {
                     b.HasOne("RCA_Asigurari.Models.Judet", "Judet")
                         .WithMany("Clienti")
                         .HasForeignKey("JudetID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RCA_Asigurari.Models.Localitate", "Localitate")
-                        .WithMany("Clienti")
-                        .HasForeignKey("LocalitateID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -567,45 +417,13 @@ namespace RCA_Asigurari.Migrations
 
                     b.Navigation("Judet");
 
-                    b.Navigation("Localitate");
-
                     b.Navigation("TipClient");
-                });
-
-            modelBuilder.Entity("RCA_Asigurari.Models.Localitate", b =>
-                {
-                    b.HasOne("RCA_Asigurari.Models.Judet", "Judet")
-                        .WithMany("Localitati")
-                        .HasForeignKey("JudetID");
-
-                    b.Navigation("Judet");
-                });
-
-            modelBuilder.Entity("RCA_Asigurari.Models.Oferta", b =>
-                {
-                    b.HasOne("RCA_Asigurari.Models.CategorieVehicul", "CategorieVehicul")
-                        .WithMany("Oferte")
-                        .HasForeignKey("CategorieVehiculID");
-
-                    b.HasOne("RCA_Asigurari.Models.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientID");
-
-                    b.HasOne("RCA_Asigurari.Models.TipCombustibil", "TipCombustibil")
-                        .WithMany("Oferte")
-                        .HasForeignKey("TipCombustibilID");
-
-                    b.Navigation("CategorieVehicul");
-
-                    b.Navigation("Client");
-
-                    b.Navigation("TipCombustibil");
                 });
 
             modelBuilder.Entity("RCA_Asigurari.Models.OfertaPF", b =>
                 {
                     b.HasOne("RCA_Asigurari.Models.CategorieVehicul", "CategorieVehicul")
-                        .WithMany()
+                        .WithMany("OfertePF")
                         .HasForeignKey("CategorieVehiculID");
 
                     b.HasOne("RCA_Asigurari.Models.Client", "Client")
@@ -613,8 +431,12 @@ namespace RCA_Asigurari.Migrations
                         .HasForeignKey("ClientID");
 
                     b.HasOne("RCA_Asigurari.Models.TipCombustibil", "TipCombustibil")
-                        .WithMany()
+                        .WithMany("OfertePF")
                         .HasForeignKey("TipCombustibilID");
+
+                    b.HasOne("RCA_Asigurari.Models.Varsta", null)
+                        .WithMany("OfertePF")
+                        .HasForeignKey("VarstaID");
 
                     b.Navigation("CategorieVehicul");
 
@@ -626,7 +448,7 @@ namespace RCA_Asigurari.Migrations
             modelBuilder.Entity("RCA_Asigurari.Models.OfertaPJ", b =>
                 {
                     b.HasOne("RCA_Asigurari.Models.CategorieVehicul", "CategorieVehicul")
-                        .WithMany()
+                        .WithMany("OfertePJ")
                         .HasForeignKey("CategorieVehiculID");
 
                     b.HasOne("RCA_Asigurari.Models.Client", "Client")
@@ -634,7 +456,7 @@ namespace RCA_Asigurari.Migrations
                         .HasForeignKey("ClientID");
 
                     b.HasOne("RCA_Asigurari.Models.TipCombustibil", "TipCombustibil")
-                        .WithMany()
+                        .WithMany("OfertePJ")
                         .HasForeignKey("TipCombustibilID");
 
                     b.HasOne("RCA_Asigurari.Models.TipSocietate", "TipSocietate")
@@ -688,18 +510,11 @@ namespace RCA_Asigurari.Migrations
                     b.Navigation("OfertaPJ");
                 });
 
-            modelBuilder.Entity("RCA_Asigurari.Models.PJ", b =>
-                {
-                    b.HasOne("RCA_Asigurari.Models.TipSocietate", "TipSocietate")
-                        .WithMany("PJs")
-                        .HasForeignKey("TipSocietateID");
-
-                    b.Navigation("TipSocietate");
-                });
-
             modelBuilder.Entity("RCA_Asigurari.Models.CategorieVehicul", b =>
                 {
-                    b.Navigation("Oferte");
+                    b.Navigation("OfertePF");
+
+                    b.Navigation("OfertePJ");
                 });
 
             modelBuilder.Entity("RCA_Asigurari.Models.Client", b =>
@@ -712,13 +527,6 @@ namespace RCA_Asigurari.Migrations
             modelBuilder.Entity("RCA_Asigurari.Models.Judet", b =>
                 {
                     b.Navigation("Clienti");
-
-                    b.Navigation("Localitati");
-                });
-
-            modelBuilder.Entity("RCA_Asigurari.Models.Localitate", b =>
-                {
-                    b.Navigation("Clienti");
                 });
 
             modelBuilder.Entity("RCA_Asigurari.Models.TipClient", b =>
@@ -728,14 +536,19 @@ namespace RCA_Asigurari.Migrations
 
             modelBuilder.Entity("RCA_Asigurari.Models.TipCombustibil", b =>
                 {
-                    b.Navigation("Oferte");
+                    b.Navigation("OfertePF");
+
+                    b.Navigation("OfertePJ");
                 });
 
             modelBuilder.Entity("RCA_Asigurari.Models.TipSocietate", b =>
                 {
                     b.Navigation("Clienti");
+                });
 
-                    b.Navigation("PJs");
+            modelBuilder.Entity("RCA_Asigurari.Models.Varsta", b =>
+                {
+                    b.Navigation("OfertePF");
                 });
 #pragma warning restore 612, 618
         }

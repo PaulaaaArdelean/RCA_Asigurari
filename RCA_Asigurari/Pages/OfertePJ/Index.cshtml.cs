@@ -26,6 +26,9 @@ namespace RCA_Asigurari.Pages.OfertePJ
 
         public async Task OnGetAsync(string searchString, bool? vizualizareDorite)
         {
+            ;
+
+
             CurrentFilter = searchString;
             var userEmail = User.Identity.Name;
             var ofertePJ = _context.OfertaPJ

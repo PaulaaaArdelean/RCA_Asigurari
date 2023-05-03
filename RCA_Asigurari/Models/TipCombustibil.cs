@@ -11,6 +11,8 @@ namespace RCA_Asigurari.Models
 
         public string TipulCombustibil { get; set; }
        //public ICollection<Vehicul>? Vehicule { get; set; }
-        public ICollection<Oferta>? Oferte { get; set; }
+        public ICollection<OfertaPF>? OfertePF { get; set; }
+        public ICollection<OfertaPJ>? OfertePJ { get; set; }
+
     }
 }

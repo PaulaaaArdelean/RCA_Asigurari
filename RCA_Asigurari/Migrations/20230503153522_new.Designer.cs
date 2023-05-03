@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RCA_Asigurari.Data;
 
@@ -11,9 +12,11 @@ using RCA_Asigurari.Data;
 namespace RCA_Asigurari.Migrations
 {
     [DbContext(typeof(RCA_AsigurariContext))]
-    partial class RCA_AsigurariContextModelSnapshot : ModelSnapshot
+    [Migration("20230503153522_new")]
+    partial class @new
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -187,7 +190,7 @@ namespace RCA_Asigurari.Migrations
                     b.Property<int?>("TipCombustibilID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Varsta")
+                    b.Property<int>("VarstaID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -197,6 +200,8 @@ namespace RCA_Asigurari.Migrations
                     b.HasIndex("ClientID");
 
                     b.HasIndex("TipCombustibilID");
+
+                    b.HasIndex("VarstaID");
 
                     b.ToTable("OfertaPF");
                 });
@@ -374,6 +379,22 @@ namespace RCA_Asigurari.Migrations
                     b.ToTable("TipSocietate");
                 });
 
+            modelBuilder.Entity("RCA_Asigurari.Models.Varsta", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("Varstaa")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Varste");
+                });
+
             modelBuilder.Entity("RCA_Asigurari.Models.Client", b =>
                 {
                     b.HasOne("RCA_Asigurari.Models.Judet", "Judet")
@@ -409,11 +430,19 @@ namespace RCA_Asigurari.Migrations
                         .WithMany("OfertePF")
                         .HasForeignKey("TipCombustibilID");
 
+                    b.HasOne("RCA_Asigurari.Models.Varsta", "Varsta")
+                        .WithMany("OfertePF")
+                        .HasForeignKey("VarstaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("CategorieVehicul");
 
                     b.Navigation("Client");
 
                     b.Navigation("TipCombustibil");
+
+                    b.Navigation("Varsta");
                 });
 
             modelBuilder.Entity("RCA_Asigurari.Models.OfertaPJ", b =>
@@ -515,6 +544,11 @@ namespace RCA_Asigurari.Migrations
             modelBuilder.Entity("RCA_Asigurari.Models.TipSocietate", b =>
                 {
                     b.Navigation("Clienti");
+                });
+
+            modelBuilder.Entity("RCA_Asigurari.Models.Varsta", b =>
+                {
+                    b.Navigation("OfertePF");
                 });
 #pragma warning restore 612, 618
         }

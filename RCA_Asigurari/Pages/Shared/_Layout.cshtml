@@ -60,110 +60,112 @@
       
     </style>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-color: #C47777 !important;">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index"><img align="center" src="~/imagini/logo.png" alt="Sigla" class="sigla" asp-append-version="true" /></a>
-                <a class="home-button" asp-area="" asp-page="/Index" style="color:white;"> HOME</a>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-color: #C47777 !important;">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index"><img align="center" src="~/imagini/logo.png" alt="Sigla" class="sigla" asp-append-version="true" /></a>
+            <a class="home-button" asp-area="" asp-page="/Index" style="color:white;"> HOME</a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="d-sm-inline-flex" style="width:1900px; justify-items:right">
-                    <div class="d-sm-inline-flex" style="float: left">
-                        @if (User.Identity.IsAuthenticated)
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="d-sm-inline-flex" style="width:1900px; justify-items:right">
+                <div class="d-sm-inline-flex" style="float: left">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
                         {
-                            if (User.IsInRole("Admin"))
-                            {
-                               <div>
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                                                    <i class="bi bi-list-columns-reverse">   Vezi liste </i>
-                                            </a>
-                                            <ul class="dropdown-menu dropdown-menu">
-                                                <li>  <a class="nav-link text-dark" asp-area="" asp-page="/OfertePF/Index"><i class="bi bi-coin"></i> Oferte persoane fizice </a></li>
-                                                <li>  <a class="nav-link text-dark" asp-area="" asp-page="/OfertePJ/Index"><i class="bi bi-coin"></i> Oferte persoane juridice </a></li>
-                                                <li>   <a class="nav-link text-dark" asp-area="" asp-page="/Clienti/Index"><i class="bi bi-people-fill"></i> Clienti</a>   </li>
-               
-                                            </ul>
-                                        </li>
+                            <div style="display: flex; align-items: center;justify-content: center;">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-list-columns-reverse">   Vezi liste </i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu" >
+                                            <li>  <a class="nav-link text-dark" asp-area="" asp-page="/OfertePF/Index"><i class="bi bi-coin"></i> Oferte persoane fizice </a></li>
+                                            <li>  <a class="nav-link text-dark" asp-area="" asp-page="/OfertePJ/Index"><i class="bi bi-coin"></i> Oferte persoane juridice </a></li>
+                                            <li>   <a class="nav-link text-dark" asp-area="" asp-page="/Clienti/Index"><i class="bi bi-people-fill"></i> Clienti</a>   </li>
 
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bi bi-pencil">Adauga</i>
-                                            </a>
-                                            <ul class="dropdown-menu dropdown-menu">
-                                   
-                                                <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Clienti/Create"><i class="bi bi-people-fill"></i> Clienti</a>  </li>
-                                    
-                                            </ul>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                    }}
-
-                      @if (User.Identity.IsAuthenticated)
-                        {
-                            if (User.IsInRole("PF"))
-                            {
-                                <div style="display: flex; align-items: center;justify-content: center;">
-                                        <ul class="navbar-nav">
-                                        <li class="nav-item" >
-                                            <a class="nav-link text-dark" asp-area="" asp-page="/OfertePF/Create"><i class="bi bi-pencil-square">Calculează-ți oferta!</i>  </a>
-                                         </li>
-                                        <li class="nav-item">
-                                             <a class="nav-link text-dark" asp-area="" asp-page="/OfertePF/Index"><i class="bi bi-pencil-square">Vezi ofertele tale!</i>  </a>
-
-                                            </li>
                                         </ul>
-                                    </div>
-                            }
-                        }
+                                    </li>
 
-                        @if (User.Identity.IsAuthenticated)
+                                </ul>
+                            </div>
+
+                            @*<div>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-pencil">Adauga</i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu">
+
+                                            <li>  <a class="nav-link text-dark" asp-area="" asp-page="/Clienti/Create"><i class="bi bi-people-fill"></i> Clienti</a>  </li>
+
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </div>*@
+
+                        }
+                    }
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("PF"))
                         {
-                            if (User.IsInRole("PJ"))
-                            {
-                                <div style="display: flex; align-items: center;justify-content: center;">
-                                    
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item" >
-                                            <a class="nav-link text-dark" asp-area="" asp-page="/OfertePJ/Create" style="width:170px; "><i class="bi bi-pencil-square">Calculează-ți oferta!</i>  </a>
-                                           </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-dark" asp-area="" asp-page="/OfertePJ/Index" style="width:150px;"><i class="bi bi-pencil-square">Vezi ofertele tale!</i>  </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            }
-                        }
-                   </div>
-                    <div style= "margin-left: 600px;">
-                        <partial name="_LoginPartial" />
-                   </div>
+                            <div style="display: flex; align-items: center;justify-content: center;">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/OfertePF/Create" style="width:170px;"><i class="bi bi-pencil-square">Calculează-ți oferta!</i>  </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/OfertePF/Index" style="width:150px;"><i class="bi bi-pencil-square">Vezi ofertele tale!</i>  </a>
 
-                  </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                    }
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("PJ"))
+                        {
+                            <div style="display: flex; align-items: center;justify-content: center;">
+
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/OfertePJ/Create" style="width:170px; "><i class="bi bi-pencil-square">Calculează-ți oferta!</i>  </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/OfertePJ/Index" style="width:150px;"><i class="bi bi-pencil-square">Vezi ofertele tale!</i>  </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                    }
                 </div>
-        </nav>
-    </header>
+                <div style="margin-left: 600px;">
+                    <partial name="_LoginPartial" />
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<body>
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
- 
 
+</body>
 
 
     <footer class="border-top footer text-muted position-fixed">
@@ -195,5 +197,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+
 </html>

@@ -47,7 +47,7 @@ namespace RCA_Asigurari.Pages.Clienti
                
                  .Include(c => c.TipClient)
                  .Include(c => c.Judet)
-                 .Include(c => c.Localitate)
+                 //.Include(c => c.Localitate)
 
                 // .Include(c => c.TipSocietate)
 

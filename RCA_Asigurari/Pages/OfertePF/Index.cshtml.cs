@@ -84,7 +84,6 @@ namespace RCA_Asigurari.Pages.OfertePF
                 {
                     var currentOferta = OfertaPF.ElementAt(i);
 
-                    //Aici verifica...Pt event urile din Db se seteaza valoarea pt Addedtofav ca sa seteze Add/Remove to fav
                     currentOferta.AdaugatOfertaDorita = oferteDorite.Where(x => x.ClientID == logedinClientId &&
                       x.OfertaPFID == currentOferta.ID
                     ).FirstOrDefault() != null;

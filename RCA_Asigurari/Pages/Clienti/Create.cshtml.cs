@@ -56,7 +56,7 @@ namespace RCA_Asigurari.Pages.Clienti
            
             ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "TipulSocietate");
             ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "Judetul");
-            ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
+          //  ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
 
             return Page();
         }

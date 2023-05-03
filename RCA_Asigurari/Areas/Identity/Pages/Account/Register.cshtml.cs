@@ -63,12 +63,12 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
         public Client Client { get; set; }
        
         
-        [BindProperty]
-        public PF PF { get; set; }
+        //[BindProperty]
+        //public PF PF { get; set; }
        
         
-        [BindProperty]
-        public PJ PJ { get; set; }
+        //[BindProperty]
+        //public PJ PJ { get; set; }
         //[BindProperty]
         //public AdresaClient AdresaClient { get; set; }
 
@@ -104,9 +104,9 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
 
 
 
-           
 
-            [Display(Name = "Numele")]
+
+            [Display(Name = "Numele proprietar")]
             [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
             [StringLength(30, MinimumLength = 3)]
             public string? NumeProprietar { get; set; }
@@ -120,15 +120,15 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             public Judet? Judet { get; set; }
 
 
-            [Display(Name = "Localitatea")]
-            public int LocalitateID { get; set; }
-            public Localitate? Localitate { get; set; }
+            //[Display(Name = "Localitatea")]
+            //public int LocalitateID { get; set; }
+            //public Localitate? Localitate { get; set; }
             //[Display(Name = "Judetul")]
             //public string Judet { get; set; }
             ////public Location? Location { get; set; }
 
-            //[Display(Name = "Localitatea")]
-            //public string Localitate { get; set; }
+            [Display(Name = "Localitatea")]
+            public string Localitate { get; set; }
 
 
             [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele strazii trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
@@ -202,7 +202,7 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             ViewData["TipClientID"] = new SelectList(_context.TipClient, "ID", "TipulClientului");
 
             ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "Judetul");
-            ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
+           // ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
 
 
             ReturnUrl = returnUrl;

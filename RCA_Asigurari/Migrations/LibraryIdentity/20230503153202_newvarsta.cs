@@ -5,7 +5,7 @@
 namespace RCA_Asigurari.Migrations.LibraryIdentity
 {
     /// <inheritdoc />
-    public partial class Identitate : Migration
+    public partial class newvarsta : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

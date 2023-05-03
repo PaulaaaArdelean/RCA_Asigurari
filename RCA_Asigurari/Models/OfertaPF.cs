@@ -44,7 +44,9 @@ namespace RCA_Asigurari.Models
         [RegularExpression("^[0-9]{6}$", ErrorMessage = "Numarul cartii de identitate trebuie sa contina 6 cifre")]
         public string NumarCI { get; set; }
 
+        [Display(Name = "Vârsta")]
         public int Varsta { get; set; }
+       
 
 
 
@@ -70,9 +72,11 @@ namespace RCA_Asigurari.Models
         [RegularExpression(@"^\(?([A-Z]{1})\)?([0-9]{6})$", ErrorMessage = "Seria CIV trebuie sa aiba forma A123456")]
 
         public string SerieCIV { get; set; }
+       
         [Display(Name = "Numar de locuri")]
         [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Numarul de locuri trebuie sa fie scris in cifre")]
         public int NrLocuri { get; set; }
+       
         [RegularExpression(@"^[0-9]{3,5}$", ErrorMessage = "Masa maxima este formata din 3, 4 sau 5 cifre")]
         [Display(Name = "Masa maxima")]
 
@@ -80,9 +84,12 @@ namespace RCA_Asigurari.Models
         [RegularExpression(@"^[0-9]{2,4}$", ErrorMessage = "Puterea trebuie sa fie scrisa din 2, 3 sau 4 cifre")]
         public int Putere { get; set; }
 
+        [Display(Name = "Categoria")]
+
         public int? CategorieVehiculID { get; set; }
         public CategorieVehicul? CategorieVehicul { get; set; }
         public int? TipCombustibilID { get; set; }
+        
         [Display(Name = "Tipul de combustibil")]
         public TipCombustibil? TipCombustibil { get; set; }
 
@@ -90,7 +97,7 @@ namespace RCA_Asigurari.Models
         [NotMapped]
         public bool AdaugatOfertaDorita { get; set; }
 
-        //public DateTime PFCreatedAt { get; set; }
+        public DateTime PFCreatedAt { get; set; }
 
     }
 }

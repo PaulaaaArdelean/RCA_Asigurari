@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RCA_Asigurari.Migrations.LibraryIdentity
 {
     /// <inheritdoc />
-    public partial class CreateIdentity : Migration
+    public partial class totidentity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

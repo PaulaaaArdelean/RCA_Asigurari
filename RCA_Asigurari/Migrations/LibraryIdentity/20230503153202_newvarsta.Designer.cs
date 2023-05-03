@@ -12,8 +12,8 @@ using RCA_Asigurari.Data;
 namespace RCA_Asigurari.Migrations.LibraryIdentity
 {
     [DbContext(typeof(LibraryIdentityContext))]
-    [Migration("20230424112359_locationregister")]
-    partial class locationregister
+    [Migration("20230503153202_newvarsta")]
+    partial class newvarsta
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

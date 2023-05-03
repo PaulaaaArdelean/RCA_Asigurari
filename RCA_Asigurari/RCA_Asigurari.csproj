@@ -38,8 +38,13 @@
     <Compile Remove="Models\AssignedOptionalData.cs" />
     <Compile Remove="Models\AtributOptional.cs" />
     <Compile Remove="Models\AtributOptionalOferta.cs" />
+    <Compile Remove="Models\Localitate.cs" />
+    <Compile Remove="Models\Oferta.cs" />
     <Compile Remove="Models\OfertaData.cs" />
     <Compile Remove="Models\OferteOptionalPageModel.cs" />
+    <Compile Remove="Models\PF.cs" />
+    <Compile Remove="Models\PJ.cs" />
+    <Compile Remove="Models\Varsta.cs" />
     <Compile Remove="Models\Vehicul.cs" />
   </ItemGroup>
 
@@ -52,6 +57,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\LibraryIdentity\" />
   </ItemGroup>
 
 </Project>

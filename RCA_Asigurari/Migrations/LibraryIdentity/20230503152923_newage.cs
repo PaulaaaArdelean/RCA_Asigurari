@@ -5,7 +5,7 @@
 namespace RCA_Asigurari.Migrations.LibraryIdentity
 {
     /// <inheritdoc />
-    public partial class locationregister : Migration
+    public partial class newage : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

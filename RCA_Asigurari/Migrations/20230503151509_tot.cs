@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RCA_Asigurari.Migrations
 {
     /// <inheritdoc />
-    public partial class Tot : Migration
+    public partial class tot : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,24 +35,6 @@ namespace RCA_Asigurari.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Judet", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PF",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CNP = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NumeProprietar = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    PrenumeProprietar = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    SerieCI = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NumarCI = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Varsta = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PF", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -95,45 +77,16 @@ namespace RCA_Asigurari.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Localitate",
+                name: "Varste",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Localitatea = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    JudetID = table.Column<int>(type: "int", nullable: true)
+                    Varstaa = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Localitate", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Localitate_Judet_JudetID",
-                        column: x => x.JudetID,
-                        principalTable: "Judet",
-                        principalColumn: "ID");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PJ",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CUI = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TipSocietateID = table.Column<int>(type: "int", nullable: true),
-                    ActivitateSocietate = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NumeFirma = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    NumeReprezentantFirma = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    PrenumeReprezentantFirma = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PJ", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_PJ_TipSocietate_TipSocietateID",
-                        column: x => x.TipSocietateID,
-                        principalTable: "TipSocietate",
-                        principalColumn: "ID");
+                    table.PrimaryKey("PK_Varste", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -144,7 +97,7 @@ namespace RCA_Asigurari.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NumeProprietar = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     JudetID = table.Column<int>(type: "int", nullable: false),
-                    LocalitateID = table.Column<int>(type: "int", nullable: false),
+                    Localitate = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Strada = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Numar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CodPostal = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -164,12 +117,6 @@ namespace RCA_Asigurari.Migrations
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Client_Localitate_LocalitateID",
-                        column: x => x.LocalitateID,
-                        principalTable: "Localitate",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Client_TipClient_TipClientID",
                         column: x => x.TipClientID,
                         principalTable: "TipClient",
@@ -178,47 +125,6 @@ namespace RCA_Asigurari.Migrations
                         name: "FK_Client_TipSocietate_TipSocietateID",
                         column: x => x.TipSocietateID,
                         principalTable: "TipSocietate",
-                        principalColumn: "ID");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Oferta",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientID = table.Column<int>(type: "int", nullable: true),
-                    NumarIdentificare = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NrInmatriculare = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Marca = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AnFabricatie = table.Column<int>(type: "int", nullable: false),
-                    CapacitateCilindrica = table.Column<int>(type: "int", nullable: false),
-                    SerieCIV = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NrLocuri = table.Column<int>(type: "int", nullable: false),
-                    MasaMaxima = table.Column<int>(type: "int", nullable: false),
-                    Putere = table.Column<int>(type: "int", nullable: false),
-                    CategorieVehiculID = table.Column<int>(type: "int", nullable: true),
-                    TipCombustibilID = table.Column<int>(type: "int", nullable: true),
-                    Pret = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Oferta", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Oferta_CategorieVehicul_CategorieVehiculID",
-                        column: x => x.CategorieVehiculID,
-                        principalTable: "CategorieVehicul",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "FK_Oferta_Client_ClientID",
-                        column: x => x.ClientID,
-                        principalTable: "Client",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "FK_Oferta_TipCombustibil_TipCombustibilID",
-                        column: x => x.TipCombustibilID,
-                        principalTable: "TipCombustibil",
                         principalColumn: "ID");
                 });
 
@@ -245,7 +151,9 @@ namespace RCA_Asigurari.Migrations
                     Putere = table.Column<int>(type: "int", nullable: false),
                     CategorieVehiculID = table.Column<int>(type: "int", nullable: true),
                     TipCombustibilID = table.Column<int>(type: "int", nullable: true),
-                    Pret = table.Column<int>(type: "int", nullable: true)
+                    Pret = table.Column<int>(type: "int", nullable: true),
+                    PFCreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    VarstaID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -264,6 +172,11 @@ namespace RCA_Asigurari.Migrations
                         name: "FK_OfertaPF_TipCombustibil_TipCombustibilID",
                         column: x => x.TipCombustibilID,
                         principalTable: "TipCombustibil",
+                        principalColumn: "ID");
+                    table.ForeignKey(
+                        name: "FK_OfertaPF_Varste_VarstaID",
+                        column: x => x.VarstaID,
+                        principalTable: "Varste",
                         principalColumn: "ID");
                 });
 
@@ -373,11 +286,6 @@ namespace RCA_Asigurari.Migrations
                 column: "JudetID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Client_LocalitateID",
-                table: "Client",
-                column: "LocalitateID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Client_TipClientID",
                 table: "Client",
                 column: "TipClientID");
@@ -386,26 +294,6 @@ namespace RCA_Asigurari.Migrations
                 name: "IX_Client_TipSocietateID",
                 table: "Client",
                 column: "TipSocietateID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Localitate_JudetID",
-                table: "Localitate",
-                column: "JudetID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Oferta_CategorieVehiculID",
-                table: "Oferta",
-                column: "CategorieVehiculID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Oferta_ClientID",
-                table: "Oferta",
-                column: "ClientID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Oferta_TipCombustibilID",
-                table: "Oferta",
-                column: "TipCombustibilID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OfertaPF_CategorieVehiculID",
@@ -421,6 +309,11 @@ namespace RCA_Asigurari.Migrations
                 name: "IX_OfertaPF_TipCombustibilID",
                 table: "OfertaPF",
                 column: "TipCombustibilID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OfertaPF_VarstaID",
+                table: "OfertaPF",
+                column: "VarstaID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OfertaPFDorita_OfertaPFID",
@@ -451,19 +344,11 @@ namespace RCA_Asigurari.Migrations
                 name: "IX_OfertaPJDorita_OfertaPJID",
                 table: "OfertaPJDorita",
                 column: "OfertaPJID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PJ_TipSocietateID",
-                table: "PJ",
-                column: "TipSocietateID");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Oferta");
-
             migrationBuilder.DropTable(
                 name: "OfertaPFDorita");
 
@@ -471,16 +356,13 @@ namespace RCA_Asigurari.Migrations
                 name: "OfertaPJDorita");
 
             migrationBuilder.DropTable(
-                name: "PF");
-
-            migrationBuilder.DropTable(
-                name: "PJ");
-
-            migrationBuilder.DropTable(
                 name: "OfertaPF");
 
             migrationBuilder.DropTable(
                 name: "OfertaPJ");
+
+            migrationBuilder.DropTable(
+                name: "Varste");
 
             migrationBuilder.DropTable(
                 name: "CategorieVehicul");
@@ -492,16 +374,13 @@ namespace RCA_Asigurari.Migrations
                 name: "TipCombustibil");
 
             migrationBuilder.DropTable(
-                name: "Localitate");
+                name: "Judet");
 
             migrationBuilder.DropTable(
                 name: "TipClient");
 
             migrationBuilder.DropTable(
                 name: "TipSocietate");
-
-            migrationBuilder.DropTable(
-                name: "Judet");
         }
     }
 }

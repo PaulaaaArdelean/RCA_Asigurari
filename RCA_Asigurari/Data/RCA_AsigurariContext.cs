@@ -27,15 +27,14 @@ namespace RCA_Asigurari.Data
 
         public DbSet<RCA_Asigurari.Models.Client>? Client { get; set; }
 
-        public DbSet<RCA_Asigurari.Models.Oferta>? Oferta { get; set; }
+       // public DbSet<RCA_Asigurari.Models.Oferta>? Oferta { get; set; }
 
 //public DbSet<RCA_Asigurari.Models.AtributOptional>? AtributOptional { get; set; }
 
         //public DbSet<RCA_Asigurari.Models.Vehicul>? Vehicul { get; set; }
 
         //public DbSet<RCA_Asigurari.Models.AdresaClient>? AdresaClient { get; set; }
-        public DbSet<RCA_Asigurari.Models.PF>? PF { get; set; }
-        public DbSet<RCA_Asigurari.Models.PJ>? PJ { get; set; }
+       
         public DbSet<RCA_Asigurari.Models.TipClient>? TipClient { get; set; }
         public DbSet<RCA_Asigurari.Models.OfertaPF>? OfertaPF { get; set; }
         public DbSet<RCA_Asigurari.Models.OfertaPJ>? OfertaPJ { get; set; }
@@ -52,7 +51,6 @@ namespace RCA_Asigurari.Data
                 .HasKey(c => new { c.ClientID, c.OfertaPJID });
         }
         public DbSet<RCA_Asigurari.Models.Judet>? Judet { get; set; }
-        public DbSet<RCA_Asigurari.Models.Localitate>? Localitate { get; set; }
 
         }
 }

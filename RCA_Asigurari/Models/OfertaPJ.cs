@@ -25,6 +25,7 @@ namespace RCA_Asigurari.Models
         //[StringLength(30, MinimumLength = 3)]
         //public string NumeFirma { get; set; }
 
+      
 
         [Display(Name = "Numele reprezentantului")]
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
