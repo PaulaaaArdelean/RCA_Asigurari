@@ -33,7 +33,7 @@ namespace RCA_Asigurari.Pages.OfertePJ
                 return NotFound();
             }
 
-            var ofertapj = await _context.OfertaPJ.FirstOrDefaultAsync(m => m.ID == id);
+            var ofertapj = await _context.OfertaPJ.Include(o => o.Client).FirstOrDefaultAsync(m => m.ID == id);
 
             if (ofertapj == null)
             {

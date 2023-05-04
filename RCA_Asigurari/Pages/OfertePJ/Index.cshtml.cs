@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RCA_Asigurari.Data;
 using RCA_Asigurari.Migrations;
@@ -20,6 +21,17 @@ namespace RCA_Asigurari.Pages.OfertePJ
         {
             _context = context;
         }
+
+
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; }
+
+        public SelectList? Cautare { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string? CautareOfertaPJ { get; set; }
+
+
 
         public IList<OfertaPJ> OfertaPJ { get; set; } = default!;
         public String CurrentFilter { get; set; }
@@ -58,26 +70,42 @@ namespace RCA_Asigurari.Pages.OfertePJ
                 {
                     ofertePJ = ofertePJ.Where(ofertapersjuridica => ofertapersjuridica.Client.Email == userEmail);
                 }
-
-
-                if (!String.IsNullOrEmpty(searchString))
+                if (!String.IsNullOrEmpty(SearchString))
                 {
-
-                    ofertePJ = ofertePJ.Where(s => s.Client.NumeProprietar.Contains(searchString)
-                     || s.CUI.Contains(searchString)
-                   || s.NumeIntregReprezentant.Contains(searchString)
-                   || s.TipSocietate.TipulSocietate.Contains(searchString)
-                   || s.ActivitateSocietate.Contains(searchString)
-                   || s.NumarIdentificare.Contains(searchString)
-                   || s.Marca.Contains(searchString)
-                   || s.CategorieVehicul.CategoriaVehicul.Contains(searchString)
-                   || s.TipCombustibil.TipulCombustibil.Contains(searchString)
-                   || s.SerieCIV.Contains(searchString)
-                   || s.AnFabricatie.ToString().Contains(searchString)
-                   || s.Model.Contains(searchString)
-                   || s.NumarIdentificare.Contains(searchString));
-
+                    ofertePJ = ofertePJ.Where(s => s.Client.NumeProprietar.Contains(SearchString)
+                         || s.CUI.Contains(searchString)
+                       || s.NumeIntregReprezentant.Contains(searchString)
+                       || s.TipSocietate.TipulSocietate.Contains(searchString)
+                       || s.ActivitateSocietate.Contains(searchString)
+                       || s.NumarIdentificare.Contains(searchString)
+                       || s.Marca.Contains(searchString)
+                       || s.CategorieVehicul.CategoriaVehicul.Contains(searchString)
+                       || s.TipCombustibil.TipulCombustibil.Contains(searchString)
+                       || s.SerieCIV.Contains(searchString)
+                       || s.AnFabricatie.ToString().Contains(searchString)
+                       || s.Model.Contains(searchString)
+                       || s.NumarIdentificare.Contains(searchString)
+                    );
                 }
+
+                //if (!String.IsNullOrEmpty(searchString))
+                //{
+
+                //    ofertePJ = ofertePJ.Where(s => s.Client.NumeProprietar.Contains(searchString)
+                //     || s.CUI.Contains(searchString)
+                //   || s.NumeIntregReprezentant.Contains(searchString)
+                //   || s.TipSocietate.TipulSocietate.Contains(searchString)
+                //   || s.ActivitateSocietate.Contains(searchString)
+                //   || s.NumarIdentificare.Contains(searchString)
+                //   || s.Marca.Contains(searchString)
+                //   || s.CategorieVehicul.CategoriaVehicul.Contains(searchString)
+                //   || s.TipCombustibil.TipulCombustibil.Contains(searchString)
+                //   || s.SerieCIV.Contains(searchString)
+                //   || s.AnFabricatie.ToString().Contains(searchString)
+                //   || s.Model.Contains(searchString)
+                //   || s.NumarIdentificare.Contains(searchString));
+
+                //}
                 OfertaPJ = await ofertePJ.ToListAsync();
                 var oferteDorite = _context.OfertaPJDorita.Where(x => x.ClientID == logedinClientId).ToList();
 

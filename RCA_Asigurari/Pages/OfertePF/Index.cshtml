@@ -5,7 +5,14 @@
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
-
+<style>
+    .edit-delete-details {
+        margin-left: 70%;
+        font-size: x-large;
+        margin-top: 10%;
+    }
+</style>
+@*
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
@@ -15,6 +22,20 @@
             <a asp-page="./Index" style="text-decoration:none">   <i class="bi bi-skip-backward-fill"> Înapoi la oferte</i>  </a>
         </p>
     </div>
+</form>*@
+<a asp-page="./Index" style="text-decoration:none">  <i class="bi bi-eye">Vezi toate ofertele</i> </a>
+
+<form>
+
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Căutați o ofertă:" asp-for="SearchString">
+        </div>
+        <div class="col">
+            <button class="btn btn-outline-dark" type="submit">Caută!</button>
+        </div>
+    </div>
+
 </form>
 <p>
     @*@if (User.IsInRole("PF"))
@@ -52,25 +73,27 @@
                 <p><strong>Capacitate cilindrică:</strong> @Html.DisplayFor(modelItem => item.CapacitateCilindrica)</p>
                 <p><strong>Serie CIV:</strong> @Html.DisplayFor(modelItem => item.SerieCIV)</p>
                 <p><strong>Număr de locuri:</strong> @Html.DisplayFor(modelItem => item.NrLocuri)</p>
-                <p><strong>Masă maximă:</strong> @Html.DisplayFor(modelItem => item.MasaMaxima)</p>
+                
             </div>
             <div class="col-md-4">
+                <p><strong>Masă maximă:</strong> @Html.DisplayFor(modelItem => item.MasaMaxima)</p>
                 <p><strong>Putere:</strong> @Html.DisplayFor(modelItem => item.Putere)</p>
                 <p><strong>Categorie:</strong> @Html.DisplayFor(modelItem => item.CategorieVehicul.CategoriaVehicul)</p>
                 <p><strong>Tip Combustibil:</strong> @Html.DisplayFor(modelItem => item.TipCombustibil.TipulCombustibil)</p>
-                <div style="border-style: inset;">
+                <br>
+                <div style="border-style: inset; text-align:center;">
                     <strong>Prima de asigurare pentru polița dumneavoastră este: </strong>
                     <h4 style="color:#C47777;">@Html.DisplayFor(modelItem => item.Pret) LEI </h4>
                 </div>
                 
 
-                <p>
-                    @if (User.IsInRole("Admin"))
+                
+                   <div class="edit-delete-details">
+                    @if (User.IsInRole("PF"))
                     {
                         <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"></i></a>
 
                     }
-                    <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"></i></a>
 
                     @if (User.IsInRole("Admin"))
                     {
@@ -78,7 +101,7 @@
 
                     } @if (User.IsInRole("Admin"))
                     {
-                        <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
+                        <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" ></i></a>
 
                     }
                     @if (User.IsInRole("PF"))
@@ -97,184 +120,15 @@
                             }
                         </form>
                     }
+                   </div>
+
+                   
                     
             </div>
         </div>
     </div>
 }
-@*<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].Client)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].CNP)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].SerieCI)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].NumarCI)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].Varsta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].NumarIdentificare)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].NrInmatriculare)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].Marca)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].AnFabricatie)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].CapacitateCilindrica)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].SerieCIV)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].NrLocuri)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].MasaMaxima)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].Putere)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].CategorieVehicul)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].TipCombustibil)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfertaPF[0].Pret)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.OfertaPF) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Client.NumeProprietar)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CNP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SerieCI)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumarCI)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Varsta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumarIdentificare)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NrInmatriculare)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Marca)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnFabricatie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CapacitateCilindrica)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SerieCIV)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NrLocuri)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MasaMaxima)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Putere)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategorieVehicul.CategoriaVehicul)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipCombustibil.TipulCombustibil)
-            </td>
-            <td>
-                    <strong>
-                        @Html.DisplayFor(modelItem => item.Pret) Lei
-                    </strong>
-            </td>
-              
-
-                <div class="modal" tabindex="-1" role="dialog" id="deleteModal">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Oferta</h5>
-                            </div>
-                            <div class="modal-body">
-                                Pretul politei dumneavoastra este @Html.DisplayFor(modelItem => item.Pret) LEI!
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="deleteCancelBtn">Renunta</button>
-                                <button type="button" class="btn btn-danger" id="deleteConfirmBtn">Continua</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            <td>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"></i></a>
-
-                    }
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a>
-
-                    } @if (User.IsInRole("Admin"))
-                    {
-                        <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
-
-                    }
-                    <form method="post">
-                        <input type="hidden" name="OfertaPFID" value="@item.ID" />
-                        <input type="hidden" name="EsteAdaugatLaDorite" value="@item.AdaugatOfertaDorita.ToString()" />
-                        @if (item.AdaugatOfertaDorita == true)
-                        {
-                            <i class="bi bi-x-circle-fill"></i> <input type="submit" value="Nu ma mai intereseaza" class="btn btn-primary" style="background-color:#57424f; border-color:#d8cfd4; width:170px; margin:10px auto 0; border-radius:50px">
-                        }
-                        else
-                        {
-                            <i class="bi bi-chat-square-heart-fill"></i> <input type="submit" value="Ma intereseaza" class="btn btn-primary" style="background-color:#beafb8; border-color:#d8cfd4; width:120px; margin:10px auto 0; border-radius:50px">
-
-                        }
-                    </form>
-                </td>
-        </tr>
-}
-    </tbody>
-</table>
-*@
-
+@*
 <script>
     function confirmDelete() {
         // arata modalul
@@ -293,4 +147,4 @@
 
         return false; // nu se submite formularul inca
     }
-</script>
+</script>*@

@@ -99,5 +99,9 @@ namespace RCA_Asigurari.Models
 
         public DateTime PFCreatedAt { get; set; }
 
+        public OfertaPF()
+        {
+            PFCreatedAt = DateTime.Now;
+        }
     }
 }

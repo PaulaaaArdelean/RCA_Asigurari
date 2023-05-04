@@ -90,5 +90,10 @@ namespace RCA_Asigurari.Models
         public bool AdaugatOfertaDorita { get; set; }
         public DateTime PJCreatedAt { get; set; }
 
+        public OfertaPJ()
+        {
+            PJCreatedAt = DateTime.Now;
+        }
+
     }
 }

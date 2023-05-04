@@ -7,9 +7,19 @@
 
 <h1><i class="bi bi-people-fill"></i>   Clienti</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+<form>
+
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Search by Food Name or Category:" asp-for="SearchString">
+        </div>
+        <div class="col">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+        </div>
+    </div>
+
+</form>
+
 <table class="table">
     <thead>
         <tr>
