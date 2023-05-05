@@ -20,7 +20,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using RCA_Asigurari.Migrations;
 using RCA_Asigurari.Models;
 
 namespace RCA_Asigurari.Areas.Identity.Pages.Account
@@ -55,23 +54,13 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
-        [BindProperty]
-        public string? RadioButtonClient { get; set; }
-        public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
+        //[BindProperty]
+        //public string? RadioButtonClient { get; set; }
+        //public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
 
         [BindProperty]
         public Client Client { get; set; }
        
-        
-        //[BindProperty]
-        //public PF PF { get; set; }
-       
-        
-        //[BindProperty]
-        //public PJ PJ { get; set; }
-        //[BindProperty]
-        //public AdresaClient AdresaClient { get; set; }
-
         [BindProperty]
         public InputModel Input { get; set; }
 
@@ -97,55 +86,48 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Display(Name = "Tipul de client: ")]
-            [BindProperty]
-            public string? RadioButtonClient { get; set; }
-            public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
+            //[Display(Name = "Tipul de client: ")]
+            //[BindProperty]
+            //public string? RadioButtonClient { get; set; }
+            //public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
 
 
 
 
-
-            [Display(Name = "Numele proprietar")]
-            [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
+            [Display(Name = "Numele si prenumele proprietarului")]
+            [RegularExpression(@"^[A-ZĂÂÎȘȚăâîșț]+[a-zA-ZĂÂÎȘȚăâîșț\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
             [StringLength(30, MinimumLength = 3)]
-            public string? NumeProprietar { get; set; }
+            public string NumeProprietar { get; set; }
 
-            [Display(Name = "Tipul clientului")]
-            public int? TipClientID { get; set; }
-            public TipClient? TipClient { get; set; }
-
-            [Display(Name = "Judetul")]
+            [Display(Name = "Judet")]
             public int JudetID { get; set; }
             public Judet? Judet { get; set; }
 
 
-            //[Display(Name = "Localitatea")]
-            //public int LocalitateID { get; set; }
-            //public Localitate? Localitate { get; set; }
-            //[Display(Name = "Judetul")]
-            //public string Judet { get; set; }
-            ////public Location? Location { get; set; }
-
-            [Display(Name = "Localitatea")]
+            [Display(Name = "Localitate")]
+            [RegularExpression(@"^[A-ZĂÂÎȘȚăâîșț]+[a-zA-ZĂÂÎȘȚăâîșț\s-]*$", ErrorMessage = "Numele localității trebuie să înceapă cu majusculă și să aibă minim 2 caractere")]
             public string Localitate { get; set; }
 
-
-            [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele strazii trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
+            [RegularExpression(@"^[A-ZĂÂÎȘȚăâîșț]+[a-zA-ZĂÂÎȘȚăâîșț\s-]*$", ErrorMessage = "Numele strazii trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
             [StringLength(30, MinimumLength = 2)]
-            [Required]
-
             public string Strada { get; set; }
+
+
             public string Numar { get; set; }
 
 
-            [Display(Name = "Codul postal")]
+            [Display(Name = "Cod postal")]
             [RegularExpression("^[0-9]{6}$", ErrorMessage = "Codul postal trebuie sa contina 6 cifre")]
             public string CodPostal { get; set; }
 
-            [Required]
             [RegularExpression(@"^\(?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$", ErrorMessage = "Telefonul trebuie sa fie de forma '0722-123-123' sau '0722.123.123' sau '0722 123 123'")]
             public string Telefon { get; set; }
+
+           
+            [Display(Name = "Tipul clientului")]
+            public int? TipClientID { get; set; }
+            public TipClient? TipClient { get; set; }
+
 
             [Required]
             [EmailAddress]
@@ -159,16 +141,17 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Parola")]
             public string Password { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            [Required(ErrorMessage = "Campul este obligatoriu!")]
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Confirma parola")]
+            [Compare("Password", ErrorMessage = "Parolele introduse de dumneavoastră nu coincid. Încercați din nou.")]
             public string ConfirmPassword { get; set; }
         }
        
@@ -197,19 +180,18 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             //    .ThenBy(l => l.Text)
             //    .ToList();
 
-            ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "TipulSocietate");
-           
-            ViewData["TipClientID"] = new SelectList(_context.TipClient, "ID", "TipulClientului");
-
-            ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "Judetul");
-           // ViewData["LocalitateID"] = new SelectList(_context.Localitate, "ID", "Localitatea");
-
+            
 
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            ViewData["TipSocietateID"] = new SelectList(_context.TipSocietate, "ID", "TipulSocietate");
+
+            ViewData["TipClientID"] = new SelectList(_context.TipClient, "ID", "TipulClientului");
+
+            ViewData["JudetID"] = new SelectList(_context.Judet, "ID", "Judetul");
+
         }
-        //public IList<SelectListItem> Judete { get; set; }
-        //public IList<SelectListItem> Localitati { get; set; }
+     
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {//if pf sau pj si insereaza in tabela aferenta
 
@@ -224,7 +206,17 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
            CancellationToken.None);
             await _emailStore.SetEmailAsync(user, Input.Email,
            CancellationToken.None);
+
+            if (Input.Password == null)
+            {
+                ModelState.AddModelError(string.Empty, "Parola este obligatorie!");
+                return Page();
+            }
+
             var result = await _userManager.CreateAsync(user, Input.Password);
+
+
+            //var result = await _userManager.CreateAsync(user, Input.Password);
 
             
 
@@ -237,19 +229,10 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             Client.Numar = Input.Numar;
             Client.CodPostal = Input.CodPostal;
             Client.Telefon = Input.Telefon;
-           
-            //AdresaClient.Email = Input.Email;
-            //AdresaClient.Judet = Input.Judet;
-            //AdresaClient.Localitate = Input.Localitate;
-            //AdresaClient.Strada = Input.Strada;
-            //AdresaClient.Numar = Input.Numar;
-            //AdresaClient.CodPostal = Input.CodPostal;
-            //AdresaClient.Telefon = Input.Telefon;
-
+       
             _context.Client.Add(Client);
-           // _context.AdresaClient.Add(AdresaClient);
+          await _context.SaveChangesAsync();
 
-            await _context.SaveChangesAsync();
             if (result.Succeeded)
             {
                 _logger.LogInformation("User created a new account with  password.");
@@ -267,10 +250,8 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
 
                 //var role = await _userManager.AddToRoleAsync(user, "User");
                 var userId = await _userManager.GetUserIdAsync(user);
-                var code = await
-               _userManager.GenerateEmailConfirmationTokenAsync(user);
-                code =
-               WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                 var callbackUrl = Url.Page(
                 "/Account/ConfirmEmail",
                pageHandler: null,
@@ -283,13 +264,13 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
                },
                 protocol: Request.Scheme);
                 await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-               
+
                 $"Please confirm your account by <a  href = '{HtmlEncoder.Default.Encode(callbackUrl)}' > clicking here </ a >.");
-           
 
 
- if
-(_userManager.Options.SignIn.RequireConfirmedAccount)
+
+                if
+               (_userManager.Options.SignIn.RequireConfirmedAccount)
                 {
                     return RedirectToPage("RegisterConfirmation", new
                     {
@@ -302,13 +283,14 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
                     await _signInManager.SignInAsync(user,
                    isPersistent: false);
                     return LocalRedirect(returnUrl);
-                }
+                } }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty,
                    error.Description);
                 }
-            }
+          
             return Page();
 
         }

@@ -7,7 +7,7 @@ namespace RCA_Asigurari.Models
     {
         public int ID { get; set; }
         [Display(Name = "Numele si prenumele proprietarului")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
+        [RegularExpression(@"^[A-ZĂÂÎȘȚăâîșț]+[a-zA-ZĂÂÎȘȚăâîșț\s-]*$", ErrorMessage = "Numele trebuie sa aiba minim 3 caractere, sa inceapa cu majuscula si poate contine doar litere")]
         [StringLength(30, MinimumLength = 3)]
         public string NumeProprietar { get; set; }
         [Display(Name = "Judet")]
@@ -16,12 +16,10 @@ namespace RCA_Asigurari.Models
 
 
         [Display(Name = "Localitate")]
-        //public int LocalitateID { get; set; }
-        //public Localitate? Localitate { get; set; }
-        //public string Judet { get; set; }
+        [RegularExpression(@"^[A-ZĂÂÎȘȚăâîșț]+[a-zA-ZĂÂÎȘȚăâîșț\s-]*$", ErrorMessage = "Numele localității trebuie să înceapă cu majusculă și să aibă minim 2 caractere")]
         public string Localitate { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Numele strazii trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
+        [RegularExpression(@"^[A-ZĂÂÎȘȚăâîșț]+[a-zA-ZĂÂÎȘȚăâîșț\s-]*$", ErrorMessage = "Numele strazii trebuie sa inceapa cu majuscula si sa aiba minim 2 caractere")]
         [StringLength(30, MinimumLength = 2)]
         public string Strada { get; set; }
 

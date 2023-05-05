@@ -48,14 +48,16 @@
         .home-button{
             text-decoration:none;
             font-weight: bold; 
-            font-family: Calibri;
             color: white;
+            font-family: auto;
+            font-size: x-large;
 
         }
-       .home-button: hover{
-                color: black !important;
-/*               background-color: white;
-*/            }
+       .home-button:hover{
+               /* color: black !important;*/
+               background-color: white;
+          
+            }
 
       
     </style>
@@ -64,7 +66,7 @@
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-color: #C47777 !important;">
         <div class="container">
             <a class="navbar-brand" asp-area="" asp-page="/Index"><img align="center" src="~/imagini/logo.png" alt="Sigla" class="sigla" asp-append-version="true" /></a>
-            <a class="home-button" asp-area="" asp-page="/Index" style="color:white;"> HOME</a>
+            <a class="home-button" asp-area="" asp-page="/Index"> Acasă </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -170,19 +172,19 @@
 
     <footer class="border-top footer text-muted position-fixed">
         <div style="display: grid; grid-template-columns:  1fr 1fr 1fr 1fr">
-            <div style="color:white">
+            <div style="color:white; margin-left:20px">
                           &copy; 2023 - RCA_Asigurari |
             </div>
+        <div >
+            <a asp-area="" asp-page="/Privacy" class="footer-item" ><i class="bi bi-shield-fill-exclamation"></i>   Termenii și condițiile </a>
+
+        </div>
             <div>
-                <a asp-area="" asp-page="/Privacy" class="footer-item"><i class="bi bi-shield-fill-exclamation"></i>   Politica site-ului</a>   
+                <a asp-area="" asp-page="/ContactUs" class="footer-item"><i class="bi bi-chat-text-fill"></i>   Contact </a>   
 
             </div>
             <div>
-                <a asp-area="" asp-page="/ContactUs" class="footer-item"><i class="bi bi-chat-text-fill"></i>   Contact</a>   
-
-            </div>
-            <div>
-                <a asp-area="" asp-page="/About" class="footer-item"><i class="bi bi-info-circle-fill"></i>   Despre</a>
+                <a asp-area="" asp-page="/About" class="footer-item"><i class="bi bi-info-circle-fill"></i>   Despre noi </a>
 
             </div>
     </footer>

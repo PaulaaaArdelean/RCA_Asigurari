@@ -68,7 +68,7 @@ namespace RCA_Asigurari.Models
         [RegularExpression(@"^\(?([A-Z]{1})\)?([0-9]{6})$", ErrorMessage = "Seria CIV trebuie sa aiba forma A123456")]
 
         public string SerieCIV { get; set; }
-        [Display(Name = "Numar de locuri")]
+        [Display(Name = "Număr de locuri")]
         [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Numarul de locuri trebuie sa fie scris in cifre")]
         public int NrLocuri { get; set; }
         [RegularExpression(@"^[0-9]{3,5}$", ErrorMessage = "Masa maxima este formata din 3, 4 sau 5 cifre")]

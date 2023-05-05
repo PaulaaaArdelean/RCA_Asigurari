@@ -44,7 +44,7 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
 
             code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
             var result = await _userManager.ConfirmEmailAsync(user, code);
-            StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.";
+            StatusMessage = result.Succeeded ? "Mulțumim pentru confirmare! Contul dumneavoastră a fost creat cu succes." : "Ne cerem scuze! A apărut o eroare. Vă rugăm să încercați din nou.";
             return Page();
         }
     }
