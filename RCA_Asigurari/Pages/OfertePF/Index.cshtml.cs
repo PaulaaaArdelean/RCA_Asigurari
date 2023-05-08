@@ -33,8 +33,6 @@ namespace RCA_Asigurari.Pages.OfertePF
         public string? CautareOfertaPF { get; set; }
 
 
-
-
         public IList<OfertaPF> OfertaPF { get; set; } = default!;
         public String CurrentFilter { get; set; }
         public async Task OnGetAsync(string searchString, bool? vizualizareDorite)
@@ -85,25 +83,7 @@ namespace RCA_Asigurari.Pages.OfertePF
                        || s.NumarIdentificare.Contains(searchString)
                     );
                 }
-                //if (!String.IsNullOrEmpty(searchString))
-                //{
-
-                //    ofertePF = ofertePF.Where(s => s.Client.NumeProprietar.Contains(searchString)
-                //   || s.CNP.Contains(searchString)         
-                //   || s.SerieCI.Contains(searchString)
-                //   || s.NumarCI.Contains(searchString)
-                //   || s.NrInmatriculare.Contains(searchString)
-                //   || s.NumarIdentificare.Contains(searchString)
-                //   || s.Marca.Contains(searchString)
-                //   || s.Model.Contains(searchString)
-                //   || s.CategorieVehicul.CategoriaVehicul.Contains(searchString)
-                //   || s.TipCombustibil.TipulCombustibil.Contains(searchString)
-                //   || s.SerieCIV.Contains(searchString)
-                //   || s.AnFabricatie.ToString().Contains(searchString)
-                //   || s.NumarIdentificare.Contains(searchString));
-
-
-                //}
+              
                 OfertaPF = await ofertePF.ToListAsync();
 
 

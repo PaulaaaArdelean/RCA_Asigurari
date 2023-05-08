@@ -140,17 +140,21 @@
                     </div>
                 </div>*@
 
-                <div class="col-12">
+              @*  <div class="col-12">
                     <div class="form-group">
                         <div class="form-check" style="color:black">
                             <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" data-val="true" data-val-required="The Am citit condițiile! field is required." required>
                             <label class="form-check-label" for="invalidCheck2" style="color:black; font-weight:bold;"> Am citit <a asp-area="" asp-page="/Privacy" style="font-style:italic">condițiile!</a> </label>
                         </div>
-                       @* <span asp-validation-for="Input." class="text-danger"></span> *@
                     </div>
                 </div>
 
-
+                *@
+                <div class="col-md-11">
+                    <input type="checkbox" asp-for="Input.AcceptareConditii" required />
+                    <label asp-for="Input.AcceptareConditii">Sunt de acord cu  <a asp-area="" asp-page="/Privacy" style="font-style:italic">condițiile!</a> </label>
+                    <span asp-validation-for="Input.AcceptareConditii" class="text-danger"></span>
+                </div>
                 <button id="registerSubmit" type="submit" class="register-button" @*class="w-64 btn btn-lg btn-primary"*@ @*style="background-color:#C47777; float: right;border-radius: 12px;"*@><span>Register</span></button>
 
                 </div>

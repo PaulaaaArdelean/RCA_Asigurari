@@ -138,12 +138,34 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);*/
 }
-.oferte-divs {
+.form-divs-create-offer {
+    width: 80%;
+    border: 3px solid #C47777;
+    padding: 8px;
+    margin: 3px;
+    border-style: inset;
+    border-width: 20px 5px 10px 10px;
+    left: 15%;
+    /* position: absolute;
+    top: 45%;
+    transform: translate(-50%, -50%);*/
+}
+.oferte-divs-pf {
     /*    border: 1px solid #ccc;*/
     padding: 10px;
     margin-bottom: 10px;
     width: 100%;
-    height: 400px;
+    height: 20%;
+    border: 3px solid #C47777;
+    border-style: inset;
+    border-width: 20px 5px 10px 10px;
+}
+.oferte-divs-pj {
+    /*    border: 1px solid #ccc;*/
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 30%;
     border: 3px solid #C47777;
     border-style: inset;
     border-width: 20px 5px 10px 10px;

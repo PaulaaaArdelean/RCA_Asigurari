@@ -52,6 +52,9 @@ namespace RCA_Asigurari.Models
             }
         }
 
+
+        public bool AcceptareConditii { get; set; }
+
         //[Display(Name = "Tipul de client: ")]
         //[BindProperty]
         //public string? RadioButtonClient { get; set; }

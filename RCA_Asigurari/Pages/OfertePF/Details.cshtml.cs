@@ -32,12 +32,12 @@ namespace RCA_Asigurari.Pages.OfertePF
                 return NotFound();
             }
 
-            var ofertapf = await _context.OfertaPF.Include(o=>o.Client).FirstOrDefaultAsync(m => m.ID == id);
+            var ofertapf = await _context.OfertaPF.Include(o => o.Client).FirstOrDefaultAsync(m => m.ID == id);
             if (ofertapf == null)
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 OfertaPF = ofertapf;
             }

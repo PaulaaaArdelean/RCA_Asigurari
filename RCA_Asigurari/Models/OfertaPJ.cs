@@ -89,6 +89,7 @@ namespace RCA_Asigurari.Models
         [NotMapped]
         public bool AdaugatOfertaDorita { get; set; }
         public DateTime PJCreatedAt { get; set; }
+        public bool AcceptareConditii { get; set; }
 
         public OfertaPJ()
         {

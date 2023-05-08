@@ -153,8 +153,13 @@ namespace RCA_Asigurari.Areas.Identity.Pages.Account
             [Display(Name = "Confirma parola")]
             [Compare("Password", ErrorMessage = "Parolele introduse de dumneavoastră nu coincid. Încercați din nou.")]
             public string ConfirmPassword { get; set; }
+
+            [Required(ErrorMessage = "Campul este obligatoriu!")]
+
+            public bool AcceptareConditii { get; set; }
+
         }
-       
+
 
 
         public async Task OnGetAsync(string returnUrl = null)

@@ -7,9 +7,10 @@
 }
 <style>
     .edit-delete-details {
-        margin-left: 70%;
+        margin-left: 10%;
         font-size: x-large;
-        margin-top: 10%;
+        margin-top: 0%;
+        display: flex;
     }
 </style>
 @*
@@ -50,9 +51,9 @@
     }
 </p>
 
-@foreach (var item in Model.OfertaPF)
+@foreach (var item in Model.OfertaPF.OrderByDescending(x => x.PFCreatedAt))
 {
-    <div class="oferte-divs">
+    <div class="oferte-divs-pf">
         <div class="row">
             <div class="col-md-4">
                 <h3> Ofertă pentru <b style="color: #C47777;">@Html.DisplayFor(modelItem => item.NrInmatriculare)</b></h3>
@@ -85,10 +86,27 @@
                     <strong>Prima de asigurare pentru polița dumneavoastră este: </strong>
                     <h4 style="color:#C47777;">@Html.DisplayFor(modelItem => item.Pret) LEI </h4>
                 </div>
-                
+                <br> 
 
                 
-                   <div class="edit-delete-details">
+                <div class="edit-delete-details">
+                  
+                    @if (User.IsInRole("PF"))
+                    {
+                        <form method="post">
+                            <input type="hidden" name="OfertaPFID" value="@item.ID" />
+                            <input type="hidden" name="EsteAdaugatLaDorite" value="@item.AdaugatOfertaDorita.ToString()" />
+                            @if (item.AdaugatOfertaDorita == true)
+                            {
+                                <input type="submit" value="Nu mă mai interesează!  &#10008;" class="btn btn-primary" style="width:200px; background-color:#994e56; margin-left:">  
+                            }
+                            else
+                            {
+                                <input type="submit" value="Sunt interesat/ă! &#10084;  	" class="btn btn-primary" style="width:200px;">  
+
+                            }
+                        </form>
+                    }
                     @if (User.IsInRole("PF"))
                     {
                         <a asp-page="./Edit" asp-route-id="@item.ID" title="Editează"><i class="bi bi-pencil-square"></i></a>
@@ -97,30 +115,18 @@
 
                     @if (User.IsInRole("Admin"))
                     {
-                        <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-info-circle"></i></a>
+                        <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"><i class="bi bi-telephone-fill">Contactați clientul | </i>
 
-                    } @if (User.IsInRole("Admin"))
-                    {
-                        <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" ></i></a>
+                        </a>
 
                     }
-                    @if (User.IsInRole("PF"))
-                    {
-                        <form method="post">
-                            <input type="hidden" name="OfertaPFID" value="@item.ID" />
-                            <input type="hidden" name="EsteAdaugatLaDorite" value="@item.AdaugatOfertaDorita.ToString()" />
-                            @if (item.AdaugatOfertaDorita == true)
-                            {
-                                <input type="submit" value="Nu mă mai interesează!" class="btn btn-primary" style="width:200px; background-color:#994e56">   <i class="bi bi-x-circle-fill"></i>
-                            }
-                            else
-                            {
-                                <input type="submit" value="Sunt interesat/ă!" class="btn btn-primary" style="width:200px;">  <i class="bi bi-chat-square-heart-fill"></i>
 
-                            }
-                        </form>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill"></i></a>
+
                     }
-                   </div>
+                </div>
 
                    
                     
