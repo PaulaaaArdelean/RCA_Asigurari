@@ -23,7 +23,7 @@ namespace RCA_Asigurari.Pages.OfertePF
             _context = context;
         }
 
-      public OfertaPF OfertaPF { get; set; } = default!; 
+        public OfertaPF OfertaPF { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,7 +31,10 @@ namespace RCA_Asigurari.Pages.OfertePF
             {
                 return NotFound();
             }
-
+            //if (!_context.OfertaPF.Any(o => o.ID == id))
+            //{
+            //    return NotFound();
+            //}
             var ofertapf = await _context.OfertaPF.Include(o => o.Client).FirstOrDefaultAsync(m => m.ID == id);
             if (ofertapf == null)
             {
@@ -45,3 +48,4 @@ namespace RCA_Asigurari.Pages.OfertePF
         }
     }
 }
+

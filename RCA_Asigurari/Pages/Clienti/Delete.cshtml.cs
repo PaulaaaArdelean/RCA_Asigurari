@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using RCA_Asigurari.Data;
 using RCA_Asigurari.Models;
 
@@ -45,6 +47,38 @@ namespace RCA_Asigurari.Pages.Clienti
             }
             return Page();
         }
+        //public async Task<IActionResult> OnPostAsync(int? id)
+        //{
+        //    if (id == null || _context.Client == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    // Check if the client has any associated offers
+        //    var hasOffers = await _context.OfertaPF.AnyAsync(o => o.ClientID == id);
+
+        //    if (hasOffers)
+        //    {
+        //        // Display an error message to the user
+        //        TempData["ErrorMessage"] = "Nu puteti sterge acest client deoarece acesta inca are oferte in istoricul nostru.";
+
+        //        return RedirectToPage("./Index", new { id = id });
+        //    }
+
+        //    // If there are no offers, delete the client
+        //    var client = await _context.Client.FindAsync(id);
+
+        //    if (client != null)
+        //    {
+        //        _context.Client.Remove(client);
+        //        await _context.SaveChangesAsync();
+        //    }
+
+        //    return RedirectToPage("./Index");
+        //}
+
+
+
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
@@ -52,16 +86,49 @@ namespace RCA_Asigurari.Pages.Clienti
             {
                 return NotFound();
             }
+
+            // Check if the client has any associated offers
+            var hasOffers = await _context.OfertaPF.AnyAsync(o => o.ClientID == id) || await _context.OfertaPJ.AnyAsync(o => o.ClientID == id);
+
+            if (hasOffers)
+            {
+                // Display an error message to the user
+                TempData["ErrorMessage"] = "Nu puteți șterge acest client deoarece acesta încă are oferte în istoric.";
+
+                return RedirectToPage("./Index", new { id = id });
+            }
+
+            // If there are no offers, delete the client
             var client = await _context.Client.FindAsync(id);
 
             if (client != null)
             {
-                Client = client;
-                _context.Client.Remove(Client);
+                _context.Client.Remove(client);
                 await _context.SaveChangesAsync();
             }
 
             return RedirectToPage("./Index");
         }
+
+
+
+
+        //public async Task<IActionResult> OnPostAsync(int? id)
+        //{
+        //    if (id == null || _context.Client == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var client = await _context.Client.FindAsync(id);
+
+        //    if (client != null)
+        //    {
+        //        Client = client;
+        //        _context.Client.Remove(Client);
+        //        await _context.SaveChangesAsync();
+        //    }
+
+        //    return RedirectToPage("./Index");
+        //}
     }
 }

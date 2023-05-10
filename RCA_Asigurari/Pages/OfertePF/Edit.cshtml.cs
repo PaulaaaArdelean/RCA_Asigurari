@@ -44,7 +44,7 @@ namespace RCA_Asigurari.Pages.OfertePF
                 .Select(x => new
                 {
                     x.ID,
-                    DetaliiClient = x.NumeProprietar /*+ " " + x.NumeFirma*/
+                    DetaliiClient = x.NumeProprietar 
                 });
             if (id == null || _context.OfertaPF == null)
             {
@@ -63,15 +63,14 @@ namespace RCA_Asigurari.Pages.OfertePF
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
+      
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            if (/*OfertaPF.CategorieVehicul.ToString() == "autoturism" &&*/ OfertaPF.NrLocuri <= 9 && OfertaPF.MasaMaxima <= 3500)
+            if ( OfertaPF.NrLocuri <= 9 && OfertaPF.MasaMaxima <= 3500)
             {
                 if (OfertaPF.CapacitateCilindrica <= 1200 && OfertaPF.Varsta <= 30)
                 {
@@ -288,210 +287,6 @@ namespace RCA_Asigurari.Pages.OfertePF
                 {
                     throw;
                 }
-
-
-                //if (/*OfertaPF.CategorieVehicul.ToString() == "autoturism" &&*/ OfertaPF.NrLocuri <= 9 && OfertaPF.MasaMaxima <= 3500)
-                //{
-                //    if (OfertaPF.CapacitateCilindrica <= 1200 && OfertaPF.Varsta <= 30)
-                //    {
-                //        OfertaPF.Pret = 377;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica <= 1200 && OfertaPF.Varsta >= 31 && OfertaPF.Varsta <= 40)
-                //    {
-                //        OfertaPF.Pret = 243;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica <= 1200 && OfertaPF.Varsta >= 41 && OfertaPF.Varsta <= 50)
-                //    {
-                //        OfertaPF.Pret = 237;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica <= 1200 && OfertaPF.Varsta >= 51 && OfertaPF.Varsta <= 60)
-                //    {
-                //        OfertaPF.Pret = 245;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica <= 1200 && OfertaPF.Varsta > 61)
-                //    {
-                //        OfertaPF.Pret = 246;
-                //    }
-
-
-
-
-                //    else if (OfertaPF.CapacitateCilindrica > 1200 && OfertaPF.CapacitateCilindrica <= 1400 && OfertaPF.Varsta <= 30)
-                //    {
-                //        OfertaPF.Pret = 374;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1200 && OfertaPF.CapacitateCilindrica <= 1400 && OfertaPF.Varsta >= 31 && OfertaPF.Varsta <= 40)
-                //    {
-                //        OfertaPF.Pret = 241;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1200 && OfertaPF.CapacitateCilindrica <= 1400 && OfertaPF.Varsta >= 41 && OfertaPF.Varsta <= 50)
-                //    {
-                //        OfertaPF.Pret = 247;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1200 && OfertaPF.CapacitateCilindrica <= 1400 && OfertaPF.Varsta >= 51 && OfertaPF.Varsta <= 60)
-                //    {
-                //        OfertaPF.Pret = 243;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1200 && OfertaPF.CapacitateCilindrica <= 1400 && OfertaPF.Varsta >= 61)
-                //    {
-                //        OfertaPF.Pret = 245;
-                //    }
-
-
-
-
-                //    else if (OfertaPF.CapacitateCilindrica > 1400 && OfertaPF.CapacitateCilindrica <= 1600 && OfertaPF.Varsta <= 30)
-                //    {
-                //        OfertaPF.Pret = 438;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1400 && OfertaPF.CapacitateCilindrica <= 1600 && OfertaPF.Varsta >= 31 && OfertaPF.Varsta <= 40)
-                //    {
-                //        OfertaPF.Pret = 282;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1400 && OfertaPF.CapacitateCilindrica <= 1600 && OfertaPF.Varsta >= 41 && OfertaPF.Varsta <= 50)
-                //    {
-                //        OfertaPF.Pret = 288;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1400 && OfertaPF.CapacitateCilindrica <= 1600 && OfertaPF.Varsta >= 51 && OfertaPF.Varsta <= 60)
-                //    {
-                //        OfertaPF.Pret = 284;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1400 && OfertaPF.CapacitateCilindrica <= 1600 && OfertaPF.Varsta >= 61)
-                //    {
-                //        OfertaPF.Pret = 286;
-                //    }
-
-
-
-
-
-                //    else if (OfertaPF.CapacitateCilindrica > 1600 && OfertaPF.CapacitateCilindrica <= 1800 && OfertaPF.Varsta <= 30)
-                //    {
-                //        OfertaPF.Pret = 483;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1600 && OfertaPF.CapacitateCilindrica <= 1800 && OfertaPF.Varsta >= 31 && OfertaPF.Varsta <= 40)
-                //    {
-                //        OfertaPF.Pret = 311;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1600 && OfertaPF.CapacitateCilindrica <= 1800 && OfertaPF.Varsta >= 41 && OfertaPF.Varsta <= 50)
-                //    {
-                //        OfertaPF.Pret = 318;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1600 && OfertaPF.CapacitateCilindrica <= 1800 && OfertaPF.Varsta >= 51 && OfertaPF.Varsta <= 60)
-                //    {
-                //        OfertaPF.Pret = 314;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1600 && OfertaPF.CapacitateCilindrica <= 1800 && OfertaPF.Varsta >= 61)
-                //    {
-                //        OfertaPF.Pret = 316;
-                //    }
-
-
-
-
-                //    else if (OfertaPF.CapacitateCilindrica > 1800 && OfertaPF.CapacitateCilindrica <= 2000 && OfertaPF.Varsta <= 30)
-                //    {
-                //        OfertaPF.Pret = 541;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1800 && OfertaPF.CapacitateCilindrica <= 2000 && OfertaPF.Varsta >= 31 && OfertaPF.Varsta <= 40)
-                //    {
-                //        OfertaPF.Pret = 349;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1800 && OfertaPF.CapacitateCilindrica <= 2000 && OfertaPF.Varsta >= 41 && OfertaPF.Varsta <= 50)
-                //    {
-                //        OfertaPF.Pret = 356;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1800 && OfertaPF.CapacitateCilindrica <= 2000 && OfertaPF.Varsta >= 51 && OfertaPF.Varsta <= 60)
-                //    {
-                //        OfertaPF.Pret = 351;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 1800 && OfertaPF.CapacitateCilindrica <= 2000 && OfertaPF.Varsta >= 61)
-                //    {
-                //        OfertaPF.Pret = 354;
-                //    }
-
-
-
-
-
-                //    else if (OfertaPF.CapacitateCilindrica > 2000 && OfertaPF.CapacitateCilindrica <= 2500 && OfertaPF.Varsta <= 30)
-                //    {
-                //        OfertaPF.Pret = 762;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 2000 && OfertaPF.CapacitateCilindrica <= 2500 && OfertaPF.Varsta >= 31 && OfertaPF.Varsta <= 40)
-                //    {
-                //        OfertaPF.Pret = 491;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 2000 && OfertaPF.CapacitateCilindrica <= 2500 && OfertaPF.Varsta >= 41 && OfertaPF.Varsta <= 50)
-                //    {
-                //        OfertaPF.Pret = 502;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 2000 && OfertaPF.CapacitateCilindrica <= 2500 && OfertaPF.Varsta >= 51 && OfertaPF.Varsta <= 60)
-                //    {
-                //        OfertaPF.Pret = 495;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 2000 && OfertaPF.CapacitateCilindrica <= 2500 && OfertaPF.Varsta >= 61)
-                //    {
-                //        OfertaPF.Pret = 498;
-                //    }
-
-
-
-
-
-                //    else if (OfertaPF.CapacitateCilindrica > 2500 && OfertaPF.Varsta <= 30)
-                //    {
-                //        OfertaPF.Pret = 1021;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 2500 && OfertaPF.Varsta >= 31 && OfertaPF.Varsta <= 40)
-                //    {
-                //        OfertaPF.Pret = 658;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 2500 && OfertaPF.Varsta >= 41 && OfertaPF.Varsta <= 50)
-                //    {
-                //        OfertaPF.Pret = 673;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 2500 && OfertaPF.Varsta >= 51 && OfertaPF.Varsta <= 60)
-                //    {
-                //        OfertaPF.Pret = 663;
-                //    }
-                //    else if (OfertaPF.CapacitateCilindrica > 2500 && OfertaPF.Varsta >= 61)
-                //    {
-                //        OfertaPF.Pret = 668;
-                //    }
-                //}
-
-
-
-
-
-                //else if (OfertaPF.NrLocuri > 9 && OfertaPF.NrLocuri <= 40)
-
-                //{
-                //    OfertaPF.Pret = 502;
-                //}
-                //else if (OfertaPF.NrLocuri > 40)
-
-                //{
-                //    OfertaPF.Pret = 1269;
-                //}
-                //else if (OfertaPF.MasaMaxima <= 3500)
-
-                //{
-                //    OfertaPF.Pret = 343;
-                //}
-                //else if (OfertaPF.MasaMaxima > 3500 && OfertaPF.MasaMaxima <= 15999)
-
-                //{
-                //    OfertaPF.Pret = 502;
-                //}
-                //else if (OfertaPF.MasaMaxima > 16000)
-
-                //{
-                //    OfertaPF.Pret = 1250;
-                //}
-
-
 
             }
 

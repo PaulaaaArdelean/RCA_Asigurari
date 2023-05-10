@@ -46,6 +46,13 @@
     <Compile Remove="Models\PJ.cs" />
     <Compile Remove="Models\Varsta.cs" />
     <Compile Remove="Models\Vehicul.cs" />
+    <Compile Remove="Pages\Clienti\Create.cshtml.cs" />
+    <Compile Remove="Pages\Clienti\Details.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Clienti\Create.cshtml" />
+    <Content Remove="Pages\Clienti\Details.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

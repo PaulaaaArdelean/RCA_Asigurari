@@ -50,9 +50,6 @@ namespace RCA_Asigurari.Pages.OfertePF
             ViewData["CategorieVehiculID"] = new SelectList(_context.CategorieVehicul, "ID", "CategoriaVehicul");
             ViewData["ClientID"] = new SelectList(detaliiClient, "ID", "DetaliiClient", CurrentClientID);
             ViewData["TipCombustibilID"] = new SelectList(_context.TipCombustibil, "ID", "TipulCombustibil");
-
-
-
             return Page();
         }
 
@@ -67,7 +64,7 @@ namespace RCA_Asigurari.Pages.OfertePF
                 return Page();
             }
 
-            if (/*OfertaPF.CategorieVehicul.ToString() == "autoturism" &&*/ OfertaPF.NrLocuri <= 9 && OfertaPF.MasaMaxima <= 3500 )
+            if ( OfertaPF.NrLocuri <= 9 && OfertaPF.MasaMaxima <= 3500 )
             {
                 if (OfertaPF.CapacitateCilindrica <= 1200 && OfertaPF.Varsta <= 30)
                 {

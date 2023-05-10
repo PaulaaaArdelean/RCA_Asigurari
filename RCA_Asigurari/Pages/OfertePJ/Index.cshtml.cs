@@ -17,12 +17,18 @@ namespace RCA_Asigurari.Pages.OfertePJ
     {
         private readonly RCA_Asigurari.Data.RCA_AsigurariContext _context;
         private readonly string ADMIN_EMAIL = "admin@gmail.com";
+
         public IndexModel(RCA_Asigurari.Data.RCA_AsigurariContext context)
         {
             _context = context;
         }
 
 
+
+
+
+
+        public IList<OfertaPJ> OfertaPJ { get; set; } = default!;
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
 
@@ -30,95 +36,99 @@ namespace RCA_Asigurari.Pages.OfertePJ
 
         [BindProperty(SupportsGet = true)]
         public string? CautareOfertaPJ { get; set; }
-
-
-
-        public IList<OfertaPJ> OfertaPJ { get; set; } = default!;
-        public String CurrentFilter { get; set; }
-
-        public async Task OnGetAsync(string searchString, bool? vizualizareDorite)
+        //public String CurrentFilter { get; set; }
+        public async Task OnGetAsync(/*string searchString,*/ bool? vizualizareDorite)
         {
-           
-            CurrentFilter = searchString;
+            //CurrentFilter = searchString;
             var userEmail = User.Identity.Name;
             var ofertePJ = _context.OfertaPJ
-                .Include(o => o.CategorieVehicul)
-                .Include(o => o.Client)
-                .Include(o => o.TipCombustibil)
-                .Include(o => o.TipSocietate)
-                .AsNoTracking();
-            
+                    .Include(o => o.CategorieVehicul)
+                    .Include(o => o.Client)
+                    .Include(o => o.TipCombustibil).AsNoTracking();
             var logedinClientId = _context.Client.Where(c => c.Email == userEmail).Select(c => c.ID).FirstOrDefault();
 
             if (_context.OfertaPJ != null)
             {
+
                 if (vizualizareDorite != null && vizualizareDorite == true)
                 {
-                    ofertePJ = ofertePJ.Join(
-                        _context.OfertaPJDorita.Where(x => x.ClientID == logedinClientId),
-                        e => e.ID,
-                       f => f.OfertaPJID, (firstentity, secondentity) => new
-                       {
-                           OfertaPJ = firstentity,
-                           OfertaPJDorita = secondentity
-                       }).Select(entity => entity.OfertaPJ);
+                    if (userEmail == ADMIN_EMAIL)
+                    {
+                        ofertePJ = ofertePJ.Join(
+                            _context.OfertaPJDorita,
+                            e => e.ID,
+                            f => f.OfertaPJID,
+                            (firstentity, secondentity) => new
+                            {
+                                OfertaPJ = firstentity,
+                                OfertaPJDorita = secondentity
+                            }).Select(entity => entity.OfertaPJ);
+                    }
+                    else
+                    {
+                        ofertePJ = ofertePJ.Join(
+                            _context.OfertaPJDorita.Where(x => x.ClientID == logedinClientId),
+                            e => e.ID,
+                            f => f.OfertaPJID,
+                            (firstentity, secondentity) => new
+                            {
+                                OfertaPJ = firstentity,
+                                OfertaPJDorita = secondentity
+                            }).Select(entity => entity.OfertaPJ);
+                    }
+                    //ofertePJ = ofertePJ.Join(
+                    //    _context.OfertaPJDorita.Where(x => x.ClientID == logedinClientId),
+                    //    e => e.ID,
+                    //   f => f.OfertaPJID, (firstentity, secondentity) => new
+                    //   {
+                    //       OfertaPJ = firstentity,
+                    //       OfertaPJDorita = secondentity
+                    //   }).Select(entity => entity.OfertaPJ);
 
                 }
+
                 if (userEmail != ADMIN_EMAIL)
                 {
                     ofertePJ = ofertePJ.Where(ofertapersjuridica => ofertapersjuridica.Client.Email == userEmail);
                 }
+
                 if (!String.IsNullOrEmpty(SearchString))
                 {
                     ofertePJ = ofertePJ.Where(s => s.Client.NumeProprietar.Contains(SearchString)
-                         || s.CUI.Contains(searchString)
-                       || s.NumeIntregReprezentant.Contains(searchString)
-                       || s.TipSocietate.TipulSocietate.Contains(searchString)
-                       || s.ActivitateSocietate.Contains(searchString)
-                       || s.NumarIdentificare.Contains(searchString)
-                       || s.Marca.Contains(searchString)
-                       || s.CategorieVehicul.CategoriaVehicul.Contains(searchString)
-                       || s.TipCombustibil.TipulCombustibil.Contains(searchString)
-                       || s.SerieCIV.Contains(searchString)
-                       || s.AnFabricatie.ToString().Contains(searchString)
-                       || s.Model.Contains(searchString)
-                       || s.NumarIdentificare.Contains(searchString)
+                   || s.CUI.Contains(SearchString)
+                       //|| s.SerieCI.Contains(SearchString)
+                       //|| s.NumarCI.Contains(SearchString)
+                       || s.NrInmatriculare.Contains(SearchString)
+                       || s.NumarIdentificare.Contains(SearchString)
+                       || s.Marca.Contains(SearchString)
+                       || s.Model.Contains(SearchString)
+                       || s.CategorieVehicul.CategoriaVehicul.Contains(SearchString)
+                       || s.TipCombustibil.TipulCombustibil.Contains(SearchString)
+                       || s.SerieCIV.Contains(SearchString)
+                       || s.AnFabricatie.ToString().Contains(SearchString)
+                       || s.NumarIdentificare.Contains(SearchString)
                     );
                 }
 
-                //if (!String.IsNullOrEmpty(searchString))
-                //{
-
-                //    ofertePJ = ofertePJ.Where(s => s.Client.NumeProprietar.Contains(searchString)
-                //     || s.CUI.Contains(searchString)
-                //   || s.NumeIntregReprezentant.Contains(searchString)
-                //   || s.TipSocietate.TipulSocietate.Contains(searchString)
-                //   || s.ActivitateSocietate.Contains(searchString)
-                //   || s.NumarIdentificare.Contains(searchString)
-                //   || s.Marca.Contains(searchString)
-                //   || s.CategorieVehicul.CategoriaVehicul.Contains(searchString)
-                //   || s.TipCombustibil.TipulCombustibil.Contains(searchString)
-                //   || s.SerieCIV.Contains(searchString)
-                //   || s.AnFabricatie.ToString().Contains(searchString)
-                //   || s.Model.Contains(searchString)
-                //   || s.NumarIdentificare.Contains(searchString));
-
-                //}
                 OfertaPJ = await ofertePJ.ToListAsync();
+
+
                 var oferteDorite = _context.OfertaPJDorita.Where(x => x.ClientID == logedinClientId).ToList();
 
                 for (int i = 0; i < OfertaPJ.Count(); i++)
                 {
                     var currentOferta = OfertaPJ.ElementAt(i);
 
-                    //Aici verifica...Pt event urile din Db se seteaza valoarea pt Addedtofav ca sa seteze Add/Remove to fav
-                    currentOferta.AdaugatOfertaDorita = oferteDorite.Where(x => x.ClientID == logedinClientId && x.OfertaPJID == currentOferta.ID
+                    currentOferta.AdaugatOfertaDorita = oferteDorite.Where(x => x.ClientID == logedinClientId &&
+                      x.OfertaPJID == currentOferta.ID
                     ).FirstOrDefault() != null;
                 }
+
             }
 
 
         }
+
         public IActionResult OnPost()
         {
             var userEmail = User.Identity.Name;
@@ -146,5 +156,8 @@ namespace RCA_Asigurari.Pages.OfertePJ
 
             return RedirectToPage("./Index");
         }
+
+
     }
-    }   
+}
+

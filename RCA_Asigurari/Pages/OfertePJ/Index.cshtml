@@ -5,13 +5,7 @@
 ViewData["Title"] = "Index";
 Layout = "~/Pages/Shared/_Layout.cshtml";
 }
-<style>
-    .edit-delete-details{
-        margin-left: 70%;
-        font-size: x-large;
-        margin-top: 10%;
-    }
-</style>
+
 @*<form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
@@ -52,18 +46,17 @@ Layout = "~/Pages/Shared/_Layout.cshtml";
 </p>
 @foreach (var item in Model.OfertaPJ.OrderByDescending(x => x.PJCreatedAt))
 {
-    <div class="oferte-divs-pj" >
+    <div class="oferte-divs" >
         <div class="row">
+            
         <div class="col-md-4">
                 <h3> Ofertă pentru  <b style="color: #C47777;">@Html.DisplayFor(modelItem => item.NrInmatriculare)</b></h3>
            
             <p><strong>Calculată în data:</strong> @item.PJCreatedAt.ToString("dd/MM/yyyy HH:mm")</p>
                 <br>
-         @*   <p><strong>Proprietar:</strong> @Html.DisplayFor(modelItem => item.Client.NumeProprietar)</p>*@
                 <p><strong>Proprietar:</strong> @Html.DisplayFor(modelItem => item.Client.NumeProprietar) @Html.DisplayFor(modelItem => item.TipSocietate.TipulSocietate)</p>
 
             <p><strong>CUI:</strong> @Html.DisplayFor(modelItem => item.CUI)</p>
-        @*    <p><strong>Tip Societate:</strong> @Html.DisplayFor(modelItem => item.TipSocietate.TipulSocietate)</p>*@
             <p><strong>Activitate Societate:</strong> @Html.DisplayFor(modelItem => item.ActivitateSocietate)</p>
             <p><strong>Reprezentantul:</strong> @Html.DisplayFor(modelItem => item.NumeIntregReprezentant)</p>
         </div>
@@ -87,25 +80,9 @@ Layout = "~/Pages/Shared/_Layout.cshtml";
                     <strong>Prima de asigurare pentru polița dumneavoastră este: </strong>
                     <h4 style="color:#C47777;">@Html.DisplayFor(modelItem => item.Pret) LEI </h4>
                 </div>
+                </div>
 
-                @*Modal pentru popup*@
-
-                @*<div class="modal" tabindex="-1" role="dialog" id="deleteModal">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Oferta</h5>
-                            </div>
-                            <div class="modal-body">
-                                Doriti sa stergeti?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="deleteCancelBtn">Renunta</button>
-                                <button type="button" class="btn btn-danger" id="deleteConfirmBtn">Continua</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
+               
                 <div class="edit-delete-details">
                     @if (User.IsInRole("PJ"))
                     {
@@ -115,16 +92,13 @@ Layout = "~/Pages/Shared/_Layout.cshtml";
 
                     @if (User.IsInRole("Admin"))
                     {
-                        <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"> <i class="bi bi-telephone-fill">Contactați clientul | </i> </a>
+                    <a asp-page="./Details" asp-route-id="@item.ID" title="Vezi detalii"> <i class="bi bi-telephone-fill" >Contactați clientul | </i> </a>
 
                     }
                     @if (User.IsInRole("Admin"))
                     {
                         <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill bi-lg" ></i></a>
-                        @*<button type="submit" class="btn btn-sm" onclick="return confirmDelete();" id="deleteBtn">
-
-                <a asp-page="./Delete" asp-route-id="@item.ID"><i class="bi bi-trash-fill" , style="color:red"></i>Delete</a>
-                </button>*@
+                       
                     }
                     @if (User.IsInRole("PJ"))
                     {
@@ -144,27 +118,8 @@ Layout = "~/Pages/Shared/_Layout.cshtml";
                     }
                 </div>
                
-            </div>
+         
         </div>
 </div>
 
 }
-@*<script>
-    function confirmDelete() {
-        // arata modalul
-        $('#deleteModal').modal('show');
-
-        // se gestioneaza raspunsul utilizatorului
-        $('#deleteConfirmBtn').click(function () {
-            $('#deleteModal').modal('hide');
-            $('#deleteBtn').closest('form').submit(); // se submite formularul care contine butonul de delete
-        });
-
-        $('#deleteCancelBtn').click(function () {
-            $('#deleteModal').modal('hide');
-            return false; // nu se submite formularul
-        });
-
-        return false; // nu se submite formularul inca
-    }
-</script>*@

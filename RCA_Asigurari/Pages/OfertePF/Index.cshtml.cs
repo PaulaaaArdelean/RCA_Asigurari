@@ -24,6 +24,7 @@ namespace RCA_Asigurari.Pages.OfertePF
         }
 
 
+        public IList<OfertaPF> OfertaPF { get; set; } = default!;
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
 
@@ -31,33 +32,61 @@ namespace RCA_Asigurari.Pages.OfertePF
 
         [BindProperty(SupportsGet = true)]
         public string? CautareOfertaPF { get; set; }
-
-
-        public IList<OfertaPF> OfertaPF { get; set; } = default!;
-        public String CurrentFilter { get; set; }
-        public async Task OnGetAsync(string searchString, bool? vizualizareDorite)
+ 
+        public async Task OnGetAsync( bool? vizualizareDorite)
         {
-            CurrentFilter = searchString;
+     
             var userEmail = User.Identity.Name;
             var ofertePF = _context.OfertaPF
                     .Include(o => o.CategorieVehicul)
                     .Include(o => o.Client)
                     .Include(o => o.TipCombustibil).AsNoTracking();
-            var logedinClientId = _context.Client.Where(c => c.Email == userEmail).Select(c => c.ID).FirstOrDefault();
+            var logedinClientId = _context.Client
+                .Where(c => c.Email == userEmail)
+                .Select(c => c.ID)
+                .FirstOrDefault();
 
             if (_context.OfertaPF != null)
             {
 
                 if (vizualizareDorite != null && vizualizareDorite == true)
                 {
-                    ofertePF = ofertePF.Join(
-                        _context.OfertaPFDorita.Where(x => x.ClientID == logedinClientId),
-                        e => e.ID,
-                       f => f.OfertaPFID, (firstentity, secondentity) => new
-                       {
-                           OfertaPF = firstentity,
-                           OfertaPFDorita = secondentity
-                       }).Select(entity => entity.OfertaPF);
+                    if (vizualizareDorite != null && vizualizareDorite == true)
+                    {
+                        if (userEmail == ADMIN_EMAIL)
+                        {
+                            ofertePF = ofertePF.Join(
+                                _context.OfertaPFDorita,
+                                e => e.ID,
+                                f => f.OfertaPFID,
+                                (firstentity, secondentity) => new
+                                {
+                                    OfertaPF = firstentity,
+                                    OfertaPFDorita = secondentity
+                                }).Select(entity => entity.OfertaPF);
+                        }
+                        else
+                        {
+                            ofertePF = ofertePF.Join(
+                                _context.OfertaPFDorita.Where(x => x.ClientID == logedinClientId),
+                                e => e.ID,
+                                f => f.OfertaPFID,
+                                (firstentity, secondentity) => new
+                                {
+                                    OfertaPF = firstentity,
+                                    OfertaPFDorita = secondentity
+                                }).Select(entity => entity.OfertaPF);
+                        }
+                    }
+
+                    //ofertePF = ofertePF.Join(
+                    //    _context.OfertaPFDorita.Where(x => x.ClientID == logedinClientId),
+                    //    e => e.ID,
+                    //   f => f.OfertaPFID, (firstentity, secondentity) => new
+                    //   {
+                    //       OfertaPF = firstentity,
+                    //       OfertaPFDorita = secondentity
+                    //   }).Select(entity => entity.OfertaPF);
 
                 }
 
@@ -69,18 +98,18 @@ namespace RCA_Asigurari.Pages.OfertePF
                 if (!String.IsNullOrEmpty(SearchString))
                 {
                     ofertePF = ofertePF.Where(s => s.Client.NumeProprietar.Contains(SearchString)
-                   || s.CNP.Contains(searchString)
-                       || s.SerieCI.Contains(searchString)
-                       || s.NumarCI.Contains(searchString)
-                       || s.NrInmatriculare.Contains(searchString)
-                       || s.NumarIdentificare.Contains(searchString)
-                       || s.Marca.Contains(searchString)
-                       || s.Model.Contains(searchString)
-                       || s.CategorieVehicul.CategoriaVehicul.Contains(searchString)
-                       || s.TipCombustibil.TipulCombustibil.Contains(searchString)
-                       || s.SerieCIV.Contains(searchString)
-                       || s.AnFabricatie.ToString().Contains(searchString)
-                       || s.NumarIdentificare.Contains(searchString)
+                   || s.CNP.Contains(SearchString)
+                       || s.SerieCI.Contains(SearchString)
+                       || s.NumarCI.Contains(SearchString)
+                       || s.NrInmatriculare.Contains(SearchString)
+                       || s.NumarIdentificare.Contains(SearchString)
+                       || s.Marca.Contains(SearchString)
+                       || s.Model.Contains(SearchString)
+                       || s.CategorieVehicul.CategoriaVehicul.Contains(SearchString)
+                       || s.TipCombustibil.TipulCombustibil.Contains(SearchString)
+                       || s.SerieCIV.Contains(SearchString)
+                       || s.AnFabricatie.ToString().Contains(SearchString)
+                       || s.NumarIdentificare.Contains(SearchString)
                     );
                 }
               
@@ -97,10 +126,7 @@ namespace RCA_Asigurari.Pages.OfertePF
                       x.OfertaPFID == currentOferta.ID
                     ).FirstOrDefault() != null;
                 }
-
             }
-           
-
         }
       
         public IActionResult OnPost()

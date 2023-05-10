@@ -7,6 +7,15 @@
 
 <h1><i class="bi bi-people-fill"></i>   Clienti</h1>
 
+<form method="post" class="searchForm">
+    <input type="text" name="searchString" placeholder="Caută un client" />
+      <div>
+        <a type="submit"><button class="btn btn-primary" >Caută</a>
+        <a asp-page="Index"><button class="btn btn-primary">Înapoi la listă </a>
+
+      </div>
+   
+</form>
 
 <table class="table">
     <thead>
@@ -16,9 +25,8 @@
                 @Html.DisplayNameFor(model => model.Client[0].TipClient.TipulClientului)
             </th>
             <th>
-Numele și prenumele
-</th>
-
+             Numele și prenumele
+           </th>
             <th>
                 @Html.DisplayNameFor(model => model.Client[0].Adresa)
             </th>
@@ -61,7 +69,12 @@ Numele și prenumele
 *@                        <a asp-page="./Delete" asp-route-id="@item.ID" title="Șterge"><i class="bi bi-trash-fill" , style="color:red"></i></a>
                     </td>
                 </tr>
-            }
-       @* }*@
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger" role="alert" style="text-size:larger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
     </tbody>
 </table>

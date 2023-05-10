@@ -61,6 +61,17 @@
     
 
 </div>
+@if (!User.Identity.IsAuthenticated)
+{
+    <div style="text-align:end">
+        <p>*Pentru a vă calcula oferta trebuie să fiți autentificat.</p>
+        <button type="button" class="send-button">
+            <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login" style="color:inherit; text-decoration:none;"> <span> <i class="bi bi-person-circle"> Autentificare! </i> </span></a>
+        </button>
+    </div>
+    
+}
+
 @if (User.Identity.IsAuthenticated)
 {
     if (User.IsInRole("PJ"))

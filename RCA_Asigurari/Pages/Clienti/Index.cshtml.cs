@@ -27,76 +27,39 @@ namespace RCA_Asigurari.Pages.Clienti
 
         public IList<Client> Client { get; set; } = default!;
 
-        public string SortareNume { get; set; }
-
-        // public string CurrentFilter { get; set; }
-
-
-
-        //[BindProperty(SupportsGet = true)]
-        //public string? SearchString { get; set; }
-
-        //public SelectList? CautareC { get; set; }
-
-        //[BindProperty(SupportsGet = true)]
-        //public string? CautareClient { get; set; }
-        //[BindProperty]
-        //public string? RadioButtonClient { get; set; }
-        //public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
-
-        public async Task OnGetAsync(/*string searchString*/ )
+     
+        public async Task OnGetAsync()
         {
-           
-                    //CurrentFilter = searchString;
-                    //if (!String.IsNullOrEmpty(searchString))
-                    //{
-                    //    Client = Client.Where(s => s.NumeProprietar.Contains(searchString)
-
-                    //    || s.Adresa.Contains(searchString)
-                    //    || s.TipClient.TipulClientului.Contains(searchString));
-                    //}
-
-                    //if (!String.IsNullOrEmpty(searchString1))
-                    //{
-                    //    Client = Client.Where(s => s.NumeProprietar.Contains(searchString1));
-                    //}
-
-                    //ViewData["CurrentSortOrder"] = sortOrder ?? "asc";
-
-                    //// sort the list based on the sortOrder parameter
-                    //if (ViewData["CurrentSortOrder"] == "asc")
-                    //{
-                    //    Client = await _context.Client.OrderBy(c => c.NumeProprietar).ToListAsync();
-                    //}
-                    //else
-                    //{
-                    //    Client = await _context.Client.OrderByDescending(c => c.NumeProprietar).ToListAsync();
-                    //}
 
                     if (_context.Client != null)
             {
-                Client = await _context.Client
+              
 
+                Client = await _context.Client
                  .Include(c => c.TipClient)
                  .Include(c => c.Judet)
-                //.Include(c => c.OfertaPF)
-
-                // .Include(c => c.TipSocietate)
-
-                // .Where (CNP != null; 
                 .ToListAsync();
 
-
-                //    if (!String.IsNullOrEmpty(SearchString))
-                //    {
-                //        Client = Client.Where(s => s.NumeProprietar.Contains(SearchString)
-                //       || s.Email.Contains(SearchString)
-                //         || s.Email.Contains(SearchString) || s.Adresa.Contains(SearchString));
-                //    }
-                //}
-
-
             }
+        }
+        public async Task OnPostAsync()
+        {
+            var searchString = Request.Form["searchString"];
+
+            Client = await _context.Client
+                .Include(b => b.Judet)
+                .Include(c => c.TipClient)
+
+                .Where(x => x.NumeProprietar.Contains(searchString) 
+                || x.Judet.Judetul.Contains(searchString)
+                || x.Localitate.Contains(searchString)
+                || x.Numar.Contains(searchString)
+                || x.Strada.Contains(searchString)
+                || x.CodPostal.Contains(searchString)
+                || x.Telefon.Contains(searchString)
+                || x.Email.Contains(searchString)
+                || x.TipClient.TipulClientului.Contains(searchString)
+                ).ToListAsync();
         }
     }
 }

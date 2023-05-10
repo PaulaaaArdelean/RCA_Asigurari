@@ -20,7 +20,6 @@
             color: black !important;
             font-weight: 300 !important;
       
-
         }
 
         .nav-item:hover {
@@ -72,8 +71,8 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="d-sm-inline-flex" style="width:1900px; justify-items:right">
-                <div class="d-sm-inline-flex" style="float: left">
+            <div class="d-sm-inline-flex" style="width:1500px; justify-items:right; backgroud-color: #C47777;">
+                <div class="d-sm-inline-flex" style="float: left; backgroud-color: #C47777;">
                     @if (User.Identity.IsAuthenticated)
                     {
                         if (User.IsInRole("Admin"))
@@ -150,7 +149,7 @@
                         }
                     }
                 </div>
-                <div style="margin-left: 600px;">
+                <div style="margin-left: 35%;background-color:#C47777;">
                     <partial name="_LoginPartial" />
                 </div>
 
@@ -175,10 +174,10 @@
             <div style="color:white; margin-left:20px">
                           &copy; 2023 - RCA_Asigurări |
             </div>
-        <div >
-            <a asp-area="" asp-page="/Privacy" class="footer-item" ><i class="bi bi-shield-fill-exclamation"></i>   Termenii și condițiile </a>
+            <div>
+                <a asp-area="" asp-page="/Privacy" class="footer-item" ><i class="bi bi-shield-fill-exclamation"></i>   Termenii și condițiile </a>
 
-        </div>
+            </div>
             <div>
                 <a asp-area="" asp-page="/ContactUs" class="footer-item"><i class="bi bi-chat-text-fill"></i>   Contact </a>   
 
