@@ -46,8 +46,7 @@ namespace RCA_Asigurari.Models
         {
             get
             {
-                return " jud. " + (Judet?.Judetul ?? "") + ", loc. " + (/*Localitate?.*/Localitate ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
-                //return " jud. " + (Judet ?? "") + ", loc. " + (Localitate ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
+                return " jud. " + (Judet?.Judetul ?? "") + ", loc. " + (Localitate ?? "") + ", nr. " + (Numar ?? "") + ", strada " + (Strada ?? "") + ", " + (CodPostal ?? "");
 
             }
         }
@@ -55,11 +54,7 @@ namespace RCA_Asigurari.Models
 
         public bool AcceptareConditii { get; set; }
 
-        //[Display(Name = "Tipul de client: ")]
-        //[BindProperty]
-        //public string? RadioButtonClient { get; set; }
-        //public string[]? RadioButtonClienti = new[] { "Persoana fizica", "Persoana juridica" };
-
+     
         [Display(Name = "Tipul clientului")]
         public int? TipClientID { get; set; }
         public TipClient? TipClient { get; set; }

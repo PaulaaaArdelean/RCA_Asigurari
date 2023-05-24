@@ -1,5 +1,5 @@
 ﻿@page
-@model RCA_Asigurari.Pages.OfertePJ.DetailsModel
+@model RCA_Asigurari.Pages.OfertePF.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -49,22 +49,22 @@
         <div class="details-title">Proprietar:</div>
         <hr />
         <div class="details-label">Nume proprietar:</div>
-        <div class="details-value">@Html.DisplayFor(model => model.OfertaPJ.Client.NumeProprietar)</div>
+        <div class="details-value">@Html.DisplayFor(model => model.OfertaPF.Client.NumeProprietar)</div>
         <div class="details-label">Telefon:</div>
-        <div class="details-value">@Html.DisplayFor(model => model.OfertaPJ.Client.Telefon)</div>
+        <div class="details-value">@Html.DisplayFor(model => model.OfertaPF.Client.Telefon)</div>
         <div class="details-label">Email:</div>
-        <div class="details-value">@Html.DisplayFor(model => model.OfertaPJ.Client.Email)</div>
+        <div class="details-value">@Html.DisplayFor(model => model.OfertaPF.Client.Email)</div>
     </div>
 
     <div class="details">
         <div class="details-title">Vehicul:</div>
         <hr />
         <div class="details-label">Număr înmatriculare:</div>
-        <div class="details-value">@Html.DisplayFor(model => model.OfertaPJ.NrInmatriculare)</div>
+        <div class="details-value">@Html.DisplayFor(model => model.OfertaPF.NrInmatriculare)</div>
         <div class="details-label">Număr identificare:</div>
-        <div class="details-value">@Html.DisplayFor(model => model.OfertaPJ.NumarIdentificare)</div>
+        <div class="details-value">@Html.DisplayFor(model => model.OfertaPF.NumarIdentificare)</div>
         <div class="details-label">Preț:</div>
-        <div class="details-value">@Html.DisplayFor(model => model.OfertaPJ.Pret) Lei</div>
+        <div class="details-value">@Html.DisplayFor(model => model.OfertaPF.Pret) Lei</div>
     </div>
 
 

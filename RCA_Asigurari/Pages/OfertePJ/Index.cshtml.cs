@@ -23,11 +23,6 @@ namespace RCA_Asigurari.Pages.OfertePJ
             _context = context;
         }
 
-
-
-
-
-
         public IList<OfertaPJ> OfertaPJ { get; set; } = default!;
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
@@ -95,9 +90,7 @@ namespace RCA_Asigurari.Pages.OfertePJ
                 if (!String.IsNullOrEmpty(SearchString))
                 {
                     ofertePJ = ofertePJ.Where(s => s.Client.NumeProprietar.Contains(SearchString)
-                   || s.CUI.Contains(SearchString)
-                       //|| s.SerieCI.Contains(SearchString)
-                       //|| s.NumarCI.Contains(SearchString)
+                       || s.CUI.Contains(SearchString)
                        || s.NrInmatriculare.Contains(SearchString)
                        || s.NumarIdentificare.Contains(SearchString)
                        || s.Marca.Contains(SearchString)
